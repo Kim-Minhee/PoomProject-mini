@@ -7,70 +7,70 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class CommunityController {
 	
-	@GetMapping("/poom/comunity/list")
-	public String comunityList( ) {
+	@GetMapping("/poom/community/list")
+	public String communityList( ) {
 		
-		return "comunity/comunityList";
+		return "community/communityList";
 	}
 	
-	@GetMapping("/poom/comunity/read")
-	public String comunityRead( ) {
+	@GetMapping("/poom/community/read")
+	public String community( ) {
 		
 		
-		return "comunity/comunityRead";
-	}
-	
-	
-	@PostMapping("/poom/comunity/read")
-	public String comunityReadPost( ) {
-		
-		
-		return "comunity/comunityReadPost";
-	}
-	
-	@GetMapping("/poom/comunity/add")
-	public String comunityAdd( ) {
-		
-		
-		return "comunity/comunityAdd";
+		return "community/communityRead";
 	}
 	
 	
-	@PostMapping("/poom/comunity/add")
-	public String comunityAddPost( ) {
+	@PostMapping("/poom/community/read")
+	public String communityReadPost( ) {
 		
 		
-		return "comunity/comunityAddPost";
+		return "community/communityReadPost";
 	}
 	
-	@GetMapping("/poom/comunity/update")
-	public String comunityUpdate( ) {
+	@GetMapping("/poom/community/add")
+	public String communityAdd( ) {
 		
 		
-		return "comunity/comunityUpdate";
-	}
-	
-	
-	@PostMapping("/poom/comunity/update")
-	public String comunityUpdatePost( ) {
-		
-		
-		return "comunity/comunityUpdatePost";
-	}
-	
-	@GetMapping("/poom/comunity/delete")
-	public String comunityDelete( ) {
-		
-		
-		return "comunity/comunityDelete";
+		return "community/communityAdd";
 	}
 	
 	
-	@PostMapping("/poom/comunity/delete")
-	public String comunityDeletePost( ) {
+	@PostMapping("/poom/community/add")
+	public String communityAddPost( ) {
 		
 		
-		return "comunity/comunityList";
+		return "community/communityAddPost";
+	}
+	
+	@GetMapping("/poom/community/update")
+	public String communityUpdate( ) {
+		
+		
+		return "community/communityUpdate";
+	}
+	
+	
+	@PostMapping("/poom/community/update")
+	public String communityUpdatePost( ) {
+		
+		
+		return "community/communityUpdatePost";
+	}
+	
+	@GetMapping("/poom/community/delete")
+	public String communityDelete( ) {
+		
+		
+		return "community/communityDelete";
+	}
+	
+	
+	@PostMapping("/poom/community/delete")
+	public String communityDeletePost( ) {
+		
+		
+		return "community/communityList";
 	}
 	
 	

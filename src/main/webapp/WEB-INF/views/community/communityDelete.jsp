@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기 결과</title>
+<title>Insert title here</title>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
-	찾으시는 아이디는 ${findIdDTO.id}입니다.
+삭제 겟
 <jsp:include page="../include/footer.jsp"></jsp:include>

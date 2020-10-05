@@ -6,12 +6,11 @@
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
 </head>
-<body>
+<jsp:include page="../include/header.jsp"></jsp:include>
 	<h1>아이디 찾기</h1>
 	
 	<form action="id" method="post">
 		이름: <input type="text" name="name">
 		<input type="submit" value="찾기">
 	</form>
-</body>
-</html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<jsp:include page="../include/header.jsp"></jsp:include>
 로그인 실패 포스트
-</body>
-</html>
+<jsp:include page="../include/footer.jsp"></jsp:include>
