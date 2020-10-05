@@ -5,6 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hk.poom.dto.AdminPayDTO;
+import com.hk.poom.dto.NoticeAddDTO;
+import com.hk.poom.dto.NoticeListDTO;
+import com.hk.poom.dto.NoticeReadDTO;
+import com.hk.poom.dto.NoticeUpdateDTO;
 import com.hk.poom.mapper.AdminMapper;
 
 @Service
@@ -13,7 +18,7 @@ public class AdminService {
 	@Autowired
 	AdminMapper adminMapper;
 
-	/*
+	
 	public List<NoticeListDTO> noticeList( ) {
 		return adminMapper.noticeList( );
 	}
@@ -45,5 +50,5 @@ public class AdminService {
 	public List<AdminPayDTO> adminPay( ) {
 		return adminMapper.adminPay( );
 	}
-	*/
+	
 }
