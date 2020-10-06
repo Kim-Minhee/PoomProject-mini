@@ -30,20 +30,20 @@ public class MemberService {
 		return retVal;
 	}
 
-	public FindIdDTO memberFindId( FindIdDTO findIdDTO ) {
-		return memberMapper.memberFindId( findIdDTO );
-	}
-
-	public FindPwdDTO memberFindPwd( FindPwdDTO findPwdDTO ) {
-		return memberMapper.memberFindPwd( findPwdDTO );
-	}
-	
 	public LoginDTO idDupChk( String id ) {
 		return memberMapper.idDupChk( id );
 	}
 	
 	public LoginDTO emailDupChk( String email ) {
 		return memberMapper.emailDupChk( email );
+	}
+
+	public FindIdDTO memberFindId( FindIdDTO findIdDTO ) {
+		return memberMapper.memberFindId( findIdDTO );
+	}
+
+	public FindPwdDTO memberFindPwd( FindPwdDTO findPwdDTO ) {
+		return memberMapper.memberFindPwd( findPwdDTO );
 	}
 
 }
