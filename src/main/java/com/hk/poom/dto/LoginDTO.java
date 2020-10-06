@@ -31,6 +31,12 @@ public class LoginDTO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public int getType_m() {
 		return type_m;
 	}
@@ -59,8 +65,8 @@ public class LoginDTO {
 	// toString()
 	@Override
 	public String toString() {
-		return "LoginDTO [id=" + id + ", pwd=" + pwd + ", type_m=" + type_m + ", mno=" + mno + ", name=" + name
-				+ ", prof=" + prof + "]";
+		return "LoginDTO [id=" + id + ", pwd=" + pwd + ", email=" + email + ", type_m=" + type_m + ", mno=" + mno
+				+ ", name=" + name + ", prof=" + prof + "]";
 	}
 	
 }
