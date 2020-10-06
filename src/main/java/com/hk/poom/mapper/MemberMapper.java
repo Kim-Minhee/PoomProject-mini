@@ -16,5 +16,7 @@ public interface MemberMapper {
 	public int memberRegisterPer( RegisterPerDTO registerPerDTO );  
 	public FindIdDTO memberFindId( FindIdDTO findIdDTO );
 	public FindPwdDTO memberFindPwd( FindPwdDTO findPwdDTO );
+	public LoginDTO idDupChk( String id );
+	public LoginDTO emailDupChk( String email );
 	
 }

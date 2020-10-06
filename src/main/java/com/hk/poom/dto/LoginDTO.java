@@ -6,6 +6,8 @@ public class LoginDTO {
 	String id;
 	//비밀번호
 	String pwd;
+	//이메일
+	String email;
 	//회원 유형
 	int type_m;
 	//회원번호

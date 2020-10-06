@@ -4,5 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hk.poom.mapper.RehomeMapper">
 
+<insert id="rehomeAdd" parameterType="com.hk.poom.dto.RehomeAddDTO">
+insert all
+into rehome (bno, rno, mno, gender, age, neut, vac, cost, cat_r)
+values (#{bno},#{rno}, #{mno}, #{gender}, #{age}, #{neut}, #{vac}, #{cost},#{cat_r})
+
+into board (type_b, bno, title, cre_date_b, mod_date_b, viewcnt, likecnt, reportcnt, stmt_b, cont_b, id_writer)
+values (#{type_b},#{bno}, #{title}, sysdate, sysdate, #{viewcnt}, #{likecnt}, #{reportcnt}, #{stmt_b}, #{cont_b}, #{id_writer})
+   select * from dual
+
+   <!--  insert into rehome (bno, rno, mno, gender, age, neut, vac, cost, quecnt)
+   values (#{bno},#{rno}, #{mno}, #{gender}, #{age}, #{neut}, #{vac}, #{cost}, #{quecnt})-->
+   
+   <!--  insert into board (type_b, bno, title, cre_date_b, mod_date_b, viewcnt, likecnt, reportcnt, stmt_b, cont_b, id_writer)
+   values (#{type_b},#{bno}, #{title}, sysdate, sysdate, #{viewcnt}, #{likecnt}, #{reportcnt}, #{stmt_b}, #{cont_b}, #{id_writer})
+   select * from dual-->
+</insert>
+
+<select id="rehomeList" resultType="com.hk.poom.dto.RehomeAddDTO">
+SELECT * FROM REHOME r, BOARD b WHERE r.BNO = b.BNO 
+</select>
 
 </mapper>

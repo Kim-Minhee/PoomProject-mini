@@ -17,7 +17,7 @@ public class RehomeService {
 	@Autowired
 	RehomeMapper rehomeMapper;
 
-	public List<RehomeListDTO> rehomeList( ) {
+	public List<RehomeAddDTO> rehomeList( ) {
 		return rehomeMapper.rehomeList( );
 	}
    

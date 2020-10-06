@@ -34,7 +34,7 @@ public class RegisterPerDTO {
 	//관심 분야
 	int fav;
 	//애완동물 유무
-	boolean pet;
+	int pet;
 	
 	
 	// Getter & Setter
@@ -122,10 +122,10 @@ public class RegisterPerDTO {
 	public void setFav(int fav) {
 		this.fav = fav;
 	}
-	public boolean isPet() {
+	public int isPet() {
 		return pet;
 	}
-	public void setPet(boolean pet) {
+	public void setPet(int pet) {
 		this.pet = pet;
 	}
 	

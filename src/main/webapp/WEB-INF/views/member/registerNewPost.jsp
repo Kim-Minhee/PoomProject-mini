@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>신규 회원가입 완료</title>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
-	개인 회원가입이 완료되었습니다! (알럿처럼 띄우기!)
+	${name}님, 회원가입이 완료되었습니다! (알럿처럼 띄우기!)
 
 <jsp:include page="../include/footer.jsp"></jsp:include>
