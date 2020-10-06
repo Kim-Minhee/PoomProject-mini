@@ -13,10 +13,10 @@ public interface MemberMapper {
 
 	public LoginDTO memberLogin( LoginDTO loginDTO );
 	public int memberRegisterCom( RegisterComDTO registerComDTO );  
-	public int memberRegisterPer( RegisterPerDTO registerPerDTO );  
-	public FindIdDTO memberFindId( FindIdDTO findIdDTO );
-	public FindPwdDTO memberFindPwd( FindPwdDTO findPwdDTO );
+	public int memberRegisterPer( RegisterPerDTO registerPerDTO ); 
 	public LoginDTO idDupChk( String id );
 	public LoginDTO emailDupChk( String email );
+	public FindIdDTO memberFindId( FindIdDTO findIdDTO );
+	public FindPwdDTO memberFindPwd( FindPwdDTO findPwdDTO );
 	
 }
