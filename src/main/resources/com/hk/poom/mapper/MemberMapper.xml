@@ -5,6 +5,10 @@
 <mapper namespace="com.hk.poom.mapper.MemberMapper">
 
 
+<select id="memberLogin" resultType="com.hk.poom.dto.LoginDTO">
+	SELECT * FROM MEMBER WHERE ID=#{id} AND PWD=#{pwd}
+</select>
+
 <insert id="memberRegisterPer" parameterType="com.hk.poom.dto.RegisterPerDTO">
     <selectKey resultType="int" keyProperty="mno" order="BEFORE">
         SELECT MAX(MNO)+1 FROM MEMBER
