@@ -15,16 +15,16 @@ import com.hk.poom.service.MemberService;
 
 @RestController
 @RequestMapping(value="/poom", produces="text/plain;charset=UTF-8")
-public class RestMemberController {
+public class AllRestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@Autowired
 	MemberService memberService;
 	
-	@PostMapping(path="/register/new/idDupChk", produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path="/register/idDupChk", produces=MediaType.APPLICATION_JSON_VALUE)
 	public int idDupChk(@RequestParam("id") String id) {
-		logger.info("RestMemberController_Post_/poom/register/new/idDupChk 실행");
+		logger.info("RestMemberController_Post_/poom/register/idDupChk 실행");
 		
 		logger.info("Client에서 보내온 id = " + id);		
 		LoginDTO idDupChkMember = memberService.idDupChk(id);
@@ -38,9 +38,9 @@ public class RestMemberController {
 		
 	}
 	
-	@PostMapping(path="/register/new/emailDupChk", produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path="/register/emailDupChk", produces=MediaType.APPLICATION_JSON_VALUE)
 	public int emailDupChk(@RequestParam("email") String email) {
-		logger.info("RestMemberController_Post_/poom/register/new/emailDupChk 실행");
+		logger.info("RestMemberController_Post_/poom/register/emailDupChk 실행");
 		
 		logger.info("Client에서 보내온 email = " + email);		
 		LoginDTO emailDupChkMember = memberService.emailDupChk(email);

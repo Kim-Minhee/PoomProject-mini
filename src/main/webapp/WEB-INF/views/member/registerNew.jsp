@@ -17,7 +17,7 @@
 			//alert("idDupChk = " + idDupChk);
 			
 			$.ajax({
-				url : '/poom/register/new/idDupChk',
+				url : '/poom/register/idDupChk',
 				data : {
 					id : idDupChk
 				},
@@ -55,14 +55,14 @@
 			//alert("emailDupChk = " + emailDupChk);
 			
 			$.ajax({
-				url : '/poom/register/new/emailDupChk',
+				url : '/poom/register/emailDupChk',
 				data : {
 					email : emailDupChk
 				},
-					dataType : 'text', /*html, text, json, xml, script*/
+					dataType : 'text',
 					method : 'post',
 					success : function(data) {
-						alert("emailDupChk ajax 성공");
+						//alert("emailDupChk ajax 성공");
 					
 						if ( data==0 ) {
 							//alert("중복되지 않은 email");
@@ -115,15 +115,15 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 
 	<form action="new" method="post" id="registerNewForm">
-		아이디 (자동 중복체크) : 
+		아이디 : 
 			<input type="text" name="id" id="idDupChk"><br />
 			<input type="hidden" id="idDupChkRet"><br />
 		비밀번호 : 
 			<input type="password" id="pwd"><br />
-		비밀번호 확인 (자동) : 
+		비밀번호 확인 : 
 			<input type="password" name="pwd" id="pwdMatChk"><br />
 			<input type="hidden" id="pwdMatChkRet"><br />
-		이메일 (자동 중복체크) : 
+		이메일 : 
 			<input type="email" name="email" id="emailDupChk"><button>본인인증</button><br />
 			<input type="hidden" id="emailDupChkRet"><br />
 		이름 : 
