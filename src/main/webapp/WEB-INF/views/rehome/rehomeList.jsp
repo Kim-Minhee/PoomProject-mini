@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Rehome List</title>
+<jsp:include page="../include/inHead.jsp"></jsp:include>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
