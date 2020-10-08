@@ -175,15 +175,6 @@
 			<version>2.11.2</version>
 		</dependency>
 		
-		<!-- 트랜젝션 START -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-tx</artifactId>
-		    <version>4.3.28.RELEASE</version>
-		</dependency>
-		<!-- 트랜젝션 END -->
-		
 		<!-- 파일 업로드 start -->
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
