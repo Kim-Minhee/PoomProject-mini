@@ -36,7 +36,6 @@ public class MemberService {
 		int retVal = memberMapper.memberRegisterPer( registerPerDTO );
 		return retVal;
 	}
-
 	
 	public LoginDTO idDupChk( String id ) {
 		return memberMapper.idDupChk( id );
