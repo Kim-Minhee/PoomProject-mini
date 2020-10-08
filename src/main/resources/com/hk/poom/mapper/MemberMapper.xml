@@ -9,6 +9,10 @@
 	SELECT * FROM MEMBER WHERE ID=#{id} AND PWD=#{pwd}
 </select>
 
+<select id="profGet" resultType="String">
+	SELECT PROF FROM MEMBER WHERE MNO=#{mno}
+</select>
+
 <insert id="memberRegisterPer" parameterType="com.hk.poom.dto.RegisterPerDTO">
     <selectKey resultType="int" keyProperty="mno" order="BEFORE">
         SELECT MAX(MNO)+1 FROM MEMBER
@@ -23,10 +27,6 @@
 	SELECT * FROM DUAL
 </insert>
 
-<!-- <insert id="profRestore" parameterType="String"> -->
-<!--     INSERT INTO MEMBER (PROF) VALUES (#{dbFileName}) -->
-<!-- </insert> -->
-
 <select id="idDupChk" resultType="com.hk.poom.dto.LoginDTO">
 	SELECT * FROM MEMBER WHERE ID=#{id}
 </select>
@@ -35,6 +35,9 @@
 	SELECT * FROM MEMBER WHERE EMAIL=#{email}
 </select>
 
+<update id="profUpload">
+	UPDATE MEMBER SET PROF=#{dbSaveName} WHERE MNO=#{mno}
+</update>
 
 <select id="memberFindId" resultType="com.hk.poom.dto.FindIdDTO">
 	select * from member where name=#{name}
