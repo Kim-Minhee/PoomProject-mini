@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>신규 회원가입</title>
+<jsp:include page="../include/inHead.jsp"></jsp:include>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script>
@@ -114,7 +115,7 @@
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
-	<form action="new" method="post" id="registerNewForm">
+	<form action="new" method="post" id="registerNewForm" enctype="multipart/form-data">
 		아이디 : 
 			<input type="text" name="id" id="idDupChk"><br />
 			<input type="hidden" id="idDupChkRet"><br />
@@ -134,10 +135,8 @@
 			<input type="tel" name="tel"><br />
 		멘트 : 
 			<input type="text" name="ment"><br />
-<!-- 		프로필 사진(타입이 파일) : 
-				<input type="file" name="prof"><button>업로드?</button><br /> -->
-<!-- 		프로필 사진(타입이 이미지) : 
-				<input type="image" name="prof"><button>업로드?</button><br /> -->
+ 		프로필 사진 : 
+			<input type="file" name="prof"><button>업로드?</button><br />
 		관심 분야 : 
 			<select form="registerNewForm" name="fav">
         		<option value="0">선택안함</option>

@@ -14,14 +14,18 @@
         SELECT MAX(MNO)+1 FROM MEMBER
     </selectKey>
     INSERT ALL
-		INTO MEMBER (ID, PWD, EMAIL, NAME, ADDRESS, TEL, MENT, PROF, TYPE_M, MNO, STMT_M, CRE_DATE_M, MOD_DATE_M, SALECNT, BUYCNT) 
-		VALUES (#{id}, #{pwd}, #{email}, #{name}, #{address}, #{tel}, #{ment}, 'profile.jpg', 1, #{mno}, 1, SYSDATE , SYSDATE, 0, 0)
+		INTO MEMBER (ID, PWD, EMAIL, NAME, ADDRESS, TEL, MENT, TYPE_M, MNO, STMT_M, CRE_DATE_M, MOD_DATE_M, SALECNT, BUYCNT) 
+		VALUES (#{id}, #{pwd}, #{email}, #{name}, #{address}, #{tel}, #{ment}, 1, #{mno}, 1, SYSDATE , SYSDATE, 0, 0)
 		
 		INTO PERSON (MNO, FAV, PET) 
 		VALUES (#{mno}, #{fav}, #{pet})
 	
 	SELECT * FROM DUAL
 </insert>
+
+<!-- <insert id="profRestore" parameterType="String"> -->
+<!--     INSERT INTO MEMBER (PROF) VALUES (#{dbFileName}) -->
+<!-- </insert> -->
 
 <select id="idDupChk" resultType="com.hk.poom.dto.LoginDTO">
 	SELECT * FROM MEMBER WHERE ID=#{id}

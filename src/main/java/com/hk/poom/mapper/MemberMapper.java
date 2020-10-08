@@ -1,6 +1,7 @@
 package com.hk.poom.mapper;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hk.poom.dto.FindIdDTO;
 import com.hk.poom.dto.FindPwdDTO;
@@ -16,6 +17,7 @@ public interface MemberMapper {
 	public int memberRegisterPer( RegisterPerDTO registerPerDTO ); 
 	public LoginDTO idDupChk( String id );
 	public LoginDTO emailDupChk( String email );
+//	public int profRestore( String profUrl );
 	public FindIdDTO memberFindId( FindIdDTO findIdDTO );
 	public FindPwdDTO memberFindPwd( FindPwdDTO findPwdDTO );
 	

@@ -140,10 +140,10 @@ public class RehomeAddDTO {
    public void setAge(int age) {
       this.age = age;
    }
-   public int getNuet() {
+   public int getNeut() {
       return neut;
    }
-   public void setNuet(int neut) {
+   public void setNeut(int neut) {
       this.neut = neut;
    }
    public int getCost() {

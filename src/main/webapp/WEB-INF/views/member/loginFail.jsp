@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인 실패</title>
+<jsp:include page="../include/inHead.jsp"></jsp:include>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 로그인 실패 포스트

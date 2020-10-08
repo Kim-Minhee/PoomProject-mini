@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
+<jsp:include page="../include/inHead.jsp"></jsp:include>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 	<h1>아이디 찾기</h1>

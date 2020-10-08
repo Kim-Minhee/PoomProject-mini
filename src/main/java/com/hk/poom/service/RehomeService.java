@@ -30,9 +30,11 @@ public class RehomeService {
 	}
    
 	public int rehomeUpdate( RehomeUpdateDTO rehomeUpdateDTO ) {
-		return rehomeMapper.rehomeUpdate( rehomeUpdateDTO );
+		return rehomeMapper.rehomeUpdate( rehomeUpdateDTO );				
 	}
-   
+	public int rehomeUpdate1( RehomeUpdateDTO rehomeUpdateDTO ) {
+		return rehomeMapper.rehomeUpdate1( rehomeUpdateDTO );				
+	}
 	public int rehomeDelete( int bno ) {
 		return rehomeMapper.rehomeDelete( bno );
    	}

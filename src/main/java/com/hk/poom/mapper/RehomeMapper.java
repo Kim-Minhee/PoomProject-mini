@@ -15,7 +15,8 @@ public interface RehomeMapper {
 	public List<RehomeAddDTO> rehomeList( );
 	public int rehomeAdd( RehomeAddDTO rehomeAddDTO );
 	public RehomeUpdateDTO rehomeGetOne( int bno );
-	public int rehomeUpdate( RehomeUpdateDTO rehoemUpdateDTO );
+	public int rehomeUpdate( RehomeUpdateDTO rehomeUpdateDTO );
+	public int rehomeUpdate1( RehomeUpdateDTO rehomeUpdateDTO );
 	public int rehomeDelete( int bno );
 	public RehomeReadDTO rehomeRead( int bno );
 	

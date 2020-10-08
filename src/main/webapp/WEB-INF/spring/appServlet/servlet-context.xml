@@ -21,6 +21,20 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 파일 업로드 -->
+	<!-- MultipartResolver -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="200000000" />
+		<beans:property name="maxInMemorySize" value="200000000" />
+	</beans:bean>
+	
+
+	<!-- 프로필 사진 경로 설정 -->
+	<!-- resource mapping -->
+	<!-- location : 물리적 주소 / mapping : 가상 주소 -->
+<!-- 	<resources location="file:/resources/img/" mapping="/resources/img/*"/> -->
+	
 	<context:component-scan base-package="com.hk.poom" />
 	
 	

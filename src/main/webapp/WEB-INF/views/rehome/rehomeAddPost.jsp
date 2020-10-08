@@ -8,4 +8,5 @@
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 분양 추가 포스트
+<a href='list'>리스트로</a>
 <jsp:include page="../include/footer.jsp"></jsp:include>
