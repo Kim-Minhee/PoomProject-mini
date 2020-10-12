@@ -15,8 +15,8 @@ public interface MemberMapper {
 
 	public LoginDTO memberLogin( LoginDTO loginDTO );
 	public String profGet( int mno );
-	public int memberRegisterCom( RegisterComDTO registerComDTO );
 	public int memberRegisterPer( RegisterPerDTO registerPerDTO );
+	public int memberRegisterCom( RegisterComDTO registerComDTO );
 	public LoginDTO idDupChk( String id );
 	public LoginDTO emailDupChk( String email );
 	public int profUpload( ProfUploadDTO profUploadDTO );
