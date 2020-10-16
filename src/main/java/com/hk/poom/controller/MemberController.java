@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +23,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hk.poom.dto.FindIdDTO;
+import com.hk.poom.dto.FindPwdDTO;
 import com.hk.poom.dto.LoginDTO;
 import com.hk.poom.dto.ProfUploadDTO;
 import com.hk.poom.dto.RegisterComDTO;
 import com.hk.poom.dto.RegisterPerDTO;
+import com.hk.poom.service.EmailService;
 import com.hk.poom.service.MemberService;
 
 
@@ -40,6 +43,9 @@ public class MemberController {
 	
 	@Autowired
 	ServletContext sc;
+	
+	@Autowired
+	EmailService emailService;
 	
 	@GetMapping("/poom/register/com")
 	public String registerCom( ) {
@@ -213,6 +219,7 @@ public class MemberController {
 		return "member/kakaoLogin";
 	}
 	
+	
 	@GetMapping("/poom/find/id")
 	public String findId( ) {
 		
@@ -224,6 +231,15 @@ public class MemberController {
 	@PostMapping("/poom/find/id")
 	public String findIdPost( Model model, FindIdDTO findIdDTO ) {
 		
+		String subject = "POOM 계정 아이디 찾기입니다.";
+		StringBuilder sb = new StringBuilder();
+		
+		memberService.memberFindId(findIdDTO);
+		FindIdDTO idRet=memberService.memberFindId(findIdDTO);
+		sb.append("*"+idRet.getName()+"*").append("님의 아이디는 <").append(idRet.getId()).append("> 입니다.");
+		
+		emailService.send(subject, sb.toString(), "ydp12341234@gmail.com", findIdDTO.getEmail());
+		
 		model.addAttribute("findIdDTO", memberService.memberFindId(findIdDTO));
 		return "member/findIdPost";
 	}
@@ -233,6 +249,30 @@ public class MemberController {
 		
 		
 		return "member/findPwd";
+	}
+	@PostMapping("/poom/find/pwd")
+	public String findPwd(Model model, FindPwdDTO findPwdDTO ) {
+		
+		int randomPwd = new Random().nextInt(100000)+10000;
+		String joinPwd = String.valueOf(randomPwd);
+		findPwdDTO.setPwd(joinPwd);
+		memberService.memberPwdUpdate(findPwdDTO);
+		
+		String subject = "POOM 계정 비밀번호 찾기입니다. ";
+		StringBuilder sb = new StringBuilder(); // 본문내용
+		
+		//memberService.memberFindPwd(findPwdDTO);
+		
+		//FindPwdDTO pwdRet= memberService.memberFindPwd(findPwdDTO);
+		
+		
+		sb.append("*"+findPwdDTO.getName()+"*").append("님의 비밀번호는 <").append(joinPwd).append("> 입니다.");
+		
+		model.addAttribute("findPwdDTO", memberService.memberFindPwd(findPwdDTO));
+		
+		emailService.send(subject, sb.toString(), "ydp12341234@gmail.com", findPwdDTO.getEmail());
+
+		return "member/findPwdPost";
 	}
 	
 
