@@ -35,7 +35,22 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "a";
+//		return "member/kakaoLoginFormTest";
 	}
+	
+//	@RequestMapping(value = "/kakao/login", method = RequestMethod.GET)
+//	public String kakaoLogin(Locale locale, Model model) {
+//		logger.info("Welcome home! The client locale is {}.", locale);
+//		
+//		Date date = new Date();
+//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+//		
+//		String formattedDate = dateFormat.format(date);
+//		
+//		model.addAttribute("serverTime", formattedDate );
+//		
+//		return "member/kakaoLogin1";
+//	}
 	
 	@GetMapping("/poom")
 	public String home(Locale locale, Model model) {

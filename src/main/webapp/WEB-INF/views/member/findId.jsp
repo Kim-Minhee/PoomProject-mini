@@ -9,7 +9,7 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script>
-	$().ready(function() {
+//	$().ready(function() {
 
 		// 아이디 찾기
 		$("#find").click(function() {
@@ -43,7 +43,7 @@
 		
 		});
 
-	});
+//	});
 </script>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -54,7 +54,10 @@
 		이메일 : <input type="email" name="email" id="email"><br />
 <!-- 		연락처 : <input type="tel" name="tel" id="tel"><br /> -->
 <!-- 		<input type="submit" value="찾기" id="find"> -->
+	<input type='submit' value='찾기' id="find" onclick="">
+	<input type='reset' value='취소'>
+	<input type='button' onclick='location.href="/poom"' value='리스트로'>
 	</form>
-	<button id="find">찾기</button>
-	<div id="findedId"></div>
+<!-- 	<button id="find">찾기</button> -->
+<!-- 	<div id="findedId"></div> -->
 <jsp:include page="../include/footer.jsp"></jsp:include>

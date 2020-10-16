@@ -4,8 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>정보 수정 완료</title>
+<jsp:include page="../include/inHead.jsp"></jsp:include>
+
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
-아더페이지 
+마이페이지 포스트 
 <jsp:include page="../include/footer.jsp"></jsp:include>
