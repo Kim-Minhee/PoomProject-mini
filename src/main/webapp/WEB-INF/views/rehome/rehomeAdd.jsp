@@ -16,7 +16,7 @@
 <form action='add' role="form" method="post" enctype="multipart/form-data" autocomplete="off" id="rehomeAdd">
  
  <label>1차 분류</label>
- <select form="rehomeAdd" class="category1" name="cateCodeRef">
+ <select form="rehomeAdd" class="category1" name="cateCodeRef" disabled>
   <option value="">전체</option>
  </select>
  <br>
@@ -95,9 +95,17 @@ for(var i = 0; i < jsonData.length; i++) {
 var cate1Select = $("select.category1")
 
 for(var i = 0; i < cate1Arr.length; i++) {
- cate1Select.append("<option value='" + cate1Arr[i].cateCode + "'>"
-      + cate1Arr[i].cateName + "</option>"); 
+	if ( i==0 ) {
+		cate1Select.append("<option selected value='" + cate1Arr[i].cateCode + "'>"
+			      + cate1Arr[i].cateName + "</option>");
+	} else {
+		cate1Select.append("<option value='" + cate1Arr[i].cateCode + "'>"
+			      + cate1Arr[i].cateName + "</option>");
+	}
+  
 }
+
+
 
 $(document).on("change", "select.category1", function(){
 
