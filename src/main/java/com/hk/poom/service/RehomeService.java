@@ -23,7 +23,6 @@ public class RehomeService {
 		return rehomeMapper.rehomeList( );
 	}
 
-
 	public RehomeUpdateDTO rehomeGetOne( int bno ) {
 		return rehomeMapper.rehomeGetOne( bno );
 	}

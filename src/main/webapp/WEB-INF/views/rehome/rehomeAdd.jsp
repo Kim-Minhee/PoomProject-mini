@@ -75,7 +75,7 @@
 <script>
 // 컨트롤러에서 데이터 받기
 var jsonData = JSON.parse('${category}');
-console.log(jsonData);
+console.log("jsonData = " + jsonData);
 
 var cate1Arr = new Array();
 var cate1Obj = new Object();
@@ -89,7 +89,9 @@ for(var i = 0; i < jsonData.length; i++) {
   cate1Obj.cateName = jsonData[i].cateName;
   cate1Arr.push(cate1Obj);
  }
+
 }
+console.log("cate1Arr = " + cate1Arr);
 
 // 1차 분류 셀렉트 박스에 데이터 삽입
 var cate1Select = $("select.category1")
@@ -107,7 +109,8 @@ for(var i = 0; i < cate1Arr.length; i++) {
 
 
 
-$(document).on("change", "select.category1", function(){
+// $(document).on("change", "select.category1", function(){
+$(document).ready( function(){
 
  var cate2Arr = new Array();
  var cate2Obj = new Object();
@@ -134,12 +137,12 @@ $(document).on("change", "select.category1", function(){
  }
  */
  
- cate2Select.children().remove();
+ //cate2Select.children().remove();
 
  $("option:selected", this).each(function(){
   
   var selectVal = $(this).val();  
-  cate2Select.append("<option value=''>전체</option>");
+  //cate2Select.append("<option value=''>전체</option>");
   
   for(var i = 0; i < cate2Arr.length; i++) {
    if(selectVal == cate2Arr[i].cateCodeRef) {

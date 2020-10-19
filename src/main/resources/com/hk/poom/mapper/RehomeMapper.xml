@@ -84,8 +84,7 @@ select catename from category  where catecode=#{cateCode}
 
     
 <select id="rehomeRead" resultType="com.hk.poom.dto.RehomeReadDTO">
-SELECT * FROM BOARD b, REHOME r WHERE b.BNO=r.BNO AND b.bno=#{bno} 
-
+	SELECT * FROM BOARD b, REHOME r WHERE b.BNO=r.BNO AND b.bno=#{bno} 
 </select>    
   
 <insert id="report" parameterType="com.hk.poom.dto.RehomeReportDTO">
