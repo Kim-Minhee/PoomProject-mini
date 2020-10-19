@@ -60,7 +60,7 @@
 			<mvc:mapping path="/poom/rehome/pay" />
 			<mvc:mapping path="/poom/rehome/report" />
 			<beans:bean
-				class="com.hk.poom.interceptor.PoomInterceptor" />
+				class="com.hk.poom.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 	

@@ -248,18 +248,18 @@
 	<!-- 			<img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" /> -->
 	<!-- 		</a> -->
 		</div>
-		<div>
-			<!-- 버튼 생성 -->
-			<button onclick="createLoginButton()">버튼 생성</button>
-			<a id="create-kakao-login-btn"></a>
-		</div>
-		<div>
-			<!-- 새 계정으로 로그인 -->
-			<a id="login-form-btn" href="javascript:loginFormWithKakao()">
-	  			<img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" />
-			</a>
-			<p id="login-form-result"></p>
-		</div>
+<!-- 		<div> -->
+<!-- 			<!-- 버튼 생성 --> -->
+<!-- 			<button onclick="createLoginButton()">버튼 생성</button> -->
+<!-- 			<a id="create-kakao-login-btn"></a> -->
+<!-- 		</div> -->
+<!-- 		<div> -->
+<!-- 			<!-- 새 계정으로 로그인 --> -->
+<!-- 			<a id="login-form-btn" href="javascript:loginFormWithKakao()"> -->
+<!-- 	  			<img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" /> -->
+<!-- 			</a> -->
+<!-- 			<p id="login-form-result"></p> -->
+<!-- 		</div> -->
 		<div>
 			<!-- 로그아웃 -->
 			<button class="api-btn" onclick="kakaoLogout()">로그아웃</button>
@@ -268,15 +268,15 @@
 			<button class="api-btn" onclick="unlinkApp()">앱 탈퇴하기</button>
 	<!-- 		<button onclick="unlinkWithKakao()">연결끊기</button> -->
 		</div>
-		<div>
-			<!-- 사용자 정보 요청 -->
-			<button onclick="getInfoKakao()">사용자정보 가져오기</button>
-			<div id="getInfo"></div>
-			<!-- 사용자 정보 저장 -->
-			<button onclick="setInfoKakao()">사용자정보 추가하기 (이름/tel)</button>
-			<a id="kakao-login-btn"></a>
+<!-- 		<div> -->
+<!-- 			<!-- 사용자 정보 요청 --> -->
+<!-- 			<button onclick="getInfoKakao()">사용자정보 가져오기</button> -->
+<!-- 			<div id="getInfo"></div> -->
+<!-- 			<!-- 사용자 정보 저장 --> -->
+<!-- 			<button onclick="setInfoKakao()">사용자정보 추가하기 (이름/tel)</button> -->
+<!-- 			<a id="kakao-login-btn"></a> -->
 
-		</div>
+<!-- 		</div> -->
 	</div>
 	<div class="naver"></div>
 	<div class="google"></div>

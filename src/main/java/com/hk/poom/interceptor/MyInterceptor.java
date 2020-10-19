@@ -30,6 +30,7 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
 		System.out.println("---------1");
 		LoginDTO loginMember = (LoginDTO) session.getAttribute("loginMember");
 		System.out.println("---------2");
+		// session 에 넣어야지@!!!!!!!!!
 		RehomeReadDTO rehomeReadDTO = (RehomeReadDTO) request.getAttribute("rehomeRead");
 		System.out.println(rehomeReadDTO.toString());
 		
