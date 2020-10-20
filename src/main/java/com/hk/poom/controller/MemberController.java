@@ -93,7 +93,7 @@ public class MemberController {
 		// 2) 수정된 파일 이름으로 DB에 저장하기
 		ProfUploadDTO profUploadDTO = new ProfUploadDTO();
 		profUploadDTO.setMno(registerComDTO.getMno());
-		profUploadDTO.setDbSaveName(dbSaveName);
+		profUploadDTO.setDbSaveName("/resources/prof/" + dbSaveName);
 		memberService.profUpload(profUploadDTO);
 		// Post.jsp에서 해당 이미지를 출력할 수 있게.. /resources로 시작하는 경로를 model에 저장해놓기
 		model.addAttribute("prof", "/resources/prof/" + dbSaveName);
@@ -158,11 +158,10 @@ public class MemberController {
 //		registerPerDTO.setProf(dbSaveName);
 		ProfUploadDTO profUploadDTO = new ProfUploadDTO();
 		profUploadDTO.setMno(registerPerDTO.getMno());
-		String realDbSave = "/resources/prof/" + dbSaveName;
-		profUploadDTO.setDbSaveName(realDbSave);
+		profUploadDTO.setDbSaveName("/resources/prof/" + dbSaveName);
 		memberService.profUpload(profUploadDTO);
 		// Post.jsp에서 해당 이미지를 출력할 수 있게.. /resources로 시작하는 경로를 model에 저장해놓기
-		model.addAttribute("prof", realDbSave);
+		model.addAttribute("prof", "/resources/prof/" + dbSaveName);
 
 //		// 입력받은 회원 정보 저장
 //		memberService.memberRegisterPer(registerPerDTO);
@@ -180,18 +179,24 @@ public class MemberController {
 	}
 	
 	@PostMapping("/poom/login")
-	public String loginPost( HttpServletRequest request, HttpSession session, LoginDTO loginDTO ) {
+	public String loginPost( HttpServletRequest request, HttpSession session, LoginDTO loginDTO ) {	//, @RequestParam("mno") int mno
 		//logger.info("MemberController_Post_/poom/login 실행");
 		//logger.info("로그인할 member = " + loginDTO.toString());
-		
-		LoginDTO loginMember = memberService.memberLogin( loginDTO );
+		LoginDTO loginMember = new LoginDTO();
+//		if ( loginDTO==null ) {	// 카카오로 로그인
+//			loginMember = memberService.memberLoginKakao( mno );
+//			
+//		} else {	// 일반 로그인
+			loginMember = memberService.memberLogin( loginDTO );
+//		}
 		if ( loginMember!= null ) {
 			//logger.info("로그인 성공");
-			
+				
 			session.setAttribute("loginMember", loginMember);
+			logger.info("loginMember 정보 : " + loginMember);
 			// 로그인한 사람의 prof (db에 저장된 파일명을 가져옴)
 			session.setAttribute("prof", memberService.profGet(loginMember.getMno()));
-			
+				
 			//로그인 성공시 홈으로
 			return "home";
 		} else {
@@ -213,10 +218,13 @@ public class MemberController {
 	}
 	
 	@GetMapping("/poom/login/kakao")
-	public String loginKakao() {
+	public String loginKakao( Model model ) {
 		logger.info("MemberController_Get_/poom/login/kakao 실행");
 		
-		return "member/kakaoLogin";
+		// mno 정보 가져오기
+		model.addAttribute("mnoCheck", memberService.mnoCheck());
+		
+		return "member/kakaoRegister";
 	}
 	
 	

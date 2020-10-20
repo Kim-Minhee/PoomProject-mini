@@ -10,6 +10,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <!-- 카카오 로그인 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<!-- 다음 주소찾기 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 $().ready(function() {
 	// SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -23,20 +25,23 @@ $().ready(function() {
 		Kakao.API.request({
 			url: '/v2/user/me',
 			success: function(res) {
- 				//alert( JSON.stringify(res) );
+ 				console.log( JSON.stringify(res) );
  				// 사용자 닉네임
  				var name = res.kakao_account.profile.nickname;
  				// 사용자 이메일
  				var email = res.kakao_account.email;
  				// 사용자 프로필 사진
- 				var profUrl = res.kakao_account.profile.profile_image_url;
-				$('#getInfo').append("<tr><td>닉네임 : " + name + "</td></tr>");
-				$('#getInfo').append("<tr><td>이메일 : " + email + "</td></tr>");
-				$('#getInfo').append("<tr><td>프로필 주소 : " + profUrl + "</td></tr>");
- 				$('#name').setAttribute("value", name);
- 				$('#emailDupChk').setAttribute("value", email);
- 				$('#profUrl').setAttribute("value", profUrl);
- 				
+ 				var kakao_profile = res.kakao_account.profile.profile_image_url;
+ 				// 사용자 회원번호 (재로그인시 사용)
+ 				var mno = res.properties.mno;
+// 				$('#getInfo').append("<tr><td>닉네임 : " + name + "</td></tr>");
+// 				$('#getInfo').append("<tr><td>이메일 : " + email + "</td></tr>");
+// 				$('#getInfo').append("<tr><td>프로필 주소 : " + profUrl + "</td></tr>");
+ 				$('#name').attr("value", name);
+ 				$('#emailDupChk').attr("value", email);
+ 				$('#kakao_profile').attr("src", kakao_profile);
+ 				console.log("kakao_profile : " + kakao_profile);
+
 // 				$("#getInfo").html(JSON.stringify(res));
 // 				$.each( res, function( k1, v1 ) {
 //  	                 var totalKey = k1;
@@ -64,6 +69,34 @@ $().ready(function() {
 // 						})
 // 		             }
 // 	            })
+
+				// 현재 시간으로 아이디/비밀번호 만들기
+				var nowTime = new Date();
+				var year = nowTime.getFullYear();	// 년도
+				//console.log("year : " + year);
+				var month = nowTime.getMonth() + 1;	// 월
+				//console.log("month : " + month);
+				var date = nowTime.getDate();	// 날짜
+				//console.log("date : " + date);
+				var hours = nowTime.getHours();	// 시
+				//console.log("hours : " + hours);
+				var minutes = nowTime.getMinutes();	// 분
+				//console.log("minutes : " + minutes);
+				var seconds = nowTime.getSeconds();	// 초
+				//console.log("seconds : " + seconds);
+				var milliseconds = nowTime.getMilliseconds();	// 밀리초
+				//console.log("milliseconds : " + milliseconds);
+				var newName = "K" + year + month + date + hours + minutes + seconds + milliseconds;
+// 				var newName = newName + year;
+// 				var newName = newName + month;
+// 				var newName = newName + date;
+// 				var newName = newName + hours;
+// 				var newName = newName + minutes;
+// 				var newName = newName + seconds;
+// 				var newName = newName + milliseconds;
+				console.log("newName : " + newName);
+				$('#id').attr("value", newName);
+				$('#pwd').attr("value", newName);
 			},
 			fail: function(error) {
 				alert( 'login success, but failed to request user information: ' + JSON.stringify(error) );
@@ -84,13 +117,16 @@ $().ready(function() {
 // 	}
 
 	// 사용자 정보 저장
-	function setInfoKakao() {
+// 	function setInfoKakao() {
 		console.log('setInfoKakao() 실행');
+// 		var kakaoMno = $('#mno').innerText;
+		var kakaoMno = document.getElementById('mno').innerText;
+		console.log("kakaoMno : " + kakaoMno);
 		Kakao.API.request({
 		    url: '/v1/user/update_profile',
 		    data: {
 		        properties: {
-		            mno : '김민희'
+		            mno : kakaoMno
 		        },
 		    },
 		    success: function(res) {
@@ -100,150 +136,32 @@ $().ready(function() {
 		        console.log( 'login success, but failed to request user information: ' + JSON.stringify(error) );
 		    }
 		});
-	}
-})
-</script>
-<script>
+// 	}
 
-// 유효성 기능 활성화
-$().ready(function(){
-
-	// 아이디 유효성
-	$('#idDupChk').focus(function() {
-		regExId();
-	});
-
-	// 비밀번호 유효성
-	$('#pwd').focus(function() {
-		regExPwd();
-	});
 
 	// 이메일 유효성
-	$('#emailDupChk').focus(function(){
-		regExEmail();
-	});
+	if ( $('#emailDupChk').val()!=null ) {
+		$('#emailDupChk').focus(function(){
+			regExEmail();
+		});
+	}
 
 	// 연락처 유효성
 	$('#tel').focus(function() {
 		regExPwd();
 	});
 	
-});
+})
 
 
 //----------------------[ 정규식 ]----------------------
 
-//아이디 : 영소문자로 시작하는 6~12자의 영소문자 또는 숫자
-var idR = /^[a-z]+[a-z0-9]{5,11}$/;
-//비밀번호 : 8~15자의 영대문자 또는 영소문자, 숫자, 특수문자(#?!@$%^&*-)
-var pwdR = /^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/;
-// * 특수문자 ()도 가능하다고 뜸...
 //이메일 : https://blog.managr.us/entry/email-%EA%B2%80%EC%A6%9D-%EC%A0%95%EA%B7%9C%EC%8B%9D%EA%B3%BC-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%B0%A9%EB%B2%95
 var emailR = /^[A-Za-z0-9][A-Za-z0-9\_\-\.\+]+[0-9a-zA-Z]@[A-Za-z0-9][A-Za-z0-9\_\-]*[A-Za-z0-9]\.[A-Za-z]{2,6}$/;
 // * 안됨
 //var emailR = /^[a-zA-Z0-9._-]+@[a-zA-z0-9.-]+\.[a-zA-Z]{2,4}$/
 //연락처 : '-'없이 번호만 입력해주세요
 var telR=/^\d{2,3}-\d{3,4}-\d{4}$/;
-
-
-//-----------------[ 아이디 function ]-----------------
-
-// 유효성 검사 (정규식)
-function regExId(){
-	var idDupChk = $('#idDupChk').val(); 
-	if ( idDupChk=='' ){	// 아이디 미입력
-		$('#idDupChkRet').text('아이디를 입력해주세요.');
-		$('#idDupChkRet').css('color', 'red');
-	} else if( idR.test(idDupChk)!=true ){	// 유효성 검사 실패
-		$('#idDupChkRet').text('6~12자의 영소문자 또는 숫자만 사용 가능하며, 영소문자로 시작해야 합니다.');
-		$('#idDupChkRet').css('color', 'red');
-		return false;
-	} else {	// 유효성 검사 통과
-		return true;
-	}
-}
-
-// 중복 체크
-function checkId(){
-	var regExIdResult = regExId();	// 유효성 검사 실행
-	//alert('regExIdResult = ' + regExIdResult);
-	
-	if ( regExIdResult==true ) {	// 유효성 검사 통과
-		//alert("유효성 검사 통과함")
-		var idDupChk = $('#idDupChk').val();
-		//alert ("idDupChk = " + idDupChk);
-
-		$.ajax({
-			url : '/poom/register/idDupChk',
-			data : {
-				id : idDupChk
-			},
-			dataType : 'text' , // html, text, json, xml, script
-			method : 'post',
-			success : function(data) {
-				//alert("idDupChk ajax 성공");
-				if ( data==0 ) {
-					//alert ("중복되지 않은 아이디");
-					$('#idDupChkRet').text('사용가능한 아이디입니다.');
-					$('#idDupChkRet').css('color', 'green');
-				} else if ( data==1 ) {
-					//alert("중복된 아이디")
-					$('#idDupChkRet').text('이미 사용중인 아이디입니다.');
-					$('#idDupChkRet').css('color', 'red');
-				} else {
-					//alert("에러");
-					$('#idDupChkRet').text('관리자에게 문의하세요.');
-					$('#idDupChkRet').css('color', 'red');
-				}
-			},
-			error : function() {
-				alert('idDupChk ajax 에러')
-			}
-		});
-	}
-	// 유효성 검사가 실패했을때, 회원가입 버튼이 안 눌리게 하는 조건 추가해야됨!
-	
-}
-
-
-//----------------[ 비밀번호 function ]----------------
-
-// 유효성 검사 (정규식)
-function regExPwd(){
-	var pwd = $('#pwd').val(); 
-	if ( pwd=='' ){	// 비밀번호 미입력
-		$('#pwdRet').text('비밀번호를 입력해주세요.');
-		$('#pwdRet').css('color', 'red');
-	} else if( pwdR.test(pwd)!=true ){	// 유효성 검사 실패
-		$('#pwdRet').text('8~15자의 영대문자 또는 영소문자, 숫자, 특수문자(#?!@$%^&*-)를 혼합해서 사용해야 합니다.');
-		$('#pwdRet').css('color', 'red');
-		return false;
-	} else {	// 유효성 검사 통과
-		$('#pwdRet').text('사용가능한 비밀번호입니다.');
-		$('#pwdRet').css('color', 'green');
-		return true;
-	}
-}
-
-
-// 일치 확인
-function reCheckPwd() {
-	var pwd = $('#pwd').val();
-	var pwdMatChk = $('#pwdMatChk').val();
-	//alert("pwd = " + pwd);
-	//alert("pwdMatChk = " + pwdMatChk);
-	
-	if ( pwd==pwdMatChk ) {
-		//alert("비밀번호 일치");
-		$('#pwdMatChkRet').text('비밀번호가 일치합니다.');
-		$('#pwdMatChkRet').css('color', 'green');
-	} else {
-		//alert("비밀번호 불일치");
-		$('#pwdMatChkRet').text('비밀번호가 일치하지 않습니다.');
-		$('#pwdMatChkRet').css('color', 'red');
-	}
-	
-}
 
 
 //-----------------[ 이메일 function ]-----------------
@@ -383,22 +301,17 @@ function execDaumPostcode() {
 }
 
 </script>
-
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
-<div id="getInfo"></div>
 	<form action="/poom/register/new" method="post" id="registerNewForm" enctype="multipart/form-data">
 		<fieldset style="width:725px; margin-right:1000px;">
 			<legend style="font-size:25px;"><b>정보 입력</b></legend>
-				<div><label><b>* 아이디 : </b></label>
-					<input type="text" name="id" id="idDupChk" placeholder="아이디" oninput="checkId()">
-					<div class="validation" id="idDupChkRet" style="font-size: 15px;"></div></div>
-				<div><label><b>* 비밀번호 : </b></label>
-					<input type="password" id="pwd" placeholder="비밀번호" oninput="checkPwd()">
-					 <div class="validation" id="pwdRet" style="font-size: 15px;"></div></div>
-				<div><label><b>* 비밀번호 확인 : </b></label>
-					<input type="password" name="pwd" id="pwdMatChk" placeholder="비밀번호 재입력" oninput="reCheckPwd()">
-					<div class="validation" id="pwdMatChkRet" style="font-size: 15px;"></div></div>
+				<div style="display:none;"><label><b>* 회원번호 : </b></label>
+					<p id="mno">${mnoCheck}</p></div>
+				<div style="display:none;"><label><b>* 아이디 : </b></label>
+					<input type="text" name="id" id="id"></div>
+				<div style="display:none;"><label><b>* 비밀번호 : </b></label>
+					<input type="text" name="pwd" id="pwd"></div>
 				<div><label><b>* 이메일 : </b></label>
 					<input type="email" name='email' id="emailDupChk" oninput="chcekEmail()">
 					<div class="validation" id="emailDupChkRet" style="font-size: 15px;"></div></div>
@@ -413,8 +326,9 @@ function execDaumPostcode() {
             		<input type="text" id="address" placeholder="주소" name="firstAddr">
             		<input type="text" id="extraAddress" placeholder="참고항목" name="extraAddr"><br />
             		<input type="text" id="detailAddress" placeholder="상세주소" name="secondAddr"></div>
-				<div><label><b>프로필 사진 : </b></label>
-					<input type="text" id="profUrl"></div>
+				<div><label><b>프로필 사진 : </b></label><br />
+					<img id="kakao_profile" style="border-radius:20px" src="" width="100px" height="100px"><br />
+					<input type="file" name="prof"></div>
 				<div><label><b>한 줄 소개 : </b></label>
 					<textarea rows="3" cols="100" name="ment"  placeholder="한 줄 소개"></textarea></div>
 				<div><label><b>관심 동물 : </b></label>

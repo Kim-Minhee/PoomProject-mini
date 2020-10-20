@@ -6,7 +6,11 @@
 
 
 <select id="memberLogin" resultType="com.hk.poom.dto.LoginDTO">
-	SELECT * FROM MEMBER WHERE ID=#{id} AND PWD=#{pwd}
+	SELECT ID, PWD, EMAIL, TYPE_M, MNO, NAME, PROF AS DBSAVENAME FROM MEMBER WHERE ID=#{id} AND PWD=#{pwd}
+</select>
+
+<select id="memberLoginKakao" resultType="com.hk.poom.dto.LoginDTO">
+	SELECT * FROM MEMBER WHERE MNO=#{mno}
 </select>
 
 <select id="profGet" resultType="String">
@@ -47,6 +51,10 @@
 
 <select id="emailDupChk" resultType="com.hk.poom.dto.LoginDTO">
 	SELECT * FROM MEMBER WHERE EMAIL=#{email}
+</select>
+
+<select id="mnoCheck" resultType="int">
+	SELECT MAX(MNO)+1 FROM MEMBER
 </select>
 
 <update id="profUpload">

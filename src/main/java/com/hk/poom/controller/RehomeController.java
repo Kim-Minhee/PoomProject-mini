@@ -1,15 +1,11 @@
 package com.hk.poom.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -34,7 +30,6 @@ import net.sf.json.JSONArray;
 
 @Controller
 public class RehomeController {
-
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
    @Autowired
@@ -49,25 +44,49 @@ public class RehomeController {
       
       return "rehome/rehomeList";
    }
+
    
-   @GetMapping("/poom/rehome/add")
-   public String rehomeAdd(Model model ) {
-	    logger.info("카테고리불러와야해");
-	    
-	    List<CategoryDTO> category =null;
-	    category = rehomeService.category();
-	    model.addAttribute("category",JSONArray.fromObject(category));
-	    logger.info("category" + model);
-	    
-	    
-	    return "rehome/rehomeAdd";
-   }
+//   @GetMapping("/poom/rehome/add")
+//   public String rehomeAdd(Model model ) {
+//	   logger.info("카테고리불러오기");
+//	   List<CategoryDTO> category = null;
+//	    category = rehomeService.category();
+//	    System.out.println(category);
+//	    model.addAttribute("category", JSONArray.fromObject(category));
+//	    logger.info("카테고리"+model);
+//      return "rehome/rehomeAdd";
+//   }
    
+ @GetMapping("/poom/rehome/add")
+ public String rehomeAdd(Model model, RehomeAddDTO rehomeAddDTO) throws Exception{
+    logger.info("카테고리불러와야해");
+    
+    List<CategoryDTO> category =null;
+    category = rehomeService.category();
+    model.addAttribute("category",JSONArray.fromObject(category));
+ 
+    logger.info("category" + model);
+    
+    
+    return "rehome/rehomeAdd";
+ }
    
+//   @PostMapping("/poom/rehome/add")
+//   public String rehomeAddPost(Model model, RehomeAddDTO rehomeAddDTO ) {
+//	   List<CategoryDTO> category = null;
+//	    category = rehomeService.category();
+//	    model.addAttribute("category", JSONArray.fromObject(category));
+//      
+//      rehomeService.rehomeAdd(rehomeAddDTO);
+//      
+//      model.addAttribute("rehomeadd",rehomeAddDTO);
+//            
+//      return "rehome/rehomeAddPost";
+//   }
+   
+
    @PostMapping("/poom/rehome/add")
-   public String rehomeAddPost(@RequestParam("file") MultipartFile[] file, Model model,RehomeAddDTO rehomeAddDTO, @RequestParam("cateCode") String cateCode, HttpSession session) {
-	   
-	   model.addAttribute("loginMember", session.getAttribute("loginMember"));
+   public String rehomeAddPost(@RequestParam("file") MultipartFile[] file, Model model,RehomeAddDTO rehomeAddDTO, @RequestParam("cateCode") String cateCode) {
     //logger.info("form 전송");
     //System.out.println(rehomeAddDTO.toString());
 	   for(int i=0; i<file.length; i++) {
@@ -109,7 +128,7 @@ public class RehomeController {
    		}
        }
 
-      model.addAttribute("rehomeaddPost",rehomeAddDTO);   
+      model.addAttribute("rehomeAddPost",rehomeAddDTO);   
 	   rehomeService.rehomeAddPost(rehomeAddDTO);
     
     String cateName = rehomeService.rehomeCateName(cateCode);
@@ -120,6 +139,9 @@ public class RehomeController {
     
    return "rehome/rehomeAddPost";  
    }
+   
+   
+   
    
    @GetMapping("/poom/rehome/update")
    public String rehomeGetOne(@RequestParam("bno") int bno, Model model) {
@@ -146,21 +168,18 @@ public class RehomeController {
       
       return "rehome/rehomeDelete";
    }
-
+   
    @PostMapping("/poom/rehome/delete")
    public String rehomeDeletePost(@RequestParam("bno")int bno) throws Exception{
       rehomeService.rehomeDelete(bno);
         
       return "redirect:/poom/rehome/list";
    }
-   
+
    @GetMapping("/poom/rehome/read")
-   public String rehomeRead(@RequestParam("bno") int bno, Model model, HttpServletRequest request) {
-	   
+   public String rehomeRead(@RequestParam("bno") int bno, Model model) {
 	   logger.info("bno=" + bno);
-	   
-	   request.setAttribute("rehomeRead",rehomeService.rehomeRead(bno));
-//	   model.addAttribute("rehomeRead",rehomeService.rehomeRead(bno));
+	   model.addAttribute("rehomeRead",rehomeService.rehomeRead(bno));
 	   return "rehome/rehomeRead";
    }
  
@@ -169,9 +188,20 @@ public class RehomeController {
 	   return "rehome/pay";
    }
    
+   @GetMapping("/poom/rehome/paySuccess")
+   public String rehomePaySuccess() {
+	   return "rehome/paySuccess";
+   }
+   
+   @GetMapping("/poom/rehome/payFail")
+   public String rehomePayFail() {
+	   return "rehome/payFail";
+   }
    
    
-
+   
+   
+   
    @GetMapping("/poom/rehome/report")
    public String rehomeGetOne1(@RequestParam("bno") int bno, Model model) {
 	   model.addAttribute("rehomeGetOne1",rehomeService.rehomeGetOne(bno));
@@ -183,6 +213,10 @@ public class RehomeController {
 	       
       return "rehome/reportDone";
    }
+   
+   
+   
+   
 }
    
    

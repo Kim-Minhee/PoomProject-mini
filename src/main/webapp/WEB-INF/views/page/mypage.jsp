@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -407,12 +408,16 @@
 <!-- 회원 요약 정보 -->
 <div id="myInfo">
 	<h1>[ ${myInfo.name}님의 회원 정보 ]</h1>
-	<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${myInfo.prof}" width="140px" height="200px">
+	<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${myProf}" width="140px" height="200px">
 	<p>이름 : ${myInfo.name}</p>
 	<p>아이디 : ${myInfo.id}</p>
 	<p>이메일 : ${myInfo.email}</p>
 	<p>연락처 : ${myInfo.tel}</p>
 	<p>한 줄 소개 : ${myInfo.ment}</p>
+	<c:set var="type_m" value="${loginMember.type_m}" />
+		<c:if test="${type_m eq '2'}">
+			<p>사이트 : ${myInfo.url_c}</p>
+		</c:if>
 </div>
 <br /><hr /><br />
 <!-- 회원 상제 정보 (여기서 수정 가능) -->
@@ -420,6 +425,8 @@
 	<form action="#" method="post" id="updateMypage" enctype="multipart/form-data">
 		<fieldset style="width:725px; margin-right:1000px;">
 			<legend style="font-size:25px;"><b>--- 정보 수정하기 ---</b></legend>
+				<div><label><b>회원유형 : </b></label>
+					<input type="text" name="type_m" value="${myInfo.type_m}" readonly></div>
 				<div><label><b>회원번호 : </b></label>
 					<input type="text" name="mno" value="${myInfo.mno}" readonly></div>
 				<div><label><b>가입일 : </b></label>
@@ -446,32 +453,49 @@
            			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br />
             		<input type="text" id="address" value="${myInfo.firstAddr}" name="firstAddr" placeholder="주소">
             		<input type="text" id="extraAddress" value="${myInfo.extraAddr}" name="extraAddr"  placeholder="주소참고항목"><br />
-            		<input type="text" id="detailAddress" value="${myInfo.seconAddr}" name="secondAddr" placeholder="상세주소"></div>
+            		<input type="text" id="detailAddress" value="${myInfo.seconAddr}" name="seconAddr" placeholder="상세주소"></div>
 				<div><label><b>프로필 사진 : </b></label>
-					<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${myInfo.prof}" width="100px" height="100px"></div>
-<!-- 					<input type="file" name="prof" value="사진 바꾸기"></div> -->
+					<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${myProf}" width="100px" height="100px"></div>
+					<input type="file" name="prof" value="사진 바꾸기"></div>
 				<div><label><b>한 줄 소개 : </b></label>
 					<textarea rows="3" cols="100" name="ment" placeholder="한 줄 소개">${myInfo.ment}</textarea></div>
-				<div><label><b>관심 동물 : </b></label>
-					<input type="text" value="${myInfo.fav}" id="selectedFav">
-					<select form="updateMypage" name="fav" id="fav">
-        				<option value="0">선택안함</option>
-        				<option value="1">강아지</option>
-        				<option value="2">고양이</option>
-        				<option value="3">물고기</option>
-        				<option value="4">새</option>
-        				<option value="5">기타</option>
-   					</select></div>
-   				<div><label><b>애완동물 유무 : </b></label>
-   					<input type="text" value="${myInfo.pet}" id="selectedPet">
-   					<select form="updateMypage" name="pet" id="pet">
-        				<option value="0">선택안함</option>
-        				<option value="1">있음</option>
-        				<option value="2">없음</option>
-   					</select></div>
-				<div>
+				
+				<c:choose>
+					<c:when test="${type_m eq '1'}">
+					<!-- 개인회원 -->
+						<div><label><b>관심 동물 : </b></label>
+							<input type="text" value="${myInfo.fav}" id="selectedFav">
+							<select form="updateMypage" name="fav" id="fav">
+		        				<option value="0">선택안함</option>
+		        				<option value="1">강아지</option>
+		        				<option value="2">고양이</option>
+		        				<option value="3">물고기</option>
+		        				<option value="4">새</option>
+		        				<option value="5">기타</option>
+		   					</select></div>
+		   				<div><label><b>애완동물 유무 : </b></label>
+		   					<input type="text" value="${myInfo.pet}" id="selectedPet">
+		   					<select form="updateMypage" name="pet" id="pet">
+		        				<option value="0">선택안함</option>
+		        				<option value="1">있음</option>
+		        				<option value="2">없음</option>
+		   					</select></div>
+					</c:when>
+					
+					<c:when test="${type_m eq '2'}">
+					<!-- 업체회원 -->
+						<div><label><b>사이트 : </b></label>
+							<input type="text" value="${myInfo.url_c}" name="url_c"></div>
+						<div><label><b>사업자번호 : </b></label>
+							<input type="text" value="${myInfo.brn}" name="brn"></div>
+						<div><label><b>사업자등록증 (수정 필요): </b></label>
+		<%-- 				<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${myProf}" width="100px" height="100px"></div> --%>
+		<!-- 				<input type="file" name="brn_img" value="재등록"></div> -->
+						</div>
+					</c:when>
+				</c:choose>
 					<input type='reset' value='초기화'>
-					<input type='submit' value='수정하기'></div>
+					<input type='submit' value='수정하기'>
 		</fieldset>
 	</form>
 </div>

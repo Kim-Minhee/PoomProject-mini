@@ -30,8 +30,8 @@ public class MypageDTO {
 	String extraAddr;
 	//멘트
 	String ment;
-	//프로필 사진
-	String prof;
+//	//프로필 사진
+//	String prof;
 	//가입일
 	Date cre_date_m;
 	//수정일
@@ -131,12 +131,12 @@ public class MypageDTO {
 	public void setMent(String ment) {
 		this.ment = ment;
 	}
-	public String getProf() {
-		return prof;
-	}
-	public void setProf(String prof) {
-		this.prof = prof;
-	}
+//	public String getProf() {
+//		return prof;
+//	}
+//	public void setProf(String prof) {
+//		this.prof = prof;
+//	}
 	public Date getCre_date_m() {
 		return cre_date_m;
 	}
@@ -193,15 +193,15 @@ public class MypageDTO {
 	}
 	
 	// toString()
-	@Override
-	public String toString() {
-		return "MypageDTO [type_m=" + type_m + ", mno=" + mno + ", stmt_m=" + stmt_m + ", id=" + id + ", pwd=" + pwd
-				+ ", email=" + email + ", tel=" + tel + ", name=" + name + ", zipCode=" + zipCode + ", firstAddr="
-				+ firstAddr + ", seconAddr=" + seconAddr + ", extraAddr=" + extraAddr + ", ment=" + ment + ", prof="
-				+ prof + ", cre_date_m=" + cre_date_m + ", mod_date_m=" + mod_date_m + ", brn=" + brn + ", brn_img="
-				+ brn_img + ", url_c=" + url_c + ", fav=" + fav + ", pet=" + pet + ", buyCnt=" + buyCnt + ", saleCnt="
-				+ saleCnt + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "MypageDTO [type_m=" + type_m + ", mno=" + mno + ", stmt_m=" + stmt_m + ", id=" + id + ", pwd=" + pwd
+//				+ ", email=" + email + ", tel=" + tel + ", name=" + name + ", zipCode=" + zipCode + ", firstAddr="
+//				+ firstAddr + ", seconAddr=" + seconAddr + ", extraAddr=" + extraAddr + ", ment=" + ment + ", prof="
+//				+ prof + ", cre_date_m=" + cre_date_m + ", mod_date_m=" + mod_date_m + ", brn=" + brn + ", brn_img="
+//				+ brn_img + ", url_c=" + url_c + ", fav=" + fav + ", pet=" + pet + ", buyCnt=" + buyCnt + ", saleCnt="
+//				+ saleCnt + "]";
+//	}
 //	@Override
 //	public String toString() {
 //		return "MypageDTO [type_m=" + type_m + ", mno=" + mno + ", stmt_m=" + stmt_m + ", id=" + id + ", pwd=" + pwd
@@ -210,6 +210,15 @@ public class MypageDTO {
 //				+ ", cre_date_m=" + cre_date_m + ", mod_date_m=" + mod_date_m + ", brn=" + brn + ", brn_img=" + brn_img
 //				+ ", url_c=" + url_c + ", fav=" + fav + ", pet=" + pet + ", buyCnt=" + buyCnt + ", saleCnt=" + saleCnt
 //				+ "]";
-//	}	
+//	}
+	@Override
+	public String toString() {
+		return "MypageDTO [type_m=" + type_m + ", mno=" + mno + ", stmt_m=" + stmt_m + ", id=" + id + ", pwd=" + pwd
+				+ ", email=" + email + ", tel=" + tel + ", name=" + name + ", zipCode=" + zipCode + ", firstAddr="
+				+ firstAddr + ", seconAddr=" + seconAddr + ", extraAddr=" + extraAddr + ", ment=" + ment
+				+ ", cre_date_m=" + cre_date_m + ", mod_date_m=" + mod_date_m + ", brn=" + brn + ", brn_img=" + brn_img
+				+ ", url_c=" + url_c + ", fav=" + fav + ", pet=" + pet + ", buyCnt=" + buyCnt + ", saleCnt=" + saleCnt
+				+ "]";
+	}
 	
 }

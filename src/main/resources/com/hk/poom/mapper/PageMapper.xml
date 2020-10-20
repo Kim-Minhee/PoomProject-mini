@@ -4,17 +4,47 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hk.poom.mapper.PageMapper">
 
-<select id="mypage" resultType="com.hk.poom.dto.MypageDTO">
-	SELECT * FROM MEMBER m ,PERSON p WHERE m.MNO=p.MNO AND m.mno=#{mno}
+<select id="mypagePer" resultType="com.hk.poom.dto.MypageDTO">
+	SELECT * FROM MEMBER m, PERSON p WHERE m.MNO=p.MNO AND m.MNO=#{mno}
+</select>
+
+<select id="mypageCom" resultType="com.hk.poom.dto.MypageDTO">
+	SELECT * FROM MEMBER m, COMPANY c WHERE m.MNO=c.MNO AND m.MNO=#{mno}
+</select>
+
+<select id="myProf" resultType="com.hk.poom.dto.ProfUploadDTO">
+	SELECT PROF AS DBSAVENAME FROM MEMBER WHERE MNO=#{mno}
 </select>
 
 <update id="mypageUpdate">
-	UPDATE MEMBER AS m, PERSON AS p
-		SET (m.PWD, m.EMAIL, m.NAME, m.ZIPCODE, m.FIRSTADDR, m.SECONADDR, m.EXTRAADDR, m.TEL, m.MEMT, m.MOD_DATE_M, p.FAV, p.PET)
-		VALUES (#{pwd}, #{email}, #{name}, #{zipCode}, #{firstAddr}, #{seconAddr}, #{extraAddr}, #{tel}, #{ment}, SYSDATE, #{fav}, #{pet})
-		WHERE m.MNO=#{mno} AND p.MNO=#{	mno} 
+<!-- 	UPDATE MEMBER -->
+<!-- 		SET (PWD, EMAIL, NAME, ZIPCODE, FIRSTADDR, SECONADDR, EXTRAADDR, TEL, MEMT, MOD_DATE_M) -->
+<!-- 		VALUES (#{pwd}, #{email}, #{name}, #{zipCode}, #{firstAddr}, #{seconAddr}, #{extraAddr}, #{tel}, #{ment}, SYSDATE) -->
+<!-- 		WHERE MNO=#{mno} -->
+		
+	UPDATE MEMBER
+		SET PWD=#{pwd}, EMAIL=#{email}, NAME=#{name}, ZIPCODE=#{zipCode}, FIRSTADDR=#{firstAddr}, SECONADDR=#{seconAddr}, EXTRAADDR=#{extraAddr}, TEL=#{tel}, MENT=#{ment}, MOD_DATE_M=SYSDATE
+		WHERE MNO=#{mno}
 </update>
 
+<update id="mypageUpdatePer">
+<!-- 	UPDATE PERSON -->
+<!-- 		SET (FAV, PET) -->
+<!-- 		VALUES (#{fav}, #{pet}) -->
+<!-- 		WHERE MNO=#{mno} -->
+	UPDATE PERSON
+		SET FAV=#{fav}, PET=#{pet}
+		WHERE MNO=#{mno}
+</update>
 
+<update id="mypageUpdateCom">
+<!-- 	UPDATE PERSON -->
+<!-- 		SET () -->
+<!-- 		VALUES (#{fav}, #{pet}) -->
+<!-- 		WHERE MNO=#{mno}  -->
+	UPDATE COMPANY
+		SET BRN=#{brn}, URL_C=#{url_c}
+		WHERE MNO=#{mno}
+</update>
 
 </mapper>

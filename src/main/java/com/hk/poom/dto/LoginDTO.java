@@ -15,7 +15,7 @@ public class LoginDTO {
 	//이름
 	String name;
 	//프로필 사진
-	String prof;
+	String dbSaveName;
 	
 	
 	// Getter & Setter
@@ -55,18 +55,18 @@ public class LoginDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getProf() {
-		return prof;
+	public String getDbSaveName() {
+		return dbSaveName;
 	}
-	public void setProf(String prof) {
-		this.prof = prof;
+	public void setDbSaveName(String dbSaveName) {
+		this.dbSaveName = dbSaveName;
 	}
 	
 	// toString()
 	@Override
 	public String toString() {
 		return "LoginDTO [id=" + id + ", pwd=" + pwd + ", email=" + email + ", type_m=" + type_m + ", mno=" + mno
-				+ ", name=" + name + ", prof=" + prof + "]";
+				+ ", name=" + name + ", dbSaveName=" + dbSaveName + "]";
 	}
 	
 }

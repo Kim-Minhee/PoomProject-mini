@@ -23,6 +23,10 @@ public class MemberService {
 		return memberMapper.memberLogin( loginDTO );
 	}
 	
+	public LoginDTO memberLoginKakao( int mno ) {
+		return memberMapper.memberLoginKakao( mno );
+	}
+	
 	public String profGet( int mno ) {
 		return memberMapper.profGet( mno );
 	}
@@ -43,6 +47,10 @@ public class MemberService {
 	
 	public LoginDTO emailDupChk( String email ) {
 		return memberMapper.emailDupChk( email );
+	}
+	
+	public int mnoCheck() {
+		return memberMapper.mnoCheck();
 	}
 
 	public FindIdDTO memberFindId( FindIdDTO findIdDTO ) {

@@ -17,15 +17,15 @@ SELECT * from category start with cateCodeRef is null connect by prior cateCode 
     
 
 <insert id="rehomeAddPost" parameterType="com.hk.poom.dto.RehomeAddDTO">
-	<selectKey resultType="int" keyProperty="bno" order="BEFORE">
+<selectKey resultType="int" keyProperty="bno" order="BEFORE">
         SELECT MAX(BNO)+1 FROM BOARD 
     </selectKey>
 insert all
-into rehome (bno, rno, mno, gender, age, neut, vac, cost, cateCode,cateCodeRef, img_r1, img_r2, img_r3, img_r4, img_r5)
-values (#{bno},#{rno}, #{mno}, #{gender}, #{age}, #{neut}, #{vac}, #{cost},#{cateCode},#{cateCodeRef}, #{img_r1}, #{img_r2}, #{img_r3}, #{img_r4}, #{img_r5})
+into rehome (bno, rno, mno, gender, age, neut, vac, cost, cateCode, img_r1, img_r2, img_r3, img_r4, img_r5)
+values (#{bno},#{rno}, #{mno}, #{gender}, #{age}, #{neut}, #{vac}, #{cost},#{cateCode}, #{img_r1}, #{img_r2}, #{img_r3}, #{img_r4}, #{img_r5})
 
-into board (cateCode,cateCodeRef, bno, title, cre_date_b, mod_date_b, viewcnt, likecnt,  stmt_b, cont_b, id_writer)
-values (#{cateCode},#{cateCodeRef},#{bno}, #{title}, sysdate, sysdate, #{viewcnt}, #{likecnt}, #{stmt_b}, #{cont_b}, #{id_writer})
+into board (cateCode, bno, title, cre_date_b, mod_date_b, viewcnt, likecnt,  stmt_b, cont_b, id_writer)
+values (#{cateCode},#{bno}, #{title}, sysdate, sysdate, #{viewcnt}, #{likecnt}, #{stmt_b}, #{cont_b}, #{id_writer})
   
 
  select * from dual
@@ -84,7 +84,8 @@ select catename from category  where catecode=#{cateCode}
 
     
 <select id="rehomeRead" resultType="com.hk.poom.dto.RehomeReadDTO">
-	SELECT * FROM BOARD b, REHOME r WHERE b.BNO=r.BNO AND b.bno=#{bno} 
+SELECT * FROM rehome  WHERE bno=#{bno} 
+
 </select>    
   
 <insert id="report" parameterType="com.hk.poom.dto.RehomeReportDTO">

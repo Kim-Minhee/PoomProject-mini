@@ -52,13 +52,14 @@
 
 						<div rows="50" cols="150">
 							<div>게시판 번호: ${rehomeRead.bno}</div>
-							<div>작성자: <p name="id">${rehomeRead.id_writer}</p></div>
+							<div>작성자: ${rehomeRead.id_writer}</div>
 							<div>제목: ${rehomeRead.title}</div>
-							<div>등록된 사진: <img src="/resources/img/rehome/${rehomeRead.img_r1 }" onerror="this.style.display='none'" width="200" height="200" /></div>
+							<div>등록된 사진: <img src="/resources/img/rehome/${rehomeRead.img_r1 }" onerror="this.style.display='/recources/img/none.png'" width="200" height="200" /></div>
 							<div>종 분류: ${rehomeRead.cateName}</div>
 							<div>나이: ${rehomeRead.age}</div>
 							<div>분양가: ${rehomeRead.cost}</div>
 							<div>본문: ${rehomeRead.cont_b}</div>
+							<div><button type="button" onclick="location.href='pay'">분양받기</button></div>
 							<div><a href="#" onClick="window.open('report?bno=${rehomeRead.bno}','window_name','width=430,height=500,location=no,status=no,scrollbars=yes');">신고</a></div>
 							<div><a href='update?bno=${rehomeRead.bno}'>수정</a></div>
 							<div><a href='delete?bno=${rehomeRead.bno}'>삭제</a></div>
