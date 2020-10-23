@@ -55,7 +55,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/poom/register/com")
-	public String registerComPost( Model model, RegisterComDTO registerComDTO, @RequestParam("prof") MultipartFile prof, @RequestParam("name") String name ) {
+	public String registerComPost( Model model, RegisterComDTO registerComDTO, @RequestParam("prof") MultipartFile prof, @RequestParam("name") String name, @RequestParam("brn_img") MultipartFile brn_img ) {
 		//logger.info("MemberController_Post_/poom/register/com 실행");
 		//logger.info("신규 개인 회원 입력 정보 = " + registerComDTO.toString());
 		
@@ -90,11 +90,28 @@ public class MemberController {
 				e.printStackTrace();
 			}
 		}
+		
+		// 사업자 등록증 업로드
+		String realPath1 = sc.getRealPath("/resources/brn_img/");
+		String brnName = nowTime + brn_img.getOriginalFilename().substring(brn_img.getOriginalFilename().lastIndexOf("."));
+		File oldBrnFile = new File(realPath1 + brn_img.getOriginalFilename());
+		File newBrnFile = new File(realPath1 + brnName);
+		oldBrnFile.renameTo(newBrnFile);
+		try {
+			InputStream fileStream1 = brn_img.getInputStream();
+		    FileUtils.copyInputStreamToFile(fileStream1, newBrnFile);		
+		} catch (Exception e) {
+			FileUtils.deleteQuietly(newBrnFile);
+		    e.printStackTrace();
+		}
+				
 		// 2) 수정된 파일 이름으로 DB에 저장하기
 		ProfUploadDTO profUploadDTO = new ProfUploadDTO();
 		profUploadDTO.setMno(registerComDTO.getMno());
 		profUploadDTO.setDbSaveName("/resources/prof/" + dbSaveName);
+		profUploadDTO.setBrnName("/resources/brn_img/"+brnName);
 		memberService.profUpload(profUploadDTO);
+		memberService.brnUpload(profUploadDTO);
 		// Post.jsp에서 해당 이미지를 출력할 수 있게.. /resources로 시작하는 경로를 model에 저장해놓기
 		model.addAttribute("prof", "/resources/prof/" + dbSaveName);
 		
@@ -214,7 +231,7 @@ public class MemberController {
 		
 		session.invalidate();
 		
-		return "member/logout";
+		return "redirect:/poom";
 	}
 	
 	@GetMapping("/poom/login/kakao")
@@ -258,6 +275,7 @@ public class MemberController {
 		
 		return "member/findPwd";
 	}
+	
 	@PostMapping("/poom/find/pwd")
 	public String findPwd(Model model, FindPwdDTO findPwdDTO ) {
 		
@@ -283,5 +301,13 @@ public class MemberController {
 		return "member/findPwdPost";
 	}
 	
+	
+	@PostMapping("/poom/delete")
+	public String deletePost( @RequestParam("mno") int mno, @RequestParam("type_m") int type_m ) {
+		//logger.info("MemberController_Post_/poom/delete 실행");
+		memberService.memberDelete(type_m, mno);
+		
+		return "redirect:/poom/logout";
+	}
 
 }

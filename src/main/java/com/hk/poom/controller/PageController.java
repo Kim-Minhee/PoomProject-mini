@@ -47,22 +47,25 @@ public class PageController {
 		int type = loginMember.getType_m();
 		
 		MypageDTO myInfo = new MypageDTO();
+		ProfUploadDTO uploadeddFile = new ProfUploadDTO(); 
 		if ( type==1 ) {	// 개인 회원
 			myInfo = pageService.mypagePer(mno);
+			uploadeddFile = pageService.memberFile(mno);
 		} else if ( type==2 ) {	// 업체 회원
 			myInfo = pageService.mypageCom(mno);
+			uploadeddFile = pageService.comFile(mno);
 		}
 		
-		ProfUploadDTO myProf = pageService.myProf(mno);
+		//ProfUploadDTO myProf = pageService.myProf(mno);
 		model.addAttribute("myInfo", myInfo);
-		model.addAttribute("myProf", myProf.getDbSaveName());
+		model.addAttribute("uploadeddFile", uploadeddFile);
 		
 		return "page/mypage";
 	}
 	
 	
 	@PostMapping("/poom/mypage")
-	public String mypagePost( Model model, MypageDTO mypageDTO, ProfUploadDTO profUploadDTO, @RequestParam("prof") MultipartFile prof ) {	//, @RequestParam("prof") MultipartFile prof
+	public String mypagePost( Model model, MypageDTO mypageDTO, ProfUploadDTO profUploadDTO, @RequestParam("prof") MultipartFile prof, @RequestParam("brn_img") MultipartFile brn_img ) {	//, @RequestParam("prof") MultipartFile prof
 		logger.info("PageController_Post_/poom/mypage 실행");
 		logger.info("수정할 회원 정보 = " + mypageDTO.toString());
 		
@@ -74,11 +77,13 @@ public class PageController {
 			pageService.mypageUpdateCom(mypageDTO);
 		}
 		
+		String nowTime = new SimpleDateFormat("yyyyMMddHmsS").format(new Date());
+		//profUploadDTO.setMno(mypageDTO.getMno());
 		
 		// 업로드한 프로필 파일 저장
 		if ( prof.isEmpty() ) {
 		} else {
-			String nowTime = new SimpleDateFormat("yyyyMMddHmsS").format(new Date());
+			//String nowTime = new SimpleDateFormat("yyyyMMddHmsS").format(new Date());
 			String realPath = sc.getRealPath("/resources/prof/");
 			String dbSaveName = "";
 			dbSaveName = nowTime + prof.getOriginalFilename().substring(prof.getOriginalFilename().lastIndexOf("."));
@@ -93,10 +98,32 @@ public class PageController {
 				FileUtils.deleteQuietly(newProfFile);
 				e.printStackTrace();
 			}
-			profUploadDTO.setMno(mypageDTO.getMno());
+			//profUploadDTO.setMno(mypageDTO.getMno());
 			profUploadDTO.setDbSaveName("/resources/prof/"+dbSaveName);
 			memberService.profUpload(profUploadDTO);
 		}
+		
+		// 업로드한 사업자 등록 파일 저장
+		if ( brn_img.isEmpty() ) {
+		} else {
+			String realPath1 =sc.getRealPath("/resources/brn_img/");
+			//logger.info("확장자는`````````````````"+brn_img.getOriginalFilename().substring(brn_img.getOriginalFilename().lastIndexOf(".")));
+			String brnName = nowTime + brn_img.getOriginalFilename().substring(brn_img.getOriginalFilename().lastIndexOf("."));
+			File oldBrnFile = new File(realPath1 + brn_img.getOriginalFilename());
+			File newBrnFile = new File(realPath1 + brnName);
+			oldBrnFile.renameTo(newBrnFile);
+			try {
+				InputStream fileStream1 = brn_img.getInputStream();
+			    FileUtils.copyInputStreamToFile(fileStream1, newBrnFile);
+			}catch (Exception e) {
+				FileUtils.deleteQuietly(newBrnFile);
+			    e.printStackTrace();
+			}
+			
+			profUploadDTO.setBrnName("/resources/brn_img/"+brnName);
+			memberService.brnUpload(profUploadDTO);
+		}
+		
 		return "page/mypagePost";
 	}
 	

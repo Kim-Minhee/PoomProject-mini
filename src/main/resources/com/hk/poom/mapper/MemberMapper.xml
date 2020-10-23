@@ -90,4 +90,16 @@
 	update member set pwd=#{pwd} where id=#{id}
 </update>
 
+<delete id="memberDelete">
+	DELETE FROM MEMBER WHERE MNO=#{mno}
+</delete>
+
+<delete id="memberDeletePer">
+	DELETE FROM PERSON WHERE MNO=#{mno}
+</delete>
+
+<delete id="memberDeleteCom">
+	DELETE FROM COMPANY WHERE MNO=#{mno}
+</delete>
+
 </mapper>

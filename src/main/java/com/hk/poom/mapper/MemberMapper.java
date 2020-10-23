@@ -29,5 +29,8 @@ public interface MemberMapper {
 	public String getDbCode(String email);
 	public int memberPwdUpdate(FindPwdDTO findPwdDTO);
 	public int brnUpload( ProfUploadDTO profUploadDTO );
+	public int memberDelete( int mno );
+	public int memberDeletePer( int mno );
+	public int memberDeleteCom( int mno );
 	
 }

@@ -10,9 +10,147 @@
 <title>마이 페이지</title>
 <jsp:include page="../include/inHead.jsp"></jsp:include>
 
+<style type="text/css">
+/*-- POPUP common style S ======================================================================================================================== --*/
+#mask {
+   position: absolute;
+   left: 0;
+   top: 0;
+   z-index: 999;
+   background-color: #000000;
+   display: none;
+}
+
+.layerpop {
+   display: none;
+   z-index: 1000;
+   border: 2px solid #ccc;
+   background: #fff;
+   /*    cursor: move; */
+}
+
+.layerpop_area .title {
+   padding: 10px 10px 10px 10px;
+   border: 0px solid #aaaaaa;
+   background: #f1f1f1;
+   color: #3eb0ce;
+   font-size: 1.3em;
+   font-weight: bold;
+   line-height: 24px;
+}
+
+.layerpop_area .layerpop_close {
+   width: 25px;
+   height: 25px;
+   display: block;
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   background: transparent url('btn_exit_off.png') no-repeat;
+}
+
+.layerpop_area .layerpop_close:hover {
+   background: transparent url('btn_exit_on.png') no-repeat;
+   cursor: pointer;
+}
+
+.layerpop_area .content {
+   width: 96%;
+   margin: 2%;
+   color: #828282;
+}
+
+#target1 {
+   color: #2C952C;
+   text-align: center;
+   padding: 15px;
+}
+
+.star_rating {
+   font-size: 0;
+   letter-spacing: -4px;
+}
+
+.star_rating a {
+   font-size: 22px;
+   letter-spacing: 0;
+   display: inline-block;
+   margin-left: 5px;
+   color: #ccc;
+   text-decoration: none;
+}
+
+.starRev span:first-child {
+   margin-left: 0;
+}
+
+.starRev span.on {
+   color: red;
+}
+/*-- POPUP common style E --*/
+</style>
+
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <!-- 다음 주소찾기 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- 레이어 팝업 -->
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+<script>
+   function wrapWindowByMask() {
+      //화면의 높이와 너비를 구한다.
+      var maskHeight = $(document).height();
+      var maskWidth = $(window).width();
+      //문서영역의 크기 
+      //console.log("document 사이즈:" + $(document).width() + "*" + $(document).height());
+      //브라우저에서 문서가 보여지는 영역의 크기
+      //console.log("window 사이즈:" + $(window).width() + "*" + $(window).height());
+      //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+      $('#mask').css({
+         'width' : maskWidth,
+         'height' : maskHeight
+      });
+      //애니메이션 효과
+      //$('#mask').fadeIn(1000);      
+      $('#mask').fadeTo("slow", 0.5);
+   }
+   function popupOpen() {
+      $('.layerpop').css("position", "absolute");
+      //영역 가운에데 레이어를 뛰우기 위해 위치 계산 
+      $('.layerpop').css(
+            "top",
+            (($(window).height() - $('.layerpop').outerHeight()) / 2)
+                  + $(window).scrollTop());
+      $('.layerpop').css(
+            "left",
+            (($(window).width() - $('.layerpop').outerWidth()) / 2)
+                  + $(window).scrollLeft());
+      $('.layerpop').draggable();
+      $('#layerbox').show();
+   }
+   function popupClose() {
+      $('#layerboxc').hide();
+      $('#mask').hide();
+   }
+   function goDetail() {
+      /*팝업 오픈전 별도의 작업이 있을경우 구현*/
+      popupOpen(); //레이어 팝업창 오픈 
+      wrapWindowByMask(); //화면 마스크 효과 
+   }
+   $(document).ready(function() {
+      var formObj = $("form[name='memberDelete']");
+      $(".write_btn").on("click", function() {
+         if (fn_valiChk()) {
+            return false;
+         }
+         alert("회원 탈퇴가 완료되었습니다.");
+         formObj.attr("action", "/poom/delete");
+         formObj.attr("method", "post");
+         formObj.submit();
+      });
+   })
+</script>
+
 <script>
 	$().ready(function(){
 
@@ -408,7 +546,7 @@
 <!-- 회원 요약 정보 -->
 <div id="myInfo">
 	<h1>[ ${myInfo.name}님의 회원 정보 ]</h1>
-	<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${myProf}" width="140px" height="200px">
+	<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${uploadeddFile.dbSaveName}" width="140px" height="200px">
 	<p>이름 : ${myInfo.name}</p>
 	<p>아이디 : ${myInfo.id}</p>
 	<p>이메일 : ${myInfo.email}</p>
@@ -418,6 +556,26 @@
 		<c:if test="${type_m eq '2'}">
 			<p>사이트 : ${myInfo.url_c}</p>
 		</c:if>
+<%-- 	<button type="button" onclick="location.href='delete?mno=${myInfo.mno}'">탈퇴하기</button> --%>
+	<button onclick="javascript:goDetail();">탈퇴하기</button>
+		<!-- 레이어 팝업 배경 시작 -->
+         <div id="mask"></div>
+         <div id="layerbox" class="layerpop" style="width: 700px; height: 350px;">
+            <article class="layerpop_area">
+               <div class="title2">탈퇴하기</div>
+               <a href="javascript:popupClose();" class="layerpop_close" id="layerbox_close"></a> <br>
+               <form method="post" action="/poom/delete" name="memberDelete">
+               		<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="/resources/img/delete.jpg" width="140px" height="200px">
+					${myInfo.name}님, 정말 탈퇴하시겠습니까ㅠ?
+					<div style="display: none;">
+						<input type="hidden" name="mno" value="${myInfo.mno}">
+						<input type="hidden" name="type_m" value="${myInfo.type_m}"></div>
+					<button type="submit" class="write_btn">탈퇴하기</button>
+					<button type="button" onclick="location.href='/poom/mypage?mno=${myInfo.mno}'">취소</button>
+               </form>
+            </article>
+         </div>
+         <!-- 레이어 팝업 배경 끝 -->
 </div>
 <br /><hr /><br />
 <!-- 회원 상제 정보 (여기서 수정 가능) -->
@@ -455,7 +613,7 @@
             		<input type="text" id="extraAddress" value="${myInfo.extraAddr}" name="extraAddr"  placeholder="주소참고항목"><br />
             		<input type="text" id="detailAddress" value="${myInfo.seconAddr}" name="seconAddr" placeholder="상세주소"></div>
 				<div><label><b>프로필 사진 : </b></label>
-					<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${myProf}" width="100px" height="100px"></div>
+					<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${uploadeddFile.dbSaveName}" width="100px" height="100px"></div>
 					<input type="file" name="prof" value="사진 바꾸기"></div>
 				<div><label><b>한 줄 소개 : </b></label>
 					<textarea rows="3" cols="100" name="ment" placeholder="한 줄 소개">${myInfo.ment}</textarea></div>
@@ -480,6 +638,7 @@
 		        				<option value="1">있음</option>
 		        				<option value="2">없음</option>
 		   					</select></div>
+		   				<div style="display: none;"><input type="file" name="brn_img"></div>
 					</c:when>
 					
 					<c:when test="${type_m eq '2'}">
@@ -488,10 +647,12 @@
 							<input type="text" value="${myInfo.url_c}" name="url_c"></div>
 						<div><label><b>사업자번호 : </b></label>
 							<input type="text" value="${myInfo.brn}" name="brn"></div>
-						<div><label><b>사업자등록증 (수정 필요): </b></label>
+<!-- 						<div><label><b>사업자등록증 (수정 필요): </b></label> -->
 		<%-- 				<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${myProf}" width="100px" height="100px"></div> --%>
 		<!-- 				<input type="file" name="brn_img" value="재등록"></div> -->
-						</div>
+						<div><label><b>사업자등록증 : </b></label>
+							<img onerror="this.src='/resources/img/testImg.jpg'" src="${uploadeddFile.brnName}" width="630px" height="900px">
+							<input type="file" name="brn_img" value="재등록"></div>
 					</c:when>
 				</c:choose>
 					<input type='reset' value='초기화'>
