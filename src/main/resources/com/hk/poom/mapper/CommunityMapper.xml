@@ -4,5 +4,76 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hk.poom.mapper.CommunityMapper">
 
+<select id="category" resultType="com.hk.poom.dto.CategoryDTO">
+SELECT * from category start with cateCodeRef is null connect by prior cateCode = cateCodeRef
+</select>    
+
+<select id="communityList" resultType="com.hk.poom.dto.CommunityListDTO">
+SELECT * FROM COMMUNITY c, board b where c.bno=b.bno
+</select>
+
+<insert id="communityAdd" parameterType="com.hk.poom.dto.CommunityAddDTO">
+<selectKey resultType="int" keyProperty="bno" order="BEFORE">
+        SELECT MAX(BNO)+1 FROM BOARD
+    </selectKey>
+    insert all 
+    into community (cateCode, bno, img_c1, img_c2, img_c3, img_c4, img_c5 )
+values (#{cateCode},#{bno}, #{img_c1}, #{img_c2}, #{img_c3}, #{img_c4}, #{img_c5})
+
+into board(cateCode, bno, title, cre_date_b, mod_date_b,  stmt_b, cont_b, id_writer, cont_b)
+values (#{cateCode},#{bno}, #{title}, sysdate, sysdate,  #{stmt_b}, #{cont_b}, #{id_writer}, #{cont_b})
+ 
+ select * from dual
+</insert>   
+
+<select id="communityCateName" resultType="string">
+select catename from category  where catecode=#{cateCode} 
+</select>
+
+<update id="communityCateUpdate">
+	update board set catename=#{cateName} where bno=#{bno}
+</update>
+
+<select id="communityRead" resultType="com.hk.poom.dto.CommunityReadDTO">
+SELECT * FROM community c, board b WHERE c.bno=b.bno and c.bno=#{bno} 
+</select>    
+
+<select id="communityGetOne" resultType="com.hk.poom.dto.CommunityUpdateDTO">
+select * from BOARD b, community c where c.bno=b.bno and c.BNO=#{bno} 
+</select>
+
+<update id="communityUpdate">
+<selectKey resultType="int" keyProperty="cno" order="BEFORE">
+        SELECT MAX(CNO)+1 FROM community
+    </selectKey>
+update community
+set  bno=#{bno}
+,    cno=#{cno}
+, img_c1=#{img_c1}
+, img_c2=#{img_c2}
+, img_c3=#{img_c3}
+, img_c4=#{img_c4}
+, img_c5=#{img_c5}
+    where bno=#{bno}
+</update>
+<update id="communityUpdate1">
+update board
+set  bno=#{bno}
+,    title=#{title}
+,    mod_date_b=sysdate
+,    cont_b=#{cont_b}
+,    id_writer=#{id_writer}
+    where bno=#{bno}
+</update>
+    
+<delete id="communityDelete">
+{
+call
+begin
+delete from community where bno=#{bno};
+delete from board where bno=#{bno};
+end
+}
+</delete> 
 
 </mapper>

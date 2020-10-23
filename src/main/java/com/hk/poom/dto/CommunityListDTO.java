@@ -5,9 +5,11 @@ import java.util.Date;
 public class CommunityListDTO {
 
 	//글 유형
-	int type_b;
+	String cateName;
 	//소통 카테고리
-	int cat_c;
+	String cateCode;
+	//소통
+		String cateCodeRef;
 	//게시글 번호
 	int bno;   
 	//소통글번호 
@@ -26,20 +28,23 @@ public class CommunityListDTO {
 	int viewCnt;
 	//추천수
 	int likeCnt;
-
-	
-	// Getter & Setter
-	public int getType_b() {
-		return type_b;
+	public String getCateName() {
+		return cateName;
 	}
-	public void setType_b(int type_b) {
-		this.type_b = type_b;
+	public void setCateName(String cateName) {
+		this.cateName = cateName;
 	}
-	public int getCat_c() {
-		return cat_c;
+	public String getCateCode() {
+		return cateCode;
 	}
-	public void setCat_c(int cat_c) {
-		this.cat_c = cat_c;
+	public void setCateCode(String cateCode) {
+		this.cateCode = cateCode;
+	}
+	public String getCateCodeRef() {
+		return cateCodeRef;
+	}
+	public void setCateCodeRef(String cateCodeRef) {
+		this.cateCodeRef = cateCodeRef;
 	}
 	public int getBno() {
 		return bno;
@@ -95,13 +100,13 @@ public class CommunityListDTO {
 	public void setLikeCnt(int likeCnt) {
 		this.likeCnt = likeCnt;
 	}
-	
-	// toString()
 	@Override
 	public String toString() {
-		return "CommunityListDTO [type_b=" + type_b + ", cat_c=" + cat_c + ", bno=" + bno + ", cno=" + cno + ", title="
-				+ title + ", id_writer=" + id_writer + ", mod_date_b=" + mod_date_b + ", img_chk=" + img_chk
-				+ ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt + "]";
+		return "CommunityListDTO [cateName=" + cateName + ", cateCode=" + cateCode + ", cateCodeRef=" + cateCodeRef
+				+ ", bno=" + bno + ", cno=" + cno + ", title=" + title + ", id_writer=" + id_writer + ", mod_date_b="
+				+ mod_date_b + ", img_chk=" + img_chk + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt="
+				+ likeCnt + "]";
 	}
+
 	
 }

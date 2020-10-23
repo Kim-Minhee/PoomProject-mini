@@ -15,7 +15,7 @@ public class CommunityUpdateDTO {
 	//작성자
 	String id_writer;     
 	//내용
-	String cont;          
+	String cont_b;          
 	//사진1
 	String img_c1;      
 	//사진2
@@ -30,9 +30,6 @@ public class CommunityUpdateDTO {
 	Date mod_date_b;
 	//사진여부
 	int img_chk;
-	
-	
-	// Getter & Setter
 	public int getCat_c() {
 		return cat_c;
 	}
@@ -63,11 +60,11 @@ public class CommunityUpdateDTO {
 	public void setId_writer(String id_writer) {
 		this.id_writer = id_writer;
 	}
-	public String getCont() {
-		return cont;
+	public String getCont_b() {
+		return cont_b;
 	}
-	public void setCont(String cont) {
-		this.cont = cont;
+	public void setCont_b(String cont_b) {
+		this.cont_b = cont_b;
 	}
 	public String getImg_c1() {
 		return img_c1;
@@ -111,14 +108,13 @@ public class CommunityUpdateDTO {
 	public void setImg_chk(int img_chk) {
 		this.img_chk = img_chk;
 	}
-	
-	// toString()
 	@Override
 	public String toString() {
 		return "CommunityUpdateDTO [cat_c=" + cat_c + ", bno=" + bno + ", cno=" + cno + ", title=" + title
-				+ ", id_writer=" + id_writer + ", cont=" + cont + ", img_c1=" + img_c1 + ", img_c2=" + img_c2
+				+ ", id_writer=" + id_writer + ", cont_b=" + cont_b + ", img_c1=" + img_c1 + ", img_c2=" + img_c2
 				+ ", img_c3=" + img_c3 + ", img_c4=" + img_c4 + ", img_c5=" + img_c5 + ", mod_date_b=" + mod_date_b
 				+ ", img_chk=" + img_chk + "]";
 	}
+	
 	
 }

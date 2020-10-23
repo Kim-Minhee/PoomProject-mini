@@ -4,8 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>community add post</title>
+<jsp:include page="../include/inHead.jsp"></jsp:include>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
-커뮤니티 추가 포스트
+<p>등록이 완료되었습니다.</p>
+<a href='list'>리스트로</a>
 <jsp:include page="../include/footer.jsp"></jsp:include>
