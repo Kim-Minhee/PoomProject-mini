@@ -37,8 +37,8 @@ public class RegisterComDTO {
 	
 	//사업자 번호
 	int brn;
-	//사업자 등록증
-	String brn_img;
+//	//사업자 등록증
+//	String brn_img;
 	//매장 사이트
 	String url_c;
 	//승인 여부
@@ -139,12 +139,12 @@ public class RegisterComDTO {
 	public void setBrn(int brn) {
 		this.brn = brn;
 	}
-	public String getBrn_img() {
-		return brn_img;
-	}
-	public void setBrn_img(String brn_img) {
-		this.brn_img = brn_img;
-	}
+//	public String getBrn_img() {
+//		return brn_img;
+//	}
+//	public void setBrn_img(String brn_img) {
+//		this.brn_img = brn_img;
+//	}
 	public String getUrl_c() {
 		return url_c;
 	}
@@ -157,15 +157,22 @@ public class RegisterComDTO {
 	public void setPerm(int perm) {
 		this.perm = perm;
 	}
+//	@Override
+//	public String toString() {
+//		return "RegisterComDTO [type_m=" + type_m + ", mno=" + mno + ", id=" + id + ", pwd=" + pwd + ", email=" + email
+//				+ ", name=" + name + ", zipCode=" + zipCode + ", firstAddr=" + firstAddr + ", secondAddr=" + secondAddr
+//				+ ", extraAddr=" + extraAddr + ", tel=" + tel + ", ment=" + ment + ", cre_date_m="
+//				+ cre_date_m + ", mod_date_m=" + mod_date_m + ", stmt_m=" + stmt_m + ", brn=" + brn + ", brn_img="
+//				+ brn_img + ", url_c=" + url_c + ", perm=" + perm + "]";
+//	}
 	@Override
 	public String toString() {
 		return "RegisterComDTO [type_m=" + type_m + ", mno=" + mno + ", id=" + id + ", pwd=" + pwd + ", email=" + email
 				+ ", name=" + name + ", zipCode=" + zipCode + ", firstAddr=" + firstAddr + ", secondAddr=" + secondAddr
-				+ ", extraAddr=" + extraAddr + ", tel=" + tel + ", ment=" + ment + ", cre_date_m="
-				+ cre_date_m + ", mod_date_m=" + mod_date_m + ", stmt_m=" + stmt_m + ", brn=" + brn + ", brn_img="
-				+ brn_img + ", url_c=" + url_c + ", perm=" + perm + "]";
+				+ ", extraAddr=" + extraAddr + ", tel=" + tel + ", ment=" + ment + ", cre_date_m=" + cre_date_m
+				+ ", mod_date_m=" + mod_date_m + ", stmt_m=" + stmt_m + ", brn=" + brn + ", url_c=" + url_c + ", perm="
+				+ perm + "]";
 	}
-
 	
 	
 }

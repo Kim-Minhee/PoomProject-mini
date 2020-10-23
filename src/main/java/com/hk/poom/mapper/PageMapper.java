@@ -21,7 +21,8 @@ public interface PageMapper {
 	
 	public MypageDTO mypagePer( int mno );
 	public MypageDTO mypageCom( int mno );
-	public ProfUploadDTO myProf( int mno );
+	public ProfUploadDTO memberFile( int mno );
+	public ProfUploadDTO comFile( int mno );
 	public List<MypageLikeDTO> mypageLikeList(  );
 	public List<MypageSaleDTO> mypageSaleList( AdminPayDTO adminPayDTO );
 	public List<MypageBuyDTO> mypageBuyList( AdminPayDTO adminPayDTO );

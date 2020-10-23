@@ -57,11 +57,6 @@ public class MemberService {
 		return memberMapper.memberFindId( findIdDTO );
 	}
 	
-	public int profUpload( ProfUploadDTO profUploadDTO ) {
-		int retVal = memberMapper.profUpload( profUploadDTO );
-		return retVal;
-	}
-	
 	public FindPwdDTO memberFindPwd( FindPwdDTO findPwdDTO ) {
 		return memberMapper.memberFindPwd( findPwdDTO );
 	}
@@ -69,6 +64,16 @@ public class MemberService {
 	public int memberPwdUpdate( FindPwdDTO findPwdDTO ) {
 		
 		return memberMapper.memberPwdUpdate( findPwdDTO );
+	}
+	
+	public int profUpload( ProfUploadDTO profUploadDTO ) {
+		int retVal = memberMapper.profUpload( profUploadDTO );
+		return retVal;
+	}
+	
+	public int brnUpload( ProfUploadDTO profUploadDTO ) {
+		int retVal = memberMapper.brnUpload( profUploadDTO );
+		return retVal;
 	}
 
 }

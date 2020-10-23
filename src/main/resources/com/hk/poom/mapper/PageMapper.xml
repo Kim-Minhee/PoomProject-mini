@@ -12,8 +12,12 @@
 	SELECT * FROM MEMBER m, COMPANY c WHERE m.MNO=c.MNO AND m.MNO=#{mno}
 </select>
 
-<select id="myProf" resultType="com.hk.poom.dto.ProfUploadDTO">
+<select id="memberFile" resultType="com.hk.poom.dto.ProfUploadDTO">
 	SELECT PROF AS DBSAVENAME FROM MEMBER WHERE MNO=#{mno}
+</select>
+
+<select id="comFile" resultType="com.hk.poom.dto.ProfUploadDTO">
+	SELECT m.PROF AS DBSAVENAME, c.BRN_IMG AS BRNNAME FROM MEMBER m, COMPANY c WHERE m.MNO=c.MNO AND m.MNO=#{mno}
 </select>
 
 <update id="mypageUpdate">

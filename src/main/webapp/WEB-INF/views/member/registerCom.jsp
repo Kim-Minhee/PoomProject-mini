@@ -633,6 +633,8 @@ function execDaumPostcode() {
 					<input type="text" name="name" placeholder="매장명"><br>
 				<label><b>사업자 번호 : </b></label>
 					<input type="text" name="brn"  placeholder="사업자 번호"><br>
+				<label><b>사업자등록증 사진파일 : </b></label>
+					<input type="file" name='brn_img'><br>
 	
 				<label><b>주소</b></label>
             		<input type="text" id="postcode" placeholder="우편번호" name="zipCode" style="width:60px;margin-right:1px">

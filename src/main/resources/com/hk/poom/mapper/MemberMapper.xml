@@ -61,8 +61,16 @@
 	UPDATE MEMBER SET PROF=#{dbSaveName} WHERE MNO=#{mno}
 </update>
 
+<update id="brnUpload">
+	UPDATE COMPANY SET BRN_IMG=#{brnName} WHERE MNO=#{mno}
+</update>
+
 <select id="memberFindId" resultType="com.hk.poom.dto.FindIdDTO">
 	SELECT * FROM MEMBER WHERE NAME=#{name} AND EMAIL=#{email}
+</select>
+
+<select id="memberFindPwd" resultType="com.hk.poom.dto.FindPwdDTO">
+	SELECT * FROM MEMBER WHERE NAME=#{name} AND EMAIL=#{email} AND ID=#{id}
 </select>
 
 <insert id="addEmailCheck" parameterType="com.hk.poom.dto.EmailCheck">

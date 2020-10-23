@@ -33,8 +33,12 @@ public class PageService {
 		 return pageMapper.mypageCom( mno );
 	}
 	
-	public ProfUploadDTO myProf( int mno ) {
-		return pageMapper.myProf( mno );
+	public ProfUploadDTO memberFile( int mno ) {
+		return pageMapper.memberFile( mno );
+	}
+	
+	public ProfUploadDTO comFile( int mno ) {
+		return pageMapper.comFile( mno );
 	}
 	
 	public List<MypageLikeDTO> mypageLikeList(  ) {
