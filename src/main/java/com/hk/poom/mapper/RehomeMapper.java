@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.hk.poom.dto.AdminPayDTO;
 import com.hk.poom.dto.CategoryDTO;
 import com.hk.poom.dto.RehomeAddDTO;
 import com.hk.poom.dto.RehomeListDTO;
@@ -22,9 +23,13 @@ public interface RehomeMapper {
 	public RehomeReadDTO rehomeRead( int bno );
 	public List<CategoryDTO> category();
 	public int rehomeAddPost(RehomeAddDTO rehomeAddDTO);
+	public int rehomeAddPost1(RehomeAddDTO rehomeAddDTO);
+	public int rehomeAddPost2(RehomeAddDTO rehomeAddDTO);
 	public String rehomeCateName( String cateCode );
 	public int rehomeCateUpdate( RehomeAddDTO rehomeAddDTO );
 	public RehomeReportDTO rehomeGetOne1( int bno );
 	public int report(RehomeReportDTO report);
+	public int rehomePay( );
+	public int rehomePayPost(AdminPayDTO adminPayDTO);
 	
 }

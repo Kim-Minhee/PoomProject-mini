@@ -25,11 +25,13 @@ public class AdminPayDTO {
 	//구매자 연락처
  	int tel_buyer;   
 	//분양 카테고리
-	int cat_r;   
+	String cateCode;   
 	//판매횟수
 	int saleCnt;
 	//구매횟수
 	int buyCnt;
+	//게시글 번호
+	int bno;
 	
 	
 	// Getter & Setter
@@ -93,12 +95,7 @@ public class AdminPayDTO {
 	public void setTel_buyer(int tel_buyer) {
 		this.tel_buyer = tel_buyer;
 	}
-	public int getCat_r() {
-		return cat_r;
-	}
-	public void setCat_r(int cat_r) {
-		this.cat_r = cat_r;
-	}
+
 	public int getSaleCnt() {
 		return saleCnt;
 	}
@@ -111,14 +108,29 @@ public class AdminPayDTO {
 	public void setBuyCnt(int buyCnt) {
 		this.buyCnt = buyCnt;
 	}
+	public int getBno() {
+		return bno;
+	}
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
 	
+	
+	
+	public String getCateCode() {
+		return cateCode;
+	}
+	public void setCateCode(String cateCode) {
+		this.cateCode = cateCode;
+	}
 	// toString()
 	@Override
 	public String toString() {
 		return "AdminPayDTO [pay_num=" + pay_num + ", title=" + title + ", stmt_sale=" + stmt_sale + ", stmt_buy="
 				+ stmt_buy + ", pay_date=" + pay_date + ", cost=" + cost + ", id_saler=" + id_saler + ", id_buyer="
-				+ id_buyer + ", tel_saler=" + tel_saler + ", tel_buyer=" + tel_buyer + ", cat_r=" + cat_r + ", saleCnt="
-				+ saleCnt + ", buyCnt=" + buyCnt + "]";
+				+ id_buyer + ", tel_saler=" + tel_saler + ", tel_buyer=" + tel_buyer + ", cateCode=" + cateCode
+				+ ", saleCnt=" + saleCnt + ", buyCnt=" + buyCnt + ", bno=" + bno + "]";
 	}
+	
 	
 }

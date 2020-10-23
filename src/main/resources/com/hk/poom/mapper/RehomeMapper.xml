@@ -20,16 +20,18 @@ SELECT * from category start with cateCodeRef is null connect by prior cateCode 
 <selectKey resultType="int" keyProperty="bno" order="BEFORE">
         SELECT MAX(BNO)+1 FROM BOARD 
     </selectKey>
-insert all
-into rehome (bno, rno, mno, gender, age, neut, vac, cost, cateCode, img_r1, img_r2, img_r3, img_r4, img_r5)
+insert into rehome (bno, rno, mno, gender, age, neut, vac, cost, cateCode, img_r1, img_r2, img_r3, img_r4, img_r5)
 values (#{bno},#{rno}, #{mno}, #{gender}, #{age}, #{neut}, #{vac}, #{cost},#{cateCode}, #{img_r1}, #{img_r2}, #{img_r3}, #{img_r4}, #{img_r5})
+</insert>
 
-into board (cateCode, bno, title, cre_date_b, mod_date_b, viewcnt, likecnt,  stmt_b, cont_b, id_writer)
-values (#{cateCode},#{bno}, #{title}, sysdate, sysdate, #{viewcnt}, #{likecnt}, #{stmt_b}, #{cont_b}, #{id_writer})
-  
+<insert id="rehomeAddPost1" parameterType="com.hk.poom.dto.RehomeAddDTO">
+insert into board (cateCode, bno, title, cre_date_b, mod_date_b,  stmt_b, cont_b, id_writer)
+values (#{cateCode},#{bno}, #{title}, sysdate, sysdate, #{stmt_b}, #{cont_b}, #{id_writer})  
+</insert>
 
- select * from dual
- 
+<insert id="rehomeAddPost2" parameterType="com.hk.poom.dto.RehomeAddDTO">
+insert into payment (bno, stmt_sale,stmt_buy)
+values (#{bno},2,2)
 </insert>
 
 <select id="rehomeGetOne" resultType="com.hk.poom.dto.RehomeUpdateDTO">
@@ -92,5 +94,18 @@ SELECT * FROM rehome  WHERE bno=#{bno}
 insert into report (bno, report_cont)
 values (#{bno}, #{report_cont})
 </insert> 
+
+<update id="rehomePayPost">
+update payment
+set  bno=#{bno}
+,    id_saler=#{id_saler}
+,	 id_buyer=#{id_buyer}
+,    pay_date=sysdate
+,    stmt_sale=1
+,    stmt_buy=1
+
+
+    where bno=#{bno}
+</update>
     
 </mapper>

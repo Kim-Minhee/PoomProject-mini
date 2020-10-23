@@ -159,6 +159,14 @@
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 			<version>1.16</version>
 		</dependency>
+
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+
+			<classifier>jdk15</classifier>
+		</dependency>
 		
 		<!-- 카테고리 -->
 		<dependency>
@@ -198,8 +206,9 @@
 			<version>2.7</version>
 		</dependency>
 		<!-- 파일 업로드 end -->
-		
-		<!-- 이메일 인증 start -->
+
+
+      	<!-- 이메일 인증 start -->
 		<dependency>
    		 	<groupId>com.sun.mail</groupId>
     		<artifactId>javax.mail</artifactId>
@@ -210,8 +219,17 @@
        	  <groupId>org.springframework</groupId>
        	  <artifactId>spring-context-support</artifactId>
        	  <version>${org.springframework-version}</version>
-       </dependency>
-      <!-- 이메일 인증 end -->
+       	</dependency>
+     	<!-- 이메일 인증 end -->
+     	
+     	<!-- transaction -->
+     	<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
 
 	</dependencies>
 	<build>

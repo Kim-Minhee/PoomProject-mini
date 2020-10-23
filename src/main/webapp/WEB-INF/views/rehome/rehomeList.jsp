@@ -46,10 +46,12 @@
 
 				<div class="row">					
 					<c:forEach items="${rehomeList}" var="rehomeList">
+						<c:if test="${rehomeList.stmt_sale ne 1}">
 						<div class="col-md-4">
-							<div class="card mb-4 shadow-sm">
-								<img src="/resources/img/rehome/${rehomeList.img_r1 }" onerror="this.style.display='none'" width="200" height="200" />
-								
+							<div class="card mb-4 shadow-sm" >
+							<div align='center'>
+								<img src="/resources/img/rehome/${rehomeList.img_r1 }" onerror="this.src='/resources/img/none.png'" width="200" height="200" />
+								</div>
 								<div class="card-body">
 									<p class="card-text"><c:out value="${rehomeList.title}" />/<c:out value="${rehomeList.cateName}" />/<c:out value="${rehomeList.age}" />/<c:out value="${rehomeList.cost}" /> </p>
 									<div class="d-flex justify-content-between align-items-center">
@@ -61,9 +63,10 @@
 									</div>
 								</div>
 							</div>
+						
 						</div>
-                    <tr>
-
+                    		<tr>
+						</c:if>
                     </c:forEach>
 					
 					

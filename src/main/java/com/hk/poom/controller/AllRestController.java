@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hk.poom.dto.AdminPayDTO;
 import com.hk.poom.dto.EmailCheck;
 import com.hk.poom.dto.FindIdDTO;
 import com.hk.poom.dto.LoginDTO;
 import com.hk.poom.service.EmailService;
 import com.hk.poom.service.MemberService;
+import com.hk.poom.service.RehomeService;
 
 @RestController
 @RequestMapping(value="/poom", produces="text/plain;charset=UTF-8")
@@ -29,6 +31,9 @@ public class AllRestController {
 	
 	@Autowired
 	EmailService emailService;
+	
+	@Autowired
+	RehomeService rehomeService;
 	
 	@PostMapping(path="/register/idDupChk", produces=MediaType.APPLICATION_JSON_VALUE)
 	public int idDupChk(@RequestParam("id") String id) {
@@ -110,5 +115,20 @@ public class AllRestController {
 		 }
 		      
 		}
+	
+	@PostMapping(path="/payments/complete",produces=MediaType.APPLICATION_JSON_VALUE)
+	public boolean rehomePayPost(int bno, int cost, String id_saler, String id_buyer) {
+		logger.info("------------------------palyments/complete(REST) 실행---------------------");
+		logger.info("cost : " + cost+"id_saler : " + id_saler+"id_buyer : " + id_buyer);
+		
+		AdminPayDTO adminPayDTO = new AdminPayDTO();
+		adminPayDTO.setBno(bno);
+		adminPayDTO.setCost(cost);
+		adminPayDTO.setId_saler(id_saler);
+		adminPayDTO.setId_buyer(id_buyer);
+		rehomeService.rehomePayPost(adminPayDTO);
+		
+		return true;
+	}
 
 }

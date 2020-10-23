@@ -55,7 +55,11 @@ public class RehomeAddDTO {
 	int reportcnt;
 	//회원상태
 	int stmt_b;
-
+	//판매 상태
+	int stmt_sale;
+	//구매 상태
+	int stmt_buy;
+	
 
 	// Getter & Setter
 
@@ -214,7 +218,19 @@ public class RehomeAddDTO {
 		return cateCodeRef;
 	}
 	public void setCateCodeRef(String cateCodeRef) {
-		this.cateCodeRef = cateCodeRef;
+		this.cateCodeRef = cateCodeRef;	
+	}
+	public int getStmt_sale() {
+		return stmt_sale;
+	}
+	public void setStmt_sale(int stmt_sale) {
+		this.stmt_sale = stmt_sale;
+	}
+	public int getStmt_buy() {
+		return stmt_buy;
+	}
+	public void setStmt_buy(int stmt_buy) {
+		this.stmt_buy = stmt_buy;
 	}
 	@Override
 	public String toString() {
@@ -224,7 +240,7 @@ public class RehomeAddDTO {
 				+ cateCodeRef + ", gender=" + gender + ", vac=" + vac + ", age=" + age + ", neut=" + neut + ", cost="
 				+ cost + ", cont_b=" + cont_b + ", cre_date_b=" + cre_date_b + ", mod_date_b=" + mod_date_b
 				+ ", viewcnt=" + viewcnt + ", likecnt=" + likecnt + ", reportcnt=" + reportcnt + ", stmt_b=" + stmt_b
-				+ "]";
+				+ ", stmt_sale=" + stmt_sale + ", stmt_buy=" + stmt_buy + "]";
 	}
 
 }

@@ -59,7 +59,8 @@
 							<div>나이: ${rehomeRead.age}</div>
 							<div>분양가: ${rehomeRead.cost}</div>
 							<div>본문: ${rehomeRead.cont_b}</div>
-							<div><button type="button" onclick="location.href='pay'">분양받기</button></div>
+<%-- 							<div><button type="button" onclick="location.href='pay?cost=${rehomeRead.cost}'">분양받기</button></div> --%>
+							<div><button type="button" onclick="location.href='pay?bno=${rehomeRead.bno}&id_writer=${rehomeRead.id_writer}&id_reader=${loginMember.id}&cost=${rehomeRead.cost}'">분양받기</button></div>
 							<div><a href="#" onClick="window.open('report?bno=${rehomeRead.bno}','window_name','width=430,height=500,location=no,status=no,scrollbars=yes');">신고</a></div>
 							<div><a href='update?bno=${rehomeRead.bno}'>수정</a></div>
 							<div><a href='delete?bno=${rehomeRead.bno}'>삭제</a></div>

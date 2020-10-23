@@ -184,10 +184,15 @@ public class RehomeController {
    }
  
    @GetMapping("/poom/rehome/pay")
-   public String rehomePay() {
+   public String rehomePay(@RequestParam("bno") int bno, @RequestParam("id_writer") String id_saler, @RequestParam("id_reader") String id_buyer, @RequestParam("cost") int cost, Model model) {
+	   //logger.info("id_saler=" + id_saler + "id_buyer=" + id_buyer + "cost=" + cost);
+	   model.addAttribute("bno",bno);
+	   model.addAttribute("id_saler",id_saler);
+	   model.addAttribute("id_buyer",id_buyer);
+	   model.addAttribute("cost",cost);
+	    
 	   return "rehome/pay";
    }
-   
    @GetMapping("/poom/rehome/paySuccess")
    public String rehomePaySuccess() {
 	   return "rehome/paySuccess";
