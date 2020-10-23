@@ -120,6 +120,12 @@ public class RehomeReadDTO {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
+	public String getCateCodeRef() {
+		return cateCodeRef;
+	}
+	public void setCateCodeRef(String cateCodeRef) {
+		this.cateCodeRef = cateCodeRef;
+	}
 	public int getVac() {
 		return vac;
 	}
@@ -208,14 +214,25 @@ public class RehomeReadDTO {
 	public void setCateCode(String cateCode) {
 		this.cateCode = cateCode;
 	}
+//	@Override
+//	public String toString() {
+//		return "RehomeAddDTO [cateName=" + cateName + ", bno=" + bno + ", rno=" + rno + ", mno=" + mno + ", title=" + title
+//				+ ", id_writer=" + id_writer + ", img_r1=" + img_r1 + ", img_r2=" + img_r2 + ", img_r3=" + img_r3
+//				+ ", img_r4=" + img_r4 + ", img_r5=" + img_r5 + ", cateCode=" + cateCode + ", gender=" + gender + ", vac="
+//				+ vac + ", age=" + age + ", neut=" + neut + ", cost=" + cost + ", cont_b=" + cont_b + ", cre_date_b="
+//				+ cre_date_b + ", mod_date_b=" + mod_date_b + ", viewcnt=" + viewcnt + ", likecnt=" + likecnt
+//				+ ", reportcnt=" + reportcnt + ", stmt_b=" + stmt_b + "]";
+//	}
 	@Override
 	public String toString() {
-		return "RehomeAddDTO [cateName=" + cateName + ", bno=" + bno + ", rno=" + rno + ", mno=" + mno + ", title=" + title
-				+ ", id_writer=" + id_writer + ", img_r1=" + img_r1 + ", img_r2=" + img_r2 + ", img_r3=" + img_r3
-				+ ", img_r4=" + img_r4 + ", img_r5=" + img_r5 + ", cateCode=" + cateCode + ", gender=" + gender + ", vac="
-				+ vac + ", age=" + age + ", neut=" + neut + ", cost=" + cost + ", cont_b=" + cont_b + ", cre_date_b="
-				+ cre_date_b + ", mod_date_b=" + mod_date_b + ", viewcnt=" + viewcnt + ", likecnt=" + likecnt
-				+ ", reportcnt=" + reportcnt + ", stmt_b=" + stmt_b + "]";
+		return "RehomeReadDTO [cateName=" + cateName + ", bno=" + bno + ", rno=" + rno + ", mno=" + mno + ", title="
+				+ title + ", id_writer=" + id_writer + ", img_r1=" + img_r1 + ", img_r2=" + img_r2 + ", img_r3="
+				+ img_r3 + ", img_r4=" + img_r4 + ", img_r5=" + img_r5 + ", cateCode=" + cateCode + ", cateCodeRef="
+				+ cateCodeRef + ", gender=" + gender + ", vac=" + vac + ", age=" + age + ", neut=" + neut + ", cost="
+				+ cost + ", cont_b=" + cont_b + ", cre_date_b=" + cre_date_b + ", mod_date_b=" + mod_date_b
+				+ ", viewcnt=" + viewcnt + ", likecnt=" + likecnt + ", reportcnt=" + reportcnt + ", stmt_b=" + stmt_b
+				+ "]";
 	}
+	
 
 }

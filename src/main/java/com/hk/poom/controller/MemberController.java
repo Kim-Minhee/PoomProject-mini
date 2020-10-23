@@ -196,7 +196,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/poom/login")
-	public String loginPost( HttpServletRequest request, HttpSession session, LoginDTO loginDTO ) {	//, @RequestParam("mno") int mno
+	public String loginPost( HttpSession session, LoginDTO loginDTO ) {	//, @RequestParam("mno") int mno
 		//logger.info("MemberController_Post_/poom/login 실행");
 		//logger.info("로그인할 member = " + loginDTO.toString());
 		LoginDTO loginMember = new LoginDTO();

@@ -58,6 +58,8 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/poom/rehome/add" />
 			<mvc:mapping path="/poom/rehome/pay" />
+			<mvc:mapping path="/poom/rehome/update" />
+			<mvc:mapping path="/poom/rehome/delete" />
 			<mvc:mapping path="/poom/rehome/report" />
 			<beans:bean
 				class="com.hk.poom.interceptor.LoginInterceptor" />

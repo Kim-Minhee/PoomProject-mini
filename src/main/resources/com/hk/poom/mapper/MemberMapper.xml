@@ -76,7 +76,6 @@
 <insert id="addEmailCheck" parameterType="com.hk.poom.dto.EmailCheck">
 	insert into EMAILCHECK(EMAIL,CODE) 
 	VALUES(#{email},#{code})
-
 </insert>
 
 <select id="getDbCode" parameterType="String" resultType="String">
