@@ -59,7 +59,8 @@ public class RehomeAddDTO {
 	int stmt_sale;
 	//구매 상태
 	int stmt_buy;
-	
+	//결제 번호
+	int pay_num;
 
 	// Getter & Setter
 
@@ -232,6 +233,13 @@ public class RehomeAddDTO {
 	public void setStmt_buy(int stmt_buy) {
 		this.stmt_buy = stmt_buy;
 	}
+	
+	public int getPay_num() {
+		return pay_num;
+	}
+	public void setPay_num(int pay_num) {
+		this.pay_num = pay_num;
+	}
 	@Override
 	public String toString() {
 		return "RehomeAddDTO [cateName=" + cateName + ", bno=" + bno + ", rno=" + rno + ", mno=" + mno + ", title="
@@ -240,7 +248,7 @@ public class RehomeAddDTO {
 				+ cateCodeRef + ", gender=" + gender + ", vac=" + vac + ", age=" + age + ", neut=" + neut + ", cost="
 				+ cost + ", cont_b=" + cont_b + ", cre_date_b=" + cre_date_b + ", mod_date_b=" + mod_date_b
 				+ ", viewcnt=" + viewcnt + ", likecnt=" + likecnt + ", reportcnt=" + reportcnt + ", stmt_b=" + stmt_b
-				+ ", stmt_sale=" + stmt_sale + ", stmt_buy=" + stmt_buy + "]";
+				+ ", stmt_sale=" + stmt_sale + ", stmt_buy=" + stmt_buy + ", pay_num=" + pay_num + "]";
 	}
 
 }

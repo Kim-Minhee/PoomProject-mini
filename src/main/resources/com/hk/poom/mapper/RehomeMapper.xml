@@ -7,7 +7,7 @@
 
 
 <select id="rehomeList" resultType="com.hk.poom.dto.RehomeAddDTO">
-SELECT * FROM REHOME r, BOARD b WHERE r.BNO = b.BNO ORDER BY cre_date_b asc
+SELECT * FROM REHOME r, BOARD b, PAYMENT p WHERE r.BNO = b.BNO and b.BNO=p.BNO ORDER BY cre_date_b desc
 </select>
 
     
@@ -25,14 +25,19 @@ values (#{bno},#{rno}, #{mno}, #{gender}, #{age}, #{neut}, #{vac}, #{cost},#{cat
 </insert>
 
 <insert id="rehomeAddPost1" parameterType="com.hk.poom.dto.RehomeAddDTO">
+
 insert into board (cateCode, bno, title, cre_date_b, mod_date_b,  stmt_b, cont_b, id_writer)
 values (#{cateCode},#{bno}, #{title}, sysdate, sysdate, #{stmt_b}, #{cont_b}, #{id_writer})  
 </insert>
 
 <insert id="rehomeAddPost2" parameterType="com.hk.poom.dto.RehomeAddDTO">
-insert into payment (bno, stmt_sale,stmt_buy)
-values (#{bno},2,2)
+<selectKey resultType="int" keyProperty="pay_num" order="BEFORE">
+        SELECT MAX(pay_num)+1 FROM payment 
+    </selectKey>
+insert into payment (id_saler,bno, stmt_sale, stmt_buy, sale_chk, buy_chk, pay_num, cost)
+values (#{id_writer}, #{bno}, 2, 2, 0, 0, #{pay_num}, #{cost})
 </insert>
+
 
 <select id="rehomeGetOne" resultType="com.hk.poom.dto.RehomeUpdateDTO">
 select * from BOARD  where BNO=#{bno} 
@@ -41,13 +46,17 @@ select * from BOARD  where BNO=#{bno}
 <update id="rehomeUpdate">
 update rehome
 set  bno=#{bno}
-,    rno=#{rno}
 ,    mno=#{mno}
 ,    gender=#{gender}
 ,    age=#{age}
 ,    neut=#{neut}
 ,    vac=#{vac}
 ,    cost=#{cost}
+,	 img_r1=#{img_r1}
+,	 img_r2=#{img_r2}
+,	 img_r3=#{img_r3}
+,	 img_r4=#{img_r4}
+,	 img_r5=#{img_r5}
     where bno=#{bno}
      
 
@@ -57,8 +66,6 @@ update board
 set  bno=#{bno}
 ,    title=#{title}
 ,    mod_date_b=sysdate
-,    viewcnt=#{viewcnt}+1
-,    likecnt=#{likecnt}
 ,    stmt_b=#{stmt_b}
 ,    cont_b=#{cont_b}
 ,    id_writer=#{id_writer}
@@ -86,7 +93,7 @@ select catename from category  where catecode=#{cateCode}
 
     
 <select id="rehomeRead" resultType="com.hk.poom.dto.RehomeReadDTO">
-SELECT * FROM rehome  WHERE bno=#{bno} 
+SELECT * FROM rehome r,board b  WHERE r.bno=b.bno and b.bno=#{bno} 
 
 </select>    
   
@@ -94,8 +101,21 @@ SELECT * FROM rehome  WHERE bno=#{bno}
 insert into report (bno, report_cont)
 values (#{bno}, #{report_cont})
 </insert> 
+    
+
+<!-- <insert id="rehomePayPost" parameterType="com.hk.poom.dto.AdminPayDTO"> -->
+<!-- 	<selectKey resultType="int" keyProperty="pay_num" order="BEFORE"> -->
+<!--         SELECT MAX(PAY_NUM)+1 FROM PAYMENT -->
+<!--     </selectKey> -->
+<!-- insert into payment (id_saler, id_buyer, pay_num, sale_chk, buy_chk, stmt_sale, stmt_buy, pay_date, salecnt, buycnt, cost, bno) -->
+<!-- values (#{id_saler}, #{id_buyer}, #{pay_num}, 2, 2, 1, 1, sysdate, null, null, #{cost}, #{bno}) -->
+
+<!-- </insert> -->
+
+
 
 <update id="rehomePayPost">
+
 update payment
 set  bno=#{bno}
 ,    id_saler=#{id_saler}
@@ -103,9 +123,17 @@ set  bno=#{bno}
 ,    pay_date=sysdate
 ,    stmt_sale=1
 ,    stmt_buy=1
-
+,	 sale_chk=1
+,	 buy_chk=1
 
     where bno=#{bno}
+
 </update>
+
+
+
+
+
+
     
 </mapper>
