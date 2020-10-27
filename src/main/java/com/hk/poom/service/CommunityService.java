@@ -11,6 +11,7 @@ import com.hk.poom.dto.CommunityListDTO;
 import com.hk.poom.dto.CommunityReadDTO;
 import com.hk.poom.dto.CommunityUpdateDTO;
 import com.hk.poom.dto.RehomeAddDTO;
+import com.hk.poom.dto.RehomeReportDTO;
 import com.hk.poom.mapper.CommunityMapper;
 
 @Service
@@ -57,6 +58,10 @@ public class CommunityService {
 	public List<CategoryDTO> category() {
 		// TODO Auto-generated method stub
 		return communityMapper.category();
+	}
+	
+	public int report( RehomeReportDTO report ) {
+		return communityMapper.report(report);			
 	}
 
 }

@@ -24,6 +24,7 @@ import com.hk.poom.HomeController;
 import com.hk.poom.dto.CategoryDTO;
 import com.hk.poom.dto.CommunityAddDTO;
 import com.hk.poom.dto.CommunityUpdateDTO;
+import com.hk.poom.dto.RehomeReportDTO;
 import com.hk.poom.dto.RehomeUpdateDTO;
 import com.hk.poom.service.CommunityService;
 
@@ -273,7 +274,17 @@ public class CommunityController {
 		return "redirect:/poom/community/list";
 	}
 	
-	
+	@GetMapping("/poom/community/report")
+	   public String communityGetOne(@RequestParam("bno") int bno, Model model) {
+	      model.addAttribute("communityGetOne",communityService.communityGetOne(bno));
+	      return "rehome/report";
+	   }
+	   @PostMapping("/poom/community/report")
+	   public String report(Model model, RehomeReportDTO report) {
+	      model.addAttribute("report",communityService.report(report));
+	          
+	      return "rehome/reportDone";
+	   }
 	
 
 }

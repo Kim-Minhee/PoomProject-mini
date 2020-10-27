@@ -9,6 +9,7 @@ import com.hk.poom.dto.CommunityAddDTO;
 import com.hk.poom.dto.CommunityListDTO;
 import com.hk.poom.dto.CommunityReadDTO;
 import com.hk.poom.dto.CommunityUpdateDTO;
+import com.hk.poom.dto.RehomeReportDTO;
 
 @Repository
 public interface CommunityMapper {
@@ -23,5 +24,5 @@ public interface CommunityMapper {
 	public int communityCateUpdate(CommunityAddDTO communityAddDTO);
 	public List<CategoryDTO> category();
 	public int communityUpdate1(CommunityUpdateDTO communityUpdateDTO);
-
+	public int report(RehomeReportDTO report);
 }
