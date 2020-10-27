@@ -51,4 +51,19 @@
 		WHERE MNO=#{mno}
 </update>
 
+<select id="mypageBuyList" resultType="com.hk.poom.dto.AdminPayDTO">
+<!-- pay_num, title, stmt_buy, pay_date, cost, id_saler, tel_saler, cateCode, bno -->
+	SELECT m.PROF AS DBSAVENAME, c.BRN_IMG AS BRNNAME FROM MEMBER m, COMPANY c WHERE m.MNO=c.MNO AND m.MNO=#{mno}
+</select>
+
+<select id="mypageSaleList" resultType="com.hk.poom.dto.AdminPayDTO">
+<!-- pay_num, title, stmt_sale, pay_date, cost, id_buyer, tel_buyer, cateCode, bno -->
+	SELECT m.PROF AS DBSAVENAME, c.BRN_IMG AS BRNNAME FROM MEMBER m, COMPANY c WHERE m.MNO=c.MNO AND m.MNO=#{mno}
+</select>
+
+<select id="mypageWriteList" resultType="com.hk.poom.dto.CommunityListDTO">
+<!-- cateCode, bno, title, mod_date_b -->
+	SELECT m.PROF AS DBSAVENAME, c.BRN_IMG AS BRNNAME FROM MEMBER m, COMPANY c WHERE m.MNO=c.MNO AND m.MNO=#{mno}
+</select>
+
 </mapper>

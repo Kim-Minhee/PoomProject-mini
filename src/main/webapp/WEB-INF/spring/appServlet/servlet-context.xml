@@ -61,6 +61,10 @@
 			<mvc:mapping path="/poom/rehome/update" />
 			<mvc:mapping path="/poom/rehome/delete" />
 			<mvc:mapping path="/poom/rehome/report" />
+			<mvc:mapping path="/poom/community/add" />
+			<mvc:mapping path="/poom/community/update" />
+			<mvc:mapping path="/poom/community/delete" />
+			<mvc:mapping path="/poom/mypage" />
 			<beans:bean
 				class="com.hk.poom.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
@@ -70,6 +74,8 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/poom/rehome/update" />
 			<mvc:mapping path="/poom/rehome/delete" />
+			<mvc:mapping path="/poom/community/update" />
+			<mvc:mapping path="/poom/community/delete" />
 			<beans:bean
 				class="com.hk.poom.interceptor.MyInterceptor" />
 		</mvc:interceptor>

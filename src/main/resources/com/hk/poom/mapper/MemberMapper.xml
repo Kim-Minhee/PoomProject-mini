@@ -39,8 +39,8 @@
 		INTO MEMBER (ID, PWD, EMAIL, NAME, ZIPCODE, FIRSTADDR, SECONADDR, EXTRAADDR, TEL, MENT, TYPE_M, MNO, STMT_M, CRE_DATE_M, MOD_DATE_M, SALECNT, BUYCNT) 
 		VALUES (#{id}, #{pwd}, #{email}, #{name}, #{zipCode}, #{firstAddr}, #{secondAddr}, #{extraAddr}, #{tel}, #{ment}, 2, #{mno}, 0, SYSDATE , SYSDATE, 0, 0)
       
-		INTO COMPANY (MNO, BRN_IMG, PERM, BRN, URL_C) 
-		VALUES (#{mno}, 'image.jpg', '0', #{brn}, #{url_c})
+		INTO COMPANY (MNO, PERM, BRN, URL_C) 
+		VALUES (#{mno}, '0', #{brn}, #{url_c})
    
 	SELECT * FROM DUAL
 </insert>

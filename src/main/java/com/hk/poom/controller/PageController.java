@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.hk.poom.dto.AdminPayDTO;
+import com.hk.poom.dto.CommunityListDTO;
 import com.hk.poom.dto.LoginDTO;
 import com.hk.poom.dto.MypageDTO;
 import com.hk.poom.dto.ProfUploadDTO;
@@ -60,12 +62,25 @@ public class PageController {
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("uploadeddFile", uploadeddFile);
 		
+//		// 입양 리스트 출력
+//		AdminPayDTO buyInfo = new AdminPayDTO();
+//		buyInfo.setId_buyer(myInfo.getId());
+//		model.addAttribute("buyList", pageService.mypageBuyList(buyInfo));
+//		// 분양 리스트 출력
+//		AdminPayDTO saleInfo = new AdminPayDTO();
+//		saleInfo.setId_saler(myInfo.getId());
+//		model.addAttribute("saleList", pageService.mypageSaleList(saleInfo));
+//		// 쓴글 리스트 출력
+//		CommunityListDTO writeInfo = new CommunityListDTO();
+//		writeInfo.setId_writer(myInfo.getId());
+//		model.addAttribute("writeList", pageService.mypageWriteList(writeInfo));
+		
 		return "page/mypage";
 	}
 	
 	
 	@PostMapping("/poom/mypage")
-	public String mypagePost( Model model, MypageDTO mypageDTO, ProfUploadDTO profUploadDTO, @RequestParam("prof") MultipartFile prof, @RequestParam("brn_img") MultipartFile brn_img ) {	//, @RequestParam("prof") MultipartFile prof
+	public String mypagePost( HttpSession session, Model model, MypageDTO mypageDTO, ProfUploadDTO profUploadDTO, @RequestParam("prof") MultipartFile prof, @RequestParam("brn_img") MultipartFile brn_img ) {	//, @RequestParam("prof") MultipartFile prof
 		logger.info("PageController_Post_/poom/mypage 실행");
 		logger.info("수정할 회원 정보 = " + mypageDTO.toString());
 		
@@ -124,6 +139,17 @@ public class PageController {
 			memberService.brnUpload(profUploadDTO);
 		}
 		
+		// 로그인 정보 수정
+		LoginDTO loginMember = new LoginDTO();
+		loginMember.setType_m(mypageDTO.getType_m());
+		loginMember.setMno(mypageDTO.getMno());
+		loginMember.setPwd(mypageDTO.getPwd());
+		loginMember.setEmail(mypageDTO.getEmail());
+		loginMember.setName(mypageDTO.getName());
+		loginMember.setDbSaveName(profUploadDTO.getDbSaveName());
+		
+		session.setAttribute("loginMember", loginMember);
+		
 		return "page/mypagePost";
 	}
 	
@@ -139,6 +165,28 @@ public class PageController {
 		logger.info("PageController_Get_/poom/noAuth 실행");
 		
 		return "page/noAuth";
+	}
+	
+	// admin 회원 상세정보 보기
+	@GetMapping("/poom/eachpage")
+	public String eachpage( Model model, @RequestParam("mno") int mno, @RequestParam("mtp") int type_m ) {
+		
+		logger.info("type_m-----------------은?"+type_m);
+		MypageDTO myInfo = new MypageDTO();
+		ProfUploadDTO uploadeddFile = new ProfUploadDTO(); 
+		if ( type_m==1 ) {	// 개인 회원
+			myInfo = pageService.mypagePer(mno);
+			uploadeddFile = pageService.memberFile(mno);
+		} else if ( type_m==2 ) {	// 업체 회원
+			myInfo = pageService.mypageCom(mno);
+			uploadeddFile = pageService.comFile(mno);
+		}
+		
+		model.addAttribute("myInfo", myInfo);
+		model.addAttribute("uploadeddFile", uploadeddFile);
+		model.addAttribute("type_m", type_m);
+		
+		return "page/mypage";
 	}
 
 }

@@ -63,4 +63,5 @@
 
 
 
-</form><jsp:include page="../include/footer.jsp"></jsp:include>
+</form>
+<jsp:include page="../include/footer.jsp"></jsp:include>

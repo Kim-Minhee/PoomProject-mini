@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hk.poom.dto.FindIdDTO;
@@ -189,8 +190,11 @@ public class MemberController {
 	
 	
 	@GetMapping("/poom/login")
-	public String login( ) {
+	public String login( HttpServletRequest request, HttpSession session ) {
 		//logger.info("MemberController_Get_/poom/login 실행");
+		String referer = (String)request.getHeader("REFERER");
+		//logger.info("referer----------------------" + referer);
+		session.setAttribute("referer", referer);
 		
 		return "member/login";
 	}
@@ -211,11 +215,12 @@ public class MemberController {
 				
 			session.setAttribute("loginMember", loginMember);
 			logger.info("loginMember 정보 : " + loginMember);
-			// 로그인한 사람의 prof (db에 저장된 파일명을 가져옴)
-			session.setAttribute("prof", memberService.profGet(loginMember.getMno()));
-				
-			//로그인 성공시 홈으로
-			return "home";
+//			// 로그인한 사람의 prof (db에 저장된 파일명을 가져옴)
+//			session.setAttribute("prof", memberService.profGet(loginMember.getMno()));
+			
+			//로그인 성공시 보고있던 페이지로
+			String referer = (String) session.getAttribute("referer");
+			return "redirect:"+referer;
 		} else {
 			//logger.info("로그인 실패");
 			

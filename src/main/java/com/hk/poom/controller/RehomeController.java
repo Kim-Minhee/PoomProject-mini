@@ -37,7 +37,7 @@ public class RehomeController {
    RehomeService rehomeService;
    
    @Autowired
-	ServletContext sc;
+   ServletContext sc;
    
    @GetMapping("/poom/rehome/list")
    public String rehomeList(Model model ) {

@@ -583,9 +583,9 @@
 	<form action="#" method="post" id="updateMypage" enctype="multipart/form-data">
 		<fieldset style="width:725px; margin-right:1000px;">
 			<legend style="font-size:25px;"><b>--- 정보 수정하기 ---</b></legend>
-				<div><label><b>회원유형 : </b></label>
+				<div><label style="display: none;"><b>회원유형 : </b></label>
 					<input type="text" name="type_m" value="${myInfo.type_m}" readonly></div>
-				<div><label><b>회원번호 : </b></label>
+				<div><label style="display: none;"><b>회원번호 : </b></label>
 					<input type="text" name="mno" value="${myInfo.mno}" readonly></div>
 				<div><label><b>가입일 : </b></label>
 					<fmt:formatDate pattern="yyyy-MM-dd" value="${myInfo.cre_date_m}" /></div>
@@ -595,7 +595,7 @@
 				<div><label><b>비밀번호 : </b></label>
 					<input type="password" id="pwd" value="${myInfo.pwd}" placeholder="비밀번호" oninput="checkPwd()">
 					 <div class="validation" id="pwdRet" style="font-size: 15px;"></div></div>
-				<div><label><b>비밀번호 확인 : </b></label>
+				<div><label><b>* 비밀번호 확인 : </b></label>
 					<input type="password" name="pwd" id="pwdMatChk" placeholder="비밀번호 재입력" oninput="reCheckPwd()">
 					<div class="validation" id="pwdMatChkRet" style="font-size: 15px;"></div></div>
 				<div><label><b>이메일 : </b></label>
@@ -662,18 +662,47 @@
 </div>
 <br /><hr /><br />
 <!-- 관심 목록 -->
-<div id="likeInfo">
-	<h1>--- 관심 목록 ---</h1>
+<!-- <div id="likeInfo"> -->
+<!-- 	<h1>--- 관심 목록 ---</h1> -->
+<!-- </div> -->
+<!-- <br /><hr /><br /> -->
+<!-- 입양 목록 -->
+<div id="payInfo">
+	<h1>--- 입양 목록 ---</h1>
+<%-- 	<c:forEach items="${saleList}" var="sale"> --%>
+<%-- 		결제 번호 : ${sale.pay_num}<br /> --%>
+<%-- 		분양자 ID (otherpage로 링크걸기) : ${sale.id_saler}<br /> --%>
+<%-- 		분양종 : ${sale.cateCode}<br /> --%>
+<%-- 		분양가 : ${sale.cost}<br /> --%>
+<%-- 		분양글 제목 (분양게시글로 링크걸기) : ${sale.title}<br /> --%>
+<%-- 		입양일 : ${sale.pay_date}<br /> --%>
+<%-- 		입양 완료 상태 : ${sale.stmt_buy}<br /> --%>
+<%-- 	</c:forEach> --%>
 </div>
 <br /><hr /><br />
-<!-- 결제 목록 -->
+<!-- 분양 목록 -->
 <div id="payInfo">
-	<h1>--- 결제 목록 ---</h1>
+	<h1>--- 분양 목록 ---</h1>
+<%-- 	<c:forEach items="${buyList}" var="buy"> --%>
+<%-- 		결제 번호 : ${buy.pay_num}<br /> --%>
+<%-- 		입양자 ID (otherpage로 링크걸기) : ${buy.id_buyer}<br /> --%>
+<%-- 		분양종 : ${buy.cateCode}<br /> --%>
+<%-- 		분양가 : ${buy.cost}<br /> --%>
+<%-- 		분양글 제목 (분양게시글로 링크걸기) : ${buy.title}<br /> --%>
+<%-- <%-- 		분양 상태 : ${buy.}<br /> --%> --%>
+<%-- 		분양일 : ${buy.pay_date}<br /> --%>
+<%-- 		분양 완료 체크 : ${buy.stmt_sale}<br /> --%>
+<%-- 	</c:forEach> --%>
 </div>
 <br /><hr /><br />
 <!-- 게시글 작성 목록 -->
-<div id="likeInfo">
+<div id="boardInfo">
 	<h1>--- 내가 쓴 글 ---</h1>
+<%-- 	<c:forEach items="${writeList}" var="write"> --%>
+<%-- 		소통글 분류 : ${write.cateCode}<br /> --%>
+<%-- 		소통글 제목 (소통게시글로 링크걸기) : ${write.title}<br /> --%>
+<%-- 		소통글 작성일 (수정일) : ${write.mod_date_b}<br /> --%>
+<%-- 	</c:forEach> --%>
 </div>
 
 <jsp:include page="../include/footer.jsp"></jsp:include>
