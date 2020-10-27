@@ -13,7 +13,7 @@ public class OtherpageDTO {
 	//프로필 사진
 	String prof;
 	//사업자등록번호
-	int brn;
+	String brn;
 	//사업자등록증
 	String brn_img;
 	
@@ -49,10 +49,11 @@ public class OtherpageDTO {
 	public void setProf(String prof) {
 		this.prof = prof;
 	}
-	public int getBrn() {
+	
+	public String getBrn() {
 		return brn;
 	}
-	public void setBrn(int brn) {
+	public void setBrn(String brn) {
 		this.brn = brn;
 	}
 	public String getBrn_img() {

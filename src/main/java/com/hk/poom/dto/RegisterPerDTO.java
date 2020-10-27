@@ -25,7 +25,7 @@ public class RegisterPerDTO {
 	//주소참고항목
 	String extraAddr;
 	//연락처
-	int tel;
+	String tel;
 	// 프로필 (카카오)
 	String profUrl;
 	//멘트
@@ -104,10 +104,11 @@ public class RegisterPerDTO {
 	public void setExtraAddr(String extraAddr) {
 		this.extraAddr = extraAddr;
 	}
-	public int getTel() {
+	
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public String getProfUrl() {

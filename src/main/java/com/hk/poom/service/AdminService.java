@@ -10,6 +10,8 @@ import com.hk.poom.dto.NoticeAddDTO;
 import com.hk.poom.dto.NoticeListDTO;
 import com.hk.poom.dto.NoticeReadDTO;
 import com.hk.poom.dto.NoticeUpdateDTO;
+import com.hk.poom.dto.RegisterComDTO;
+import com.hk.poom.dto.RehomeListDTO;
 import com.hk.poom.mapper.AdminMapper;
 
 @Service
@@ -18,6 +20,13 @@ public class AdminService {
 	@Autowired
 	AdminMapper adminMapper;
 
+	public List<RegisterComDTO> memberList() { 
+		return adminMapper.memberList();
+	}
+	
+	public List<RehomeListDTO> rehomeList() { 
+		return adminMapper.rehomeList();
+	}
 	
 	public List<NoticeListDTO> noticeList( ) {
 		return adminMapper.noticeList( );

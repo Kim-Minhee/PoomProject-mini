@@ -9,10 +9,14 @@ import com.hk.poom.dto.NoticeAddDTO;
 import com.hk.poom.dto.NoticeListDTO;
 import com.hk.poom.dto.NoticeReadDTO;
 import com.hk.poom.dto.NoticeUpdateDTO;
+import com.hk.poom.dto.RegisterComDTO;
+import com.hk.poom.dto.RehomeListDTO;
 
 @Repository
 public interface AdminMapper {
 	
+	public List<RegisterComDTO> memberList();
+	public List<RehomeListDTO> rehomeList();
 	public List<NoticeListDTO> noticeList( );
 	public int noticeAdd( NoticeAddDTO noticeAddDTO );
 	public NoticeAddDTO noticeGetOne( int bno );

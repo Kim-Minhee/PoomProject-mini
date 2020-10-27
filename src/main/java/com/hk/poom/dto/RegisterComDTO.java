@@ -25,7 +25,7 @@ public class RegisterComDTO {
 	//주소참고항목
 	String extraAddr;
 	//연락처
-	int tel;
+	String tel;
 	//멘트
 	String ment;
 	//가입일
@@ -36,7 +36,7 @@ public class RegisterComDTO {
 	int stmt_m;
 	
 	//사업자 번호
-	int brn;
+	String brn;
 //	//사업자 등록증
 //	String brn_img;
 	//매장 사이트
@@ -103,10 +103,11 @@ public class RegisterComDTO {
 	public void setExtraAddr(String extraAddr) {
 		this.extraAddr = extraAddr;
 	}
-	public int getTel() {
+	
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public String getMent() {
@@ -133,13 +134,14 @@ public class RegisterComDTO {
 	public void setStmt_m(int stmt_m) {
 		this.stmt_m = stmt_m;
 	}
-	public int getBrn() {
+	
+	public String getBrn() {
 		return brn;
 	}
-	public void setBrn(int brn) {
+	public void setBrn(String brn) {
 		this.brn = brn;
 	}
-//	public String getBrn_img() {
+	//	public String getBrn_img() {
 //		return brn_img;
 //	}
 //	public void setBrn_img(String brn_img) {
@@ -157,14 +159,6 @@ public class RegisterComDTO {
 	public void setPerm(int perm) {
 		this.perm = perm;
 	}
-//	@Override
-//	public String toString() {
-//		return "RegisterComDTO [type_m=" + type_m + ", mno=" + mno + ", id=" + id + ", pwd=" + pwd + ", email=" + email
-//				+ ", name=" + name + ", zipCode=" + zipCode + ", firstAddr=" + firstAddr + ", secondAddr=" + secondAddr
-//				+ ", extraAddr=" + extraAddr + ", tel=" + tel + ", ment=" + ment + ", cre_date_m="
-//				+ cre_date_m + ", mod_date_m=" + mod_date_m + ", stmt_m=" + stmt_m + ", brn=" + brn + ", brn_img="
-//				+ brn_img + ", url_c=" + url_c + ", perm=" + perm + "]";
-//	}
 	@Override
 	public String toString() {
 		return "RegisterComDTO [type_m=" + type_m + ", mno=" + mno + ", id=" + id + ", pwd=" + pwd + ", email=" + email
@@ -173,6 +167,8 @@ public class RegisterComDTO {
 				+ ", mod_date_m=" + mod_date_m + ", stmt_m=" + stmt_m + ", brn=" + brn + ", url_c=" + url_c + ", perm="
 				+ perm + "]";
 	}
+
+
 	
 	
 }

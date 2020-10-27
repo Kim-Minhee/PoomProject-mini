@@ -4,5 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hk.poom.mapper.AdminMapper">
 
+<select id="memberList" resultType="com.hk.poom.dto.RegisterComDTO">
+SELECT * FROM MEMBER 
+</select>
+
+<select id="rehomeList" resultType="com.hk.poom.dto.RehomeListDTO">
+SELECT * FROM REHOME 
+</select>
+
 
 </mapper>
