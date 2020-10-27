@@ -16,8 +16,8 @@
 	<br> 게시판번호(읽기만)<input type="text" name="bno"
 		value='${communityGetOne.bno }' readonly><br> 제목<input
 		type="text" name="title" value='${communityGetOne.title }'><br>
-	글쓴이<input type="text" name="id_writer"
-		value='${communityGetOne.id_writer }'><br> 내용<br>
+	글쓴이<input type="text" name="id_writer" value='${communityGetOne.id_writer }'><br> 
+	내용<br>
 	<textarea id="cont_b" name="cont_b" rows="20" cols="100">
 	 ${communityGetOne.cont_b}
   </textarea>

@@ -23,7 +23,7 @@
 
 <tr>
 <td><c:out value="${communityList.bno}" /></td>
-<td><a href='read?bno=<c:out value="${communityList.bno }" />'><c:out value="${communityList.title }" /></a></td>
+<td><a href='read?bno=<c:out value="${communityList.bno }" />&mno=${communityList.mno}'><c:out value="${communityList.title }" /></a></td>
 <td><c:out value="${communityList.id_writer }" /></td>
 <td><small class="text-muted"><fmt:formatDate pattern="yyyy-MM-dd" value="${communityList.mod_date_b }" /></small></td>
 <td><c:out value="${communityList.viewCnt }" /></td>

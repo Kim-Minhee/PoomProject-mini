@@ -17,8 +17,8 @@ SELECT * FROM COMMUNITY c, board b where c.bno=b.bno
         SELECT MAX(BNO)+1 FROM BOARD
     </selectKey>
     insert all 
-    into community (cateCode, bno, img_c1, img_c2, img_c3, img_c4, img_c5 )
-values (#{cateCode},#{bno}, #{img_c1}, #{img_c2}, #{img_c3}, #{img_c4}, #{img_c5})
+    into community (cateCode, bno, img_c1, img_c2, img_c3, img_c4, img_c5,img_chk,mno )
+values (#{cateCode},#{bno}, #{img_c1}, #{img_c2}, #{img_c3}, #{img_c4}, #{img_c5}, #{img_chk},#{mno})
 
 into board(cateCode, bno, title, cre_date_b, mod_date_b,  stmt_b, cont_b, id_writer, cont_b)
 values (#{cateCode},#{bno}, #{title}, sysdate, sysdate,  #{stmt_b}, #{cont_b}, #{id_writer}, #{cont_b})
@@ -35,7 +35,7 @@ select catename from category  where catecode=#{cateCode}
 </update>
 
 <select id="communityRead" resultType="com.hk.poom.dto.CommunityReadDTO">
-SELECT * FROM community c, board b WHERE c.bno=b.bno and c.bno=#{bno} 
+SELECT * FROM community c, board b WHERE c.bno=b.bno and b.bno=#{bno} 
 </select>    
 
 <select id="communityGetOne" resultType="com.hk.poom.dto.CommunityUpdateDTO">

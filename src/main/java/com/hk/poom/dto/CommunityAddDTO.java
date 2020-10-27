@@ -13,6 +13,8 @@ public class CommunityAddDTO {
 	int bno;           
 	//소통글번호
 	int cno;      
+	//회원번호
+	int mno;
 	//제목
 	String title;           
 	//작성자
@@ -250,13 +252,25 @@ public class CommunityAddDTO {
 
 
 
+	public int getMno() {
+		return mno;
+	}
+
+
+
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "CommunityAddDTO [cateCode=" + cateCode + ", cateCodeRef=" + cateCodeRef + ", bno=" + bno + ", cno="
-				+ cno + ", title=" + title + ", id_writer=" + id_writer + ", cont_b=" + cont_b + ", img_c1=" + img_c1
-				+ ", img_c2=" + img_c2 + ", img_c3=" + img_c3 + ", img_c4=" + img_c4 + ", img_c5=" + img_c5
-				+ ", cre_date_b=" + cre_date_b + ", mod_date_b=" + mod_date_b + ", img_chk=" + img_chk + ", cateName="
-				+ cateName + ", stmt_b=" + stmt_b + "]";
+				+ cno + ", mno=" + mno + ", title=" + title + ", id_writer=" + id_writer + ", cont_b=" + cont_b
+				+ ", img_c1=" + img_c1 + ", img_c2=" + img_c2 + ", img_c3=" + img_c3 + ", img_c4=" + img_c4
+				+ ", img_c5=" + img_c5 + ", cre_date_b=" + cre_date_b + ", mod_date_b=" + mod_date_b + ", img_chk="
+				+ img_chk + ", cateName=" + cateName + ", stmt_b=" + stmt_b + "]";
 	}
 
 

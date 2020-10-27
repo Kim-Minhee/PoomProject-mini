@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -46,19 +47,11 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/poom/community/read")
-	public String community(@RequestParam("bno") int bno, Model model ) {
+	public String community(@RequestParam("bno") int bno, Model model,@RequestParam("mno") int mno, HttpSession session ) {
 		logger.info("bno=" + bno);
 		model.addAttribute("communityRead",communityService.communityRead(bno));
-		
+		 session.setAttribute("writerMno", mno);
 		return "community/communityRead";
-	}
-	
-	
-	@PostMapping("/poom/community/read")
-	public String communityReadPost( ) {
-		
-		
-		return "community/communityReadPost";
 	}
 	
 	@GetMapping("/poom/community/add")
@@ -83,6 +76,10 @@ public class CommunityController {
 //           System.out.println("파일 크기: "+file[i].getSize());
 //           System.out.println("content type: "+file[i].getContentType());
 //           System.out.println("================== file   END ==================");
+			 
+			 if(file.length==0) {
+				 communityAddDto.setImg_chk(0);
+			 } else {communityAddDto.setImg_chk(1);}
            
            String realPath = sc.getRealPath("/resources/img/community/");
            String genID = UUID.randomUUID().toString();
@@ -114,7 +111,7 @@ public class CommunityController {
    			e.printStackTrace();
    		}
        }
-
+	
       model.addAttribute("communityAdd",communityAddDto);   
       communityService.communityAdd(communityAddDto);
       

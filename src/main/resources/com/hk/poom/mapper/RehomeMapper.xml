@@ -40,7 +40,7 @@ values (#{id_writer}, #{bno}, 2, 2, 0, 0, #{pay_num}, #{cost})
 
 
 <select id="rehomeGetOne" resultType="com.hk.poom.dto.RehomeUpdateDTO">
-select * from BOARD  where BNO=#{bno} 
+select * from BOARD b, REHOME r where b.bno=r.bno and b.BNO=#{bno} 
 </select>
 
 <update id="rehomeUpdate">
@@ -52,11 +52,11 @@ set  bno=#{bno}
 ,    neut=#{neut}
 ,    vac=#{vac}
 ,    cost=#{cost}
-,	 img_r1=#{img_r1}
-,	 img_r2=#{img_r2}
-,	 img_r3=#{img_r3}
-,	 img_r4=#{img_r4}
-,	 img_r5=#{img_r5}
+,    img_r1=#{img_r1}
+,    img_r2=#{img_r2}
+,    img_r3=#{img_r3}
+,    img_r4=#{img_r4}
+,    img_r5=#{img_r5}
     where bno=#{bno}
      
 
@@ -88,7 +88,7 @@ select catename from category  where catecode=#{cateCode}
 </select>
 
 <update id="rehomeCateUpdate">
-	update board set catename=#{cateName} where bno=#{bno}
+   update board set catename=#{cateName} where bno=#{bno}
 </update>
 
     
@@ -104,7 +104,7 @@ values (#{bno}, #{report_cont})
     
 
 <!-- <insert id="rehomePayPost" parameterType="com.hk.poom.dto.AdminPayDTO"> -->
-<!-- 	<selectKey resultType="int" keyProperty="pay_num" order="BEFORE"> -->
+<!--    <selectKey resultType="int" keyProperty="pay_num" order="BEFORE"> -->
 <!--         SELECT MAX(PAY_NUM)+1 FROM PAYMENT -->
 <!--     </selectKey> -->
 <!-- insert into payment (id_saler, id_buyer, pay_num, sale_chk, buy_chk, stmt_sale, stmt_buy, pay_date, salecnt, buycnt, cost, bno) -->
@@ -119,12 +119,12 @@ values (#{bno}, #{report_cont})
 update payment
 set  bno=#{bno}
 ,    id_saler=#{id_saler}
-,	 id_buyer=#{id_buyer}
+,    id_buyer=#{id_buyer}
 ,    pay_date=sysdate
 ,    stmt_sale=1
 ,    stmt_buy=1
-,	 sale_chk=1
-,	 buy_chk=1
+,    sale_chk=1
+,    buy_chk=1
 
     where bno=#{bno}
 

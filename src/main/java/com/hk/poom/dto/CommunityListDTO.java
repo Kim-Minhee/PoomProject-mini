@@ -28,6 +28,9 @@ public class CommunityListDTO {
 	int viewCnt;
 	//추천수
 	int likeCnt;
+	//회원번호
+	int mno;
+	
 	public String getCateName() {
 		return cateName;
 	}
@@ -100,12 +103,19 @@ public class CommunityListDTO {
 	public void setLikeCnt(int likeCnt) {
 		this.likeCnt = likeCnt;
 	}
+	
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
 	@Override
 	public String toString() {
 		return "CommunityListDTO [cateName=" + cateName + ", cateCode=" + cateCode + ", cateCodeRef=" + cateCodeRef
 				+ ", bno=" + bno + ", cno=" + cno + ", title=" + title + ", id_writer=" + id_writer + ", mod_date_b="
 				+ mod_date_b + ", img_chk=" + img_chk + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt="
-				+ likeCnt + "]";
+				+ likeCnt + ", mno=" + mno + "]";
 	}
 
 	

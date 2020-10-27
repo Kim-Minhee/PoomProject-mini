@@ -54,6 +54,7 @@
 							<div>게시판 번호: ${communityRead.bno}</div>
 							<div>작성자: ${communityRead.id_writer}</div>
 							<div>제목: ${communityRead.title}</div>
+							<div>회원번호: ${communityRead.mno}</div>
 							<div><img src="/resources/img/community/${communityRead.img_c1 }" onerror="this.style.display='none'" width="200" height="200" /></div>
 							<div><img src="/resources/img/community/${communityRead.img_c2 }" onerror="this.style.display='none'" width="200" height="200" /></div>
 							<div><img src="/resources/img/community/${communityRead.img_c3 }" onerror="this.style.display='none'" width="200" height="200" /></div>
