@@ -5,7 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="../include/inHead.jsp"></jsp:include>
+
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
+
+
 공지 리스트
 <jsp:include page="../include/footer.jsp"></jsp:include>

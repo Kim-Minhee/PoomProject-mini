@@ -313,18 +313,18 @@ function execDaumPostcode() {
 				<div style="display:none;"><label><b>* 비밀번호 : </b></label>
 					<input type="text" name="pwd" id="pwd"></div>
 				<div><label><b>* 이메일 : </b></label>
-					<input type="email" name='email' id="emailDupChk" oninput="chcekEmail()">
+					<input type="email" name='email' id="emailDupChk" oninput="chcekEmail()" required>
 					<div class="validation" id="emailDupChkRet" style="font-size: 15px;"></div></div>
 				<div><label><b>* 이름 : </b></label>
-					<input type="text" name='name' id="name"></div>
+					<input type="text" name='name' id="name" required></div>
 				<div><label><b>* 연락처 : </b></label>
-					<input type="tel" name='tel' id='tel' placeholder="연락처">
+					<input type="tel" name='tel' id='tel' placeholder="연락처" required>
 					<div class="validation" id="telRet" style="font-size: 15px;"></div></div>
 				<div><label><b>* 주소 : </b></label>
-            		<input type="text" id="postcode" placeholder="우편번호" name="zipCode" style="width:60px; margin-right:1px;">
+            		<input type="text" id="postcode" placeholder="우편번호" name="zipCode" style="width:60px; margin-right:1px;" required>
            			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br />
-            		<input type="text" id="address" placeholder="주소" name="firstAddr">
-            		<input type="text" id="extraAddress" placeholder="참고항목" name="extraAddr"><br />
+            		<input type="text" id="address" placeholder="주소" name="firstAddr" required>
+            		<input type="text" id="extraAddress" placeholder="참고항목" name="extraAddr" required><br />
             		<input type="text" id="detailAddress" placeholder="상세주소" name="secondAddr"></div>
 				<div><label><b>프로필 사진 : </b></label><br />
 					<img id="kakao_profile" style="border-radius:20px" src="" width="100px" height="100px"><br />

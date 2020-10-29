@@ -53,7 +53,7 @@ public class RehomeAddDTO {
 	int likecnt;
 	//신고수
 	int reportcnt;
-	//회원상태
+	//게시글상태
 	int stmt_b;
 	//판매 상태
 	int stmt_sale;

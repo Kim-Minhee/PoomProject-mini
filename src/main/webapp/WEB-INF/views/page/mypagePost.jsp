@@ -9,5 +9,5 @@
 
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
-마이페이지 포스트 
+마이페이지 수정 완료!
 <jsp:include page="../include/footer.jsp"></jsp:include>

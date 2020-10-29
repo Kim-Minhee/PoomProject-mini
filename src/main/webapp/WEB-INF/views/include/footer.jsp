@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     </main>
     <footer>
@@ -13,7 +14,7 @@
                                <div class="single-footer-caption mb-30">
                                    <!-- logo -->
                                    <div class="footer-logo mb-35">
-                                       <a href="https://technext.github.io/environmentalorganization/index.html">
+                                       <a href="/poom">
                                        	<img src="/resources/img/poom_logo5.png" alt="" style="width:140px; height:auto; border-radius:30px"></a>
                                    </div>
                                    <div class="footer-tittle">
@@ -47,8 +48,24 @@
                                <div class="footer-tittle">
                                    <h4>회원</h4>
                                    <ul>
+                                   
+                                   <c:choose>
+										<c:when test="${empty loginMember}">
+											
+                                       <li><a href="/poom/register/new">개인 회원가입</a></li>
+                                       <li><a href="/poom/register/com">업체 회원가입</a></li>
+                                       <li><a href="/poom/login">로그인</a></li>
+                                       
+                                        </c:when>
+                                   
+                                   		<c:otherwise>
+                                       
                                        <li><a href="/poom/mypage">마이페이지</a></li>
                                        <li><a href="/poom/logout">로그아웃</a></li>
+                                      	
+                                      	</c:otherwise> 
+                                   </c:choose>
+                                   
                                    </ul>
                                </div>
                            </div>
@@ -114,7 +131,6 @@
     <!-- Date Picker -->
     <script src="https://technext.github.io/environmentalorganization/assets/js/gijgo.min.js"></script>
     <!-- Nice-select, sticky -->
-    <script src="https://technext.github.io/environmentalorganization/assets/js/jquery.nice-select.min.js"></script>
     <script src="https://technext.github.io/environmentalorganization/assets/js/jquery.sticky.js"></script>
     <!-- Progress -->
     <script src="https://technext.github.io/environmentalorganization/assets/js/jquery.barfiller.js"></script>

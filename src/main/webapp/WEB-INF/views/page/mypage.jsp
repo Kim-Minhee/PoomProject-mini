@@ -552,7 +552,7 @@
 	<p>이메일 : ${myInfo.email}</p>
 	<p>연락처 : ${myInfo.tel}</p>
 	<p>한 줄 소개 : ${myInfo.ment}</p>
-	<c:set var="type_m" value="${loginMember.type_m}" />
+<%-- 	<c:set var="type_m" value="${loginMember.type_m}" /> --%>
 		<c:if test="${type_m eq '2'}">
 			<p>사이트 : ${myInfo.url_c}</p>
 		</c:if>
@@ -583,9 +583,9 @@
 	<form action="#" method="post" id="updateMypage" enctype="multipart/form-data">
 		<fieldset style="width:725px; margin-right:1000px;">
 			<legend style="font-size:25px;"><b>--- 정보 수정하기 ---</b></legend>
-				<div><label style="display: none;"><b>회원유형 : </b></label>
+				<div style="display: none;"><label><b>회원유형 : </b></label>
 					<input type="text" name="type_m" value="${myInfo.type_m}" readonly></div>
-				<div><label style="display: none;"><b>회원번호 : </b></label>
+				<div style="display: none;"><label><b>회원번호 : </b></label>
 					<input type="text" name="mno" value="${myInfo.mno}" readonly></div>
 				<div><label><b>가입일 : </b></label>
 					<fmt:formatDate pattern="yyyy-MM-dd" value="${myInfo.cre_date_m}" /></div>

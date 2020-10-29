@@ -461,32 +461,32 @@ function execDaumPostcode() {
 		<fieldset style="width:725px; margin-right:1000px;">
 			<legend style="font-size:25px;"><b>정보 입력</b></legend>
 				<div><label><b>* 아이디 : </b></label>
-					<input type="text" name="id" id="idDupChk" placeholder="아이디" oninput="checkId()">
+					<input type="text" name="id" id="idDupChk" placeholder="아이디" oninput="checkId()" required>
 					<div class="validation" id="idDupChkRet" style="font-size: 15px;"></div></div>
 				<div><label><b>* 비밀번호 : </b></label>
-					<input type="password" id="pwd" placeholder="비밀번호" oninput="checkPwd()">
+					<input type="password" id="pwd" placeholder="비밀번호" oninput="checkPwd()" required>
 					 <div class="validation" id="pwdRet" style="font-size: 15px;"></div></div>
 				<div><label><b>* 비밀번호 확인 : </b></label>
-					<input type="password" name="pwd" id="pwdMatChk" placeholder="비밀번호 재입력" oninput="reCheckPwd()">
+					<input type="password" name="pwd" id="pwdMatChk" placeholder="비밀번호 재입력" oninput="reCheckPwd()" required>
 					<div class="validation" id="pwdMatChkRet" style="font-size: 15px;"></div></div>
 				<div><label><b>* 이메일 : </b></label>
-					<input type="email" name='email' id="emailDupChk" placeholder="이메일" oninput="chcekEmail()">
+					<input type="email" name='email' id="emailDupChk" placeholder="이메일" oninput="chcekEmail()" required>
 					<button type="button" id="emailBtn" onclick="">본인인증</button><br/>
 					<div class="validation" id="emailDupChkRet" style="font-size: 15px;"></div>
 					인증코드 :	
-		 				<input type="text" name="checkCode" id="checkCode" placeholder="인증번호">
+		 				<input type="text" name="checkCode" id="checkCode" placeholder="인증번호" required>
 		 				<button type="button" id="codeBtn" onclick="">인증번호 확인</button><br/>
 		 				<div class="validation" id="checkCodeRet" style="font-size: 15px;"></div></div>
 				<div><label><b>* 이름 : </b></label>
-					<input type="text" name='name' placeholder="이름"></div>
+					<input type="text" name='name' placeholder="이름" required></div>
 				<div><label><b>* 연락처 : </b></label>
-					<input type="tel" name='tel' id='tel' placeholder="연락처">
+					<input type="tel" name='tel' id='tel' placeholder="연락처" required>
 					<div class="validation" id="telRet" style="font-size: 15px;"></div></div>
 				<div><label><b>* 주소 : </b></label>
-            		<input type="text" id="postcode" placeholder="우편번호" name="zipCode" style="width:60px; margin-right:1px;">
+            		<input type="text" id="postcode" placeholder="우편번호" name="zipCode" style="width:60px; margin-right:1px;" required>
            			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br />
-            		<input type="text" id="address" placeholder="주소" name="firstAddr">
-            		<input type="text" id="extraAddress" placeholder="참고항목" name="extraAddr"><br />
+            		<input type="text" id="address" placeholder="주소" name="firstAddr" required>
+            		<input type="text" id="extraAddress" placeholder="참고항목" name="extraAddr" required><br />
             		<input type="text" id="detailAddress" placeholder="상세주소" name="secondAddr"></div>
 				<div><label><b>프로필 사진 : </b></label>
 					<input type="file" name="prof" value=""></div>

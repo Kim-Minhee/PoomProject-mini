@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.hk.poom.dto.AdminPayDTO;
-import com.hk.poom.dto.CommunityListDTO;
 import com.hk.poom.dto.LoginDTO;
 import com.hk.poom.dto.MypageDTO;
 import com.hk.poom.dto.ProfUploadDTO;
@@ -58,10 +56,11 @@ public class PageController {
 			uploadeddFile = pageService.comFile(mno);
 		}
 		
-		//ProfUploadDTO myProf = pageService.myProf(mno);
 		model.addAttribute("myInfo", myInfo);
 		model.addAttribute("uploadeddFile", uploadeddFile);
+		model.addAttribute("type_m", type);
 		
+		// 아직 미구현
 //		// 입양 리스트 출력
 //		AdminPayDTO buyInfo = new AdminPayDTO();
 //		buyInfo.setId_buyer(myInfo.getId());
@@ -80,7 +79,7 @@ public class PageController {
 	
 	
 	@PostMapping("/poom/mypage")
-	public String mypagePost( HttpSession session, Model model, MypageDTO mypageDTO, ProfUploadDTO profUploadDTO, @RequestParam("prof") MultipartFile prof, @RequestParam("brn_img") MultipartFile brn_img ) {	//, @RequestParam("prof") MultipartFile prof
+	public String mypagePost( HttpSession session, Model model, MypageDTO mypageDTO, ProfUploadDTO profUploadDTO, @RequestParam("prof") MultipartFile prof, @RequestParam("brn_img") MultipartFile brn_img) {	//, @RequestParam("prof") MultipartFile prof
 		logger.info("PageController_Post_/poom/mypage 실행");
 		logger.info("수정할 회원 정보 = " + mypageDTO.toString());
 		
@@ -98,7 +97,6 @@ public class PageController {
 		// 업로드한 프로필 파일 저장
 		if ( prof.isEmpty() ) {
 		} else {
-			//String nowTime = new SimpleDateFormat("yyyyMMddHmsS").format(new Date());
 			String realPath = sc.getRealPath("/resources/prof/");
 			String dbSaveName = "";
 			dbSaveName = nowTime + prof.getOriginalFilename().substring(prof.getOriginalFilename().lastIndexOf("."));
@@ -113,11 +111,10 @@ public class PageController {
 				FileUtils.deleteQuietly(newProfFile);
 				e.printStackTrace();
 			}
-			//profUploadDTO.setMno(mypageDTO.getMno());
+			
 			profUploadDTO.setDbSaveName("/resources/prof/"+dbSaveName);
 			memberService.profUpload(profUploadDTO);
 		}
-		
 		// 업로드한 사업자 등록 파일 저장
 		if ( brn_img.isEmpty() ) {
 		} else {
@@ -149,6 +146,7 @@ public class PageController {
 		loginMember.setDbSaveName(profUploadDTO.getDbSaveName());
 		
 		session.setAttribute("loginMember", loginMember);
+
 		
 		return "page/mypagePost";
 	}

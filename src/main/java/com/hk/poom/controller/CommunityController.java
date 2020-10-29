@@ -277,13 +277,13 @@ public class CommunityController {
 	@GetMapping("/poom/community/report")
 	   public String communityGetOne(@RequestParam("bno") int bno, Model model) {
 	      model.addAttribute("communityGetOne",communityService.communityGetOne(bno));
-	      return "rehome/report";
+	      return "community/report";
 	   }
 	   @PostMapping("/poom/community/report")
 	   public String report(Model model, RehomeReportDTO report) {
 	      model.addAttribute("report",communityService.report(report));
 	          
-	      return "rehome/reportDone";
+	      return "community/reportDone";
 	   }
 	
 

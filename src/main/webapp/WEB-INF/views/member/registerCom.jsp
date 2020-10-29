@@ -607,14 +607,14 @@ function execDaumPostcode() {
 	<form action="com" method="post"  enctype="multipart/form-data">
 		<fieldset style="width:725px;margin-right:1000px">
 			<legend style="font-size:25px;"><b>회원 입력</b></legend>
-				<label><b>아이디 (자동 중복체크) :</b></label>
+				<label><b>* 아이디 :</b></label>
 					<input type="text" name="id" id="idDupChk"  placeholder="ID" oninput="checkId()" required>
 					<div class="validation" id="idDupChkRet" style="font-size: 15px;"></div>
 <!-- 					<input type="hidden" id="idDupChkRet" style="width:270px;margin-right:1px"><br> -->
-				<label><b>비밀번호 : </b></label>
+				<label><b>* 비밀번호 : </b></label>
 					<input type="password" id="pwd" placeholder="PASSWORD"  oninput="checkPwd()" required>
 					 <div class="validation" id="pwdRet" style="font-size: 15px;"></div>
-				<label><b>비밀번호 재확인 : </b></label>
+				<label><b>* 비밀번호 재확인 : </b></label>
 					<input type="password" name="pwd" id="pwdMatChk" placeholder="Confirm Password" oninput="reCheckPwd()" required>
 					<div class="validation" id="pwdMatChkRet" style="font-size: 15px;"></div>
 <!-- 					<input type="hidden" id="pwdMatChkRet"><br> -->
@@ -629,20 +629,20 @@ function execDaumPostcode() {
 		</fieldset>
 		<fieldset style="width:700px;margin-right:1000px">	
 			<legend style="font-size:25px;"><b>사업자 정보 등록</b></legend>
-				<label><b>매장명 : </b></label> 
+				<label><b>* 매장명 : </b></label> 
 					<input type="text" name="name" placeholder="매장명" required><br>
-				<label><b>사업자 번호 : </b></label>
+				<label><b>* 사업자 번호 : </b></label>
 					<input type="text" name="brn"  placeholder="사업자 번호" required><br>
-				<label><b>사업자등록증 사진파일 : </b></label>
-					<input type="file" name='brn_img'><br>
-				<label><b>주소</b></label>
+				<label><b>* 사업자등록증 사진파일 : </b></label>
+					<input type="file" name='brn_img' required><br>
+				<label><b>* 주소</b></label>
             		<input type="text" id="postcode" placeholder="우편번호" name="zipCode" style="width:60px;margin-right:1px" required>
            			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
             		<input type="text" id="address" placeholder="주소" name="firstAddr" required><br>
             		<input type="text" id="extraAddress" placeholder="참고항목" name="extraAddr" required>
             		<input type="text" id="detailAddress" placeholder="상세주소 미기입 가능" name="secondAddr"><br>
-            	<label><b>전화번호 : </b></label> 
-            		<input type="tel" name="tel" id="tel" placeholder="전화번호 입력"required>
+            	<label><b>* 전화번호 : </b></label> 
+            		<input type="tel" name="tel" id="tel" placeholder="전화번호 입력" required>
             		<div class="validation" id="telRet" style="font-size: 15px;"></div><br>
 				<div><label><b>프로필 사진 : </b></label>
 					<input type="file" name="prof" value=""></div>

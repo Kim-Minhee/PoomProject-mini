@@ -64,7 +64,14 @@
 		                                                
 				                       <c:choose>
 											<c:when test="${empty loginMember}">
-															
+											
+														<li><a href="/poom/register/new">회원가입</a>
+		                                                	<ul class="submenu">
+		                                                        <li><a href="/poom/register/new">개인</a></li>
+		                                                        <li><a href="/poom/register/per">카카오 연동</a></li>
+		                                                        <li><a href="/poom/register/com">업체</a></li>
+		                                                    </ul>
+		                                                </li>
 		                                            </ul>
 		                                        </nav>
 		                                    </div>

@@ -52,7 +52,7 @@
                       <td><c:out value="${member.firstAddr }" /></td>
                       <td><fmt:formatDate pattern="yyyy-MM-dd" value="${member.cre_date_m }" /></td>
                       <td><button type="button" id="emailBtn" onclick="location.href='/poom/eachpage?mno=<c:out value="${member.mno }" />&mtp=<c:out value="${member.type_m }" />' ">회원 상세보기</button>
-                      	<button type="button" id="emailBtn" onclick="location.href='/poom/eachpageDelete?mno=<c:out value="${member.mno }" />&mtp=<c:out value="${member.type_m }" />' ">회원 삭제</button>
+                      	<button type="button" id="emailBtn" onclick="location.href='/poom/delete?mno=<c:out value="${member.mno }" />&mtp=<c:out value="${member.type_m }" />' ">회원 삭제</button>
                       </td>
                     </tr>
                     </c:forEach>

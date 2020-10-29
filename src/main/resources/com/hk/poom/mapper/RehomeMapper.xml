@@ -27,7 +27,7 @@ values (#{bno},#{rno}, #{mno}, #{gender}, #{age}, #{neut}, #{vac}, #{cost},#{cat
 <insert id="rehomeAddPost1" parameterType="com.hk.poom.dto.RehomeAddDTO">
 
 insert into board (cateCode, bno, title, cre_date_b, mod_date_b,  stmt_b, cont_b, id_writer)
-values (#{cateCode},#{bno}, #{title}, sysdate, sysdate, #{stmt_b}, #{cont_b}, #{id_writer})  
+values (#{cateCode},#{bno}, #{title}, sysdate, sysdate, 0, #{cont_b}, #{id_writer})  
 </insert>
 
 <insert id="rehomeAddPost2" parameterType="com.hk.poom.dto.RehomeAddDTO">

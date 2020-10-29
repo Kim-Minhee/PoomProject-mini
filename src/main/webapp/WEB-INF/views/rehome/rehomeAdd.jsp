@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    
+        
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>rehome add</title>
 <jsp:include page="../include/inHead.jsp"></jsp:include>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <h1>게시물등록 연습</h1>
@@ -15,13 +16,13 @@
 
 <form action='add' role="form" method="post" enctype="multipart/form-data" autocomplete="off" id="rehomeAdd">
  
- <label>1차 분류</label>
- <select form="rehomeAdd" class="category1" name="cateCodeRef" disabled>
+
+ <select form="rehomeAdd" class="category1" name="cateCodeRef" disabled  >
   <option value="">전체</option>
  </select>
  <br>
- <label>2차 분류</label>
- <select form="rehomeAdd" class="category2" name="cateCode">
+
+ <select form="rehomeAdd" class="category2" name="cateCode" >
   <option value="">전체</option>
  </select>
  
@@ -45,21 +46,23 @@
     <option value="1">안했음</option>
     <option value="2" selected>모름</option>
   </select><br>
-  
-  분양가<input id="cost" type="text" name="cost"><br>
-  분양글번호<input type="text" name="rno"><br>
+ 나이<input id='age' type="text" name='age' required placeholder='개월수!!'><br>
+  분양가<input id="cost" type="text" name="cost" required placeholder='100만원 이하!!'><br>
+  <div style="display:none;">분양글번호<input type="text" name="rno" value="0"><br></div>
+ <div style="display:none;">
   <!-- 글쓴이 정보 -->
   회원번호<input type="text" name="mno" value="${loginMember.mno}" readonly><br>
   회원아이디 (글쓴이)<input type="text" name="id_writer" value="${loginMember.id}" readonly><br>
   회원이메일<input type="text" name="email" value="${loginMember.email}" readonly><br>
   회원이름<input type="text" name="name" value="${loginMember.name}" readonly><br>
-  회원상태<input type="text" name="stmt_b"><br>
-  제목<input type="text" name="title"><br>
+  회원상태<input type="text" name="stmt_m" readonly><br>
+ </div>
+  제목<input type="text" name="title" required><br>
 <!--   글쓴이<input type="text" name="id_writer"><br> -->
-  <textarea id="cont_b" name="cont_b" rows="20" cols="100">
+  <textarea id="cont_b" name="cont_b" rows="20" cols="100" required>
  
   </textarea><br>
-   파일 업로드 : <input type="file" name="file" multiple="multiple"><br>
+   파일 업로드 : <input type="file" name="file" multiple="multiple" required><br>
   
   <input type="submit" value="확인">
   <input type='reset' value="취소"><br>
