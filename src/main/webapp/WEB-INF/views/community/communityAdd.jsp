@@ -8,10 +8,10 @@
 <meta charset="UTF-8">
 <title>소통게시판 등록</title>
 <jsp:include page="../include/inHead.jsp"></jsp:include>
+<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <h1>게시물등록 연습</h1>
-
 
 <form action='add' role="form" method="post" enctype="multipart/form-data" autocomplete="off" id="communityAdd">
 회원번호<input type="text" name="mno" value="${loginMember.mno}" readonly><br>
@@ -41,6 +41,14 @@
   <input type='reset' value="취소"><br>
 </form>
 
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#cont_b' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+ 
 <script>
 // 컨트롤러에서 데이터 받기
 var jsonData = JSON.parse('${category}');
@@ -121,5 +129,5 @@ $(document).ready( function(){
  
 });
 </script>
-
+<script src="/resources/se2/js/service/ckeditor.js"></script>
 <jsp:include page="../include/footer.jsp"></jsp:include>

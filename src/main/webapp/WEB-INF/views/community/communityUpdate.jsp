@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Rehome Update</title>
 <jsp:include page="../include/inHead.jsp"></jsp:include>
+<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
@@ -61,12 +62,12 @@
 	<input type='submit' value='수정'> <input type='reset' value='취소'>
 	<input type='button' onclick='location.href="list"' value='리스트로'>
 
-
-
-
-
-
-
-
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#cont_b' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
 </form><jsp:include page="../include/footer.jsp"></jsp:include>

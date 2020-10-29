@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Rehome Update</title>
 <jsp:include page="../include/inHead.jsp"></jsp:include>
+<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
@@ -32,9 +33,13 @@
     <option value="2">모름</option>
   </select><br>
   분양가<input type="text" name="cost" value='${rehomeGetOne.cost }'><br>
-
- 나이 <input id='age' type="text" name='age' value='${rehomeGetOne.age }'>
-
+ 
+  조회수<input type="text" name="viewcnt" value='${rehomeGetOne.viewcnt }'><br>
+  
+  좋아요수<input type="text" name="likecnt" value='${rehomeGetOne.likecnt }'><br>
+  
+  신고수<input type="text" name="reportcnt" value='${rehomeGetOne.reportcnt }'><br>
+  
   회원상태<input type="text" name="stmt_b" value='${rehomeGetOne.stmt_b }'><br>
   제목<input type="text" name="title" value='${rehomeGetOne.title }'><br>
   글쓴이<input type="text" name="id_writer" value='${rehomeGetOne.id_writer }'><br>
@@ -51,12 +56,12 @@
 <input type='reset' value='취소'>
 <input type='button' onclick='location.href="list"' value='리스트로'>
 
-
-
-
-
-
-
-
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#cont_b' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
 </form><jsp:include page="../include/footer.jsp"></jsp:include>
