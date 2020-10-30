@@ -64,19 +64,20 @@ public class PageController {
 		model.addAttribute("uploadeddFile", uploadeddFile);
 		model.addAttribute("type_m", type);
 		
-		
-		// 입양 리스트 출력
-		AdminPayDTO buyInfo = new AdminPayDTO();
-		buyInfo.setId_buyer(myInfo.getId());
-		model.addAttribute("buyList", pageService.mypageBuyList(buyInfo));
-		// 분양 리스트 출력
-		AdminPayDTO saleInfo = new AdminPayDTO();
-		saleInfo.setId_saler(myInfo.getId());
-		model.addAttribute("saleList", pageService.mypageSaleList(saleInfo));
-		// 쓴글 리스트 출력
-		CommunityListDTO writeInfo = new CommunityListDTO();
-		writeInfo.setId_writer(myInfo.getId());
-		model.addAttribute("writeList", pageService.mypageWriteList(writeInfo));
+		if ( type!=0 ) {
+			// 입양 리스트 출력
+			AdminPayDTO buyInfo = new AdminPayDTO();
+			buyInfo.setId_buyer(myInfo.getId());
+			model.addAttribute("buyList", pageService.mypageBuyList(buyInfo));
+			// 분양 리스트 출력
+			AdminPayDTO saleInfo = new AdminPayDTO();
+			saleInfo.setId_saler(myInfo.getId());
+			model.addAttribute("saleList", pageService.mypageSaleList(saleInfo));
+			// 쓴글 리스트 출력
+			CommunityListDTO writeInfo = new CommunityListDTO();
+			writeInfo.setId_writer(myInfo.getId());
+			model.addAttribute("writeList", pageService.mypageWriteList(writeInfo));
+		}
 		
 		return "page/mypage";
 	}
