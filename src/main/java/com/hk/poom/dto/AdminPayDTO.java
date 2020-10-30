@@ -32,6 +32,8 @@ public class AdminPayDTO {
 	int buyCnt;
 	//게시글 번호
 	int bno;
+	//회원 번호
+	int mno;
 	
 	
 	// Getter & Setter
@@ -114,23 +116,29 @@ public class AdminPayDTO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-	
-	
-	
 	public String getCateCode() {
 		return cateCode;
 	}
 	public void setCateCode(String cateCode) {
 		this.cateCode = cateCode;
 	}
+	
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
+	
 	// toString()
 	@Override
 	public String toString() {
 		return "AdminPayDTO [pay_num=" + pay_num + ", title=" + title + ", stmt_sale=" + stmt_sale + ", stmt_buy="
 				+ stmt_buy + ", pay_date=" + pay_date + ", cost=" + cost + ", id_saler=" + id_saler + ", id_buyer="
 				+ id_buyer + ", tel_saler=" + tel_saler + ", tel_buyer=" + tel_buyer + ", cateCode=" + cateCode
-				+ ", saleCnt=" + saleCnt + ", buyCnt=" + buyCnt + ", bno=" + bno + "]";
+				+ ", saleCnt=" + saleCnt + ", buyCnt=" + buyCnt + ", bno=" + bno + ", mno=" + mno + "]";
 	}
+
 	
 	
 }

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.hk.poom.dto.AdminPayDTO;
+import com.hk.poom.dto.CommunityListDTO;
 import com.hk.poom.dto.LoginDTO;
 import com.hk.poom.dto.MypageDTO;
 import com.hk.poom.dto.ProfUploadDTO;
@@ -43,6 +45,8 @@ public class PageController {
 	
 	@GetMapping("/poom/mypage")
 	public String mypage( Model model, HttpSession session, @RequestParam("mno") int mno ) {
+		
+		// 회원 정보
 		LoginDTO loginMember = (LoginDTO) session.getAttribute("loginMember");
 		int type = loginMember.getType_m();
 		
@@ -60,19 +64,19 @@ public class PageController {
 		model.addAttribute("uploadeddFile", uploadeddFile);
 		model.addAttribute("type_m", type);
 		
-		// 아직 미구현
-//		// 입양 리스트 출력
-//		AdminPayDTO buyInfo = new AdminPayDTO();
-//		buyInfo.setId_buyer(myInfo.getId());
-//		model.addAttribute("buyList", pageService.mypageBuyList(buyInfo));
-//		// 분양 리스트 출력
-//		AdminPayDTO saleInfo = new AdminPayDTO();
-//		saleInfo.setId_saler(myInfo.getId());
-//		model.addAttribute("saleList", pageService.mypageSaleList(saleInfo));
-//		// 쓴글 리스트 출력
-//		CommunityListDTO writeInfo = new CommunityListDTO();
-//		writeInfo.setId_writer(myInfo.getId());
-//		model.addAttribute("writeList", pageService.mypageWriteList(writeInfo));
+		
+		// 입양 리스트 출력
+		AdminPayDTO buyInfo = new AdminPayDTO();
+		buyInfo.setId_buyer(myInfo.getId());
+		model.addAttribute("buyList", pageService.mypageBuyList(buyInfo));
+		// 분양 리스트 출력
+		AdminPayDTO saleInfo = new AdminPayDTO();
+		saleInfo.setId_saler(myInfo.getId());
+		model.addAttribute("saleList", pageService.mypageSaleList(saleInfo));
+		// 쓴글 리스트 출력
+		CommunityListDTO writeInfo = new CommunityListDTO();
+		writeInfo.setId_writer(myInfo.getId());
+		model.addAttribute("writeList", pageService.mypageWriteList(writeInfo));
 		
 		return "page/mypage";
 	}

@@ -152,36 +152,44 @@
 </script>
 
 <script>
+
 	$().ready(function(){
 
+		// selected된 관심 동물로 세팅
+		$("#fav").val(${myInfo.fav}).prop("selected", true);
+		
+		// slelected된 애완동물 유무로 세팅
+		$("#pet").val(${myInfo.pet}).prop("selected", true);
+
 		// 관심 동물 select 관련
-		var fav = $('fav');
-		fav.append('<option value="0">선택안함</option>');
-		fav.append('<option value="1">강아지</option>');
-		fav.append('<option value="2">고양이</option>');
-		fav.append('<option value="3">물고기</option>');
-		fav.append('<option value="4">새</option>');
-		fav.append('<option value="5">기타</option>');
+// 		var fav = $('#fav');
+// 		fav.append('<option value="0">선택안함</option>');
+// 		fav.append('<option value="1">강아지</option>');
+// 		fav.append('<option value="2">고양이</option>');
+// 		fav.append('<option value="3">물고기</option>');
+// 		fav.append('<option value="4">새</option>');
+// 		fav.append('<option value="5">기타</option>');
 		
-		// 이미 선택된 관심 동물의 값
-		var selectedFav = $('#selectedFav').val();
+// 		// 이미 선택된 관심 동물의 값
+// 		var selectedFav = $('#selectedFav').val();
+// 		//console.log('selectedFav : ' + selectedFav);
 		
-		
-		// 선택될 수 있는 옵션들 (0~5)
-		var optionsFav = $('#fav').children('option');
-		//console.log("optionsFav = " + optionsFav);
-		// selected된 obtion을 골라서, 거기에 selected 속성을 부여
-		for (i=0; i<optionsFav.length; i++) {
-			//console.log("fav for문 되나?");
-			if (i==selectedFav) {
-				//console.log("fav if문 되나?");
-				console.log(optionsFav[i]);
-				$("#fav option:eq(i)").prop("selected", true);
-				//optionsFav[i].attr('selected', 'selected');
-				//console.log("fav 속성 추가");
-			}
-		}
-	
+// 		// 선택될 수 있는 옵션들 (0~5)
+// 		var optionsFav = fav.children();
+// 		//console.log("optionsFav = " + optionsFav);
+// 		//console.log('optionsFav.length : ' + optionsFav.length);
+// 		// selected된 obtion을 골라서, 거기에 selected 속성을 부여
+// 		for (i=0; i<optionsFav.length; i++) {
+// 			//console.log("fav for문 되나?");
+// 			if (i==selectedFav) {
+// 				console.log("fav if문 되나?");
+// 				console.log(optionsFav[i]);
+// 				$("#fav option:eq(i)").prop("selected", true);
+// 				//optionsFav[i].attr('selected', 'selected');
+// 				console.log("fav 속성 추가");
+// 			}
+// 		}
+			
 // 		// 이미 선택된 동물 여부의 값
 // 		var selectedPet = $('#selectedPet').val();
 // 		//console.log("selectedPet = " + selectedPet);
@@ -198,13 +206,7 @@
 // 			}
 // 		}
 		
-	});
-
-
-
-	// 유효성 기능 활성화
-	$().ready(function(){
-
+		
 		// 아이디 유효성
 		$('#idDupChk').focus(function() {
 			regExId();
@@ -545,6 +547,11 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <!-- 회원 요약 정보 -->
 <div id="myInfo">
+<c:choose>
+<c:when test="${type_m eq '0'}">
+	<strong>관리자 계정입니다.</strong>
+</c:when>
+<c:otherwise>
 	<h1>[ ${myInfo.name}님의 회원 정보 ]</h1>
 	<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${uploadeddFile.dbSaveName}" width="140px" height="200px">
 	<p>이름 : ${myInfo.name}</p>
@@ -556,6 +563,7 @@
 		<c:if test="${type_m eq '2'}">
 			<p>사이트 : ${myInfo.url_c}</p>
 		</c:if>
+	<button onclick="location.href='/poom/logout'">로그아웃</button>
 <%-- 	<button type="button" onclick="location.href='delete?mno=${myInfo.mno}'">탈퇴하기</button> --%>
 	<button onclick="javascript:goDetail();">탈퇴하기</button>
 		<!-- 레이어 팝업 배경 시작 -->
@@ -592,25 +600,25 @@
 <%-- 					<input type="text" name="cre_date_m" value="${myInfo.cre_date_m}" readonly></div> --%>
 				<div><label><b>아이디 : </b></label>
 					<input type="text" name="id" value="${myInfo.id}" readonly></div>
-				<div><label><b>비밀번호 : </b></label>
-					<input type="password" id="pwd" value="${myInfo.pwd}" placeholder="비밀번호" oninput="checkPwd()">
+				<div><label><b>* 비밀번호 : </b></label>
+					<input type="password" id="pwd" value="${myInfo.pwd}" placeholder="비밀번호" oninput="checkPwd()" required>
 					 <div class="validation" id="pwdRet" style="font-size: 15px;"></div></div>
 				<div><label><b>* 비밀번호 확인 : </b></label>
-					<input type="password" name="pwd" id="pwdMatChk" placeholder="비밀번호 재입력" oninput="reCheckPwd()">
+					<input type="password" name="pwd" id="pwdMatChk" placeholder="비밀번호 재입력" oninput="reCheckPwd()" required>
 					<div class="validation" id="pwdMatChkRet" style="font-size: 15px;"></div></div>
-				<div><label><b>이메일 : </b></label>
-					<input type="email" name='email' id="emailDupChk" value="${myInfo.email}" placeholder="이메일" oninput="chcekEmail()">
+				<div><label><b>* 이메일 : </b></label>
+					<input type="email" name='email' id="emailDupChk" value="${myInfo.email}" placeholder="이메일" oninput="chcekEmail()" required>
 					<div class="validation" id="emailDupChkRet" style="font-size: 15px;"></div></div>
-				<div><label><b>이름 : </b></label>
-					<input type="text" name='name' value="${myInfo.name}" placeholder="이름"></div>
-				<div><label><b>연락처 : </b></label>
-					<input type="tel" name='tel' id='tel' value="${myInfo.tel}" placeholder="연락처">
+				<div><label><b>* 이름 : </b></label>
+					<input type="text" name='name' value="${myInfo.name}" placeholder="이름" required></div>
+				<div><label><b>* 연락처 : </b></label>
+					<input type="tel" name='tel' id='tel' value="${myInfo.tel}" placeholder="연락처" required>
 					<div class="validation" id="telRet" style="font-size: 15px;"></div></div>
-				<div><label><b>주소 : </b></label>
-            		<input type="text" id="postcode" value="${myInfo.zipCode}" name="zipCode" placeholder="우편번호" style="width:60px; margin-right:1px;">
+				<div><label><b>* 주소 : </b></label>
+            		<input type="text" id="postcode" value="${myInfo.zipCode}" name="zipCode" placeholder="우편번호" style="width:60px; margin-right:1px;" required>
            			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br />
-            		<input type="text" id="address" value="${myInfo.firstAddr}" name="firstAddr" placeholder="주소">
-            		<input type="text" id="extraAddress" value="${myInfo.extraAddr}" name="extraAddr"  placeholder="주소참고항목"><br />
+            		<input type="text" id="address" value="${myInfo.firstAddr}" name="firstAddr" placeholder="주소" required>
+            		<input type="text" id="extraAddress" value="${myInfo.extraAddr}" name="extraAddr"  placeholder="주소참고항목" required><br />
             		<input type="text" id="detailAddress" value="${myInfo.seconAddr}" name="seconAddr" placeholder="상세주소"></div>
 				<div><label><b>프로필 사진 : </b></label>
 					<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${uploadeddFile.dbSaveName}" width="100px" height="100px"></div>
@@ -622,7 +630,6 @@
 					<c:when test="${type_m eq '1'}">
 					<!-- 개인회원 -->
 						<div><label><b>관심 동물 : </b></label>
-							<input type="text" value="${myInfo.fav}" id="selectedFav">
 							<select form="updateMypage" name="fav" id="fav">
 		        				<option value="0">선택안함</option>
 		        				<option value="1">강아지</option>
@@ -632,7 +639,6 @@
 		        				<option value="5">기타</option>
 		   					</select></div>
 		   				<div><label><b>애완동물 유무 : </b></label>
-		   					<input type="text" value="${myInfo.pet}" id="selectedPet">
 		   					<select form="updateMypage" name="pet" id="pet">
 		        				<option value="0">선택안함</option>
 		        				<option value="1">있음</option>
@@ -669,40 +675,94 @@
 <!-- 입양 목록 -->
 <div id="payInfo">
 	<h1>--- 입양 목록 ---</h1>
-<%-- 	<c:forEach items="${saleList}" var="sale"> --%>
-<%-- 		결제 번호 : ${sale.pay_num}<br /> --%>
-<%-- 		분양자 ID (otherpage로 링크걸기) : ${sale.id_saler}<br /> --%>
-<%-- 		분양종 : ${sale.cateCode}<br /> --%>
-<%-- 		분양가 : ${sale.cost}<br /> --%>
-<%-- 		분양글 제목 (분양게시글로 링크걸기) : ${sale.title}<br /> --%>
-<%-- 		입양일 : ${sale.pay_date}<br /> --%>
-<%-- 		입양 완료 상태 : ${sale.stmt_buy}<br /> --%>
-<%-- 	</c:forEach> --%>
+	<table border="1">
+    	<thead>
+        	<tr>
+            	<th>결제번호</th>
+                <th>분양자 ID</th>
+<!--                 <th>입양종 (구현 예정)</th> -->
+                <th>입양가</th>
+<!--                 <th>분양글 제목 (구현 예정)</th> -->
+                <th>입양 상태</th>
+                <th>입양일</th>
+<!--                 <th>입양 완료 체크 (구현 예정)</th> -->
+            </tr>
+        </thead>
+        <tbody>
+			<c:forEach items="${buyList}" var="buy">
+				<tr>
+					<td><c:out value="${buy.pay_num}" /></td>
+					<td><a href="#"><c:out value="${buy.id_saler}" /></a></td>
+<%-- 				<td><c:out value="${buy.cateCode}" /></td> --%>
+					<td><c:out value="${buy.cost}" /></td>
+<%-- 				<td><c:out value="${buy.title}" /></td> --%>
+					<td><c:out value="${buy.stmt_buy}" /></td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${buy.pay_date}" /></td>
+<%-- 				<td><c:out value="${buy.buy_chk}" /></td> --%>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </div>
 <br /><hr /><br />
 <!-- 분양 목록 -->
 <div id="payInfo">
 	<h1>--- 분양 목록 ---</h1>
-<%-- 	<c:forEach items="${buyList}" var="buy"> --%>
-<%-- 		결제 번호 : ${buy.pay_num}<br /> --%>
-<%-- 		입양자 ID (otherpage로 링크걸기) : ${buy.id_buyer}<br /> --%>
-<%-- 		분양종 : ${buy.cateCode}<br /> --%>
-<%-- 		분양가 : ${buy.cost}<br /> --%>
-<%-- 		분양글 제목 (분양게시글로 링크걸기) : ${buy.title}<br /> --%>
-<%-- <%-- 		분양 상태 : ${buy.}<br /> --%> --%>
-<%-- 		분양일 : ${buy.pay_date}<br /> --%>
-<%-- 		분양 완료 체크 : ${buy.stmt_sale}<br /> --%>
-<%-- 	</c:forEach> --%>
+	<table border="1">
+    	<thead>
+        	<tr>
+            	<th>결제번호</th>
+                <th>입양자 ID</th>
+<!--                 <th>분양종 (구현 예정)</th> -->
+                <th>분양가</th>
+<!--                 <th>분양글 제목 (구현 예정)</th> -->
+                <th>분양 상태</th>
+                <th>분양일</th>
+<!--                 <th>분양 완료 체크 (구현 예정)</th> -->
+            </tr>
+        </thead>
+        <tbody>
+			<c:forEach items="${saleList}" var="sale">
+				<tr>
+					<td><c:out value="${sale.pay_num}" /></td>
+					<td><a href="#"><c:out value="${sale.id_buyer}" /></a></td>
+<%-- 				<td><c:out value="${sale.cateCode}" /></td> --%>
+					<td><c:out value="${sale.cost}" /></td>
+<%-- 				<td><c:out value="${sale.title}" /></td> --%>
+					<td><c:out value="${sale.stmt_sale}" /></td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${sale.pay_date}" /></td>
+<%-- 				<td><c:out value="${sale.sale_chk}" /></td> --%>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </div>
 <br /><hr /><br />
 <!-- 게시글 작성 목록 -->
 <div id="boardInfo">
 	<h1>--- 내가 쓴 글 ---</h1>
-<%-- 	<c:forEach items="${writeList}" var="write"> --%>
-<%-- 		소통글 분류 : ${write.cateCode}<br /> --%>
-<%-- 		소통글 제목 (소통게시글로 링크걸기) : ${write.title}<br /> --%>
-<%-- 		소통글 작성일 (수정일) : ${write.mod_date_b}<br /> --%>
-<%-- 	</c:forEach> --%>
+	<table border="1">
+    	<thead>
+        	<tr>
+            	<th>게시글 번호</th>
+            	<th>소통글 분류</th>
+                <th>소통글 제목 (소통게시글로 링크걸기)</th>
+                <th>소통글 작성일 (수정일)</th>
+            </tr>
+        </thead>
+        <tbody>
+			<c:forEach items="${writeList}" var="write">
+				<tr>
+					<td><c:out value="${write.bno}" /></td>
+					<td><c:out value="${write.cateName}" /></td>
+					<td><a href="/poom/community/read?bno=${write.bno}&mno=${myInfo.mno}"><c:out value="${write.title}" /></a></td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${write.mod_date_b}" /></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </div>
+</c:otherwise>
+</c:choose>
 
 <jsp:include page="../include/footer.jsp"></jsp:include>
