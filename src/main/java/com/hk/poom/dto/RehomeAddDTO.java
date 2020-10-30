@@ -2,6 +2,12 @@ package com.hk.poom.dto;
 
 import java.util.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+@Setter
+@Getter
+@ToString
 public class RehomeAddDTO {
 
 	//카테고리 이름
@@ -62,193 +68,193 @@ public class RehomeAddDTO {
 	//결제 번호
 	int pay_num;
 
-	// Getter & Setter
-
-	public int getBno() {
-		return bno;
-	}
-	public void setBno(int bno) {
-		this.bno = bno;
-	}
-	public int getRno() {
-		return rno;
-	}
-	public void setRno(int rno) {
-		this.rno = rno;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getId_writer() {
-		return id_writer;
-	}
-	public void setId_writer(String id_writer) {
-		this.id_writer = id_writer;
-	}
-	public String getImg_r1() {
-		return img_r1;
-	}
-	public void setImg_r1(String img_r1) {
-		this.img_r1 = img_r1;
-	}
-	public String getImg_r2() {
-		return img_r2;
-	}
-	public void setImg_r2(String img_r2) {
-		this.img_r2 = img_r2;
-	}
-	public String getImg_r3() {
-		return img_r3;
-	}
-	public void setImg_r3(String img_r3) {
-		this.img_r3 = img_r3;
-	}
-	public String getImg_r4() {
-		return img_r4;
-	}
-	public void setImg_r4(String img_r4) {
-		this.img_r4 = img_r4;
-	}
-	public String getImg_r5() {
-		return img_r5;
-	}
-	public void setImg_r5(String img_r5) {
-		this.img_r5 = img_r5;
-	}
-
-	public int getGender() {
-		return gender;
-	}
-	public void setGender(int gender) {
-		this.gender = gender;
-	}
-	public int getVac() {
-		return vac;
-	}
-	public void setVac(int vac) {
-		this.vac = vac;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public int getNeut() {
-		return neut;
-	}
-	public void setNeut(int neut) {
-		this.neut = neut;
-	}
-	public int getCost() {
-		return cost;
-	}
-	public void setCost(int cost) {
-		this.cost = cost;
-	}
-	public String getCont_b() {
-		return cont_b;
-	}
-	public void setCont_b(String cont_b) {
-		this.cont_b = cont_b;
-	}
-	public Date getCre_date_b() {
-		return cre_date_b;
-	}
-	public void setCre_date_b(Date cre_date_b) {
-		this.cre_date_b = cre_date_b;
-	}
-	public Date getMod_date_b() {
-		return mod_date_b;
-	}
-	public void setMod_date_b(Date mod_date_b) {
-		this.mod_date_b = mod_date_b;
-	}
-	public int getViewcnt() {
-		return viewcnt;
-	}
-	public void setViewcnt(int viewcnt) {
-		this.viewcnt = viewcnt;
-	}
-
-	public int getLikecnt() {
-		return likecnt;
-	}
-	public void setLikecnt(int likecnt) {
-		this.likecnt = likecnt;
-	}
-
-	public int getReportcnt() {
-		return reportcnt;
-	}
-	public void setReportcnt(int reportcnt) {
-		this.reportcnt = reportcnt;
-	}
-
-	public int getStmt_b() {
-		return stmt_b;
-	}
-	public void setStmt_b(int stmt_b) {
-		this.stmt_b = stmt_b;
-	}
-	public int getMno() {
-		return mno;
-	}
-	public void setMno(int mno) {
-		this.mno = mno;
-	}
-
-	public String getCateName() {
-		return cateName;
-	}
-	public void setCateName(String cateName) {
-		this.cateName = cateName;
-	}
-	public String getCateCode() {
-		return cateCode;
-	}
-	public void setCateCode(String cateCode) {
-		this.cateCode = cateCode;
-	}
-	
-	
-	public String getCateCodeRef() {
-		return cateCodeRef;
-	}
-	public void setCateCodeRef(String cateCodeRef) {
-		this.cateCodeRef = cateCodeRef;	
-	}
-	public int getStmt_sale() {
-		return stmt_sale;
-	}
-	public void setStmt_sale(int stmt_sale) {
-		this.stmt_sale = stmt_sale;
-	}
-	public int getStmt_buy() {
-		return stmt_buy;
-	}
-	public void setStmt_buy(int stmt_buy) {
-		this.stmt_buy = stmt_buy;
-	}
-	
-	public int getPay_num() {
-		return pay_num;
-	}
-	public void setPay_num(int pay_num) {
-		this.pay_num = pay_num;
-	}
-	@Override
-	public String toString() {
-		return "RehomeAddDTO [cateName=" + cateName + ", bno=" + bno + ", rno=" + rno + ", mno=" + mno + ", title="
-				+ title + ", id_writer=" + id_writer + ", img_r1=" + img_r1 + ", img_r2=" + img_r2 + ", img_r3="
-				+ img_r3 + ", img_r4=" + img_r4 + ", img_r5=" + img_r5 + ", cateCode=" + cateCode + ", cateCodeRef="
-				+ cateCodeRef + ", gender=" + gender + ", vac=" + vac + ", age=" + age + ", neut=" + neut + ", cost="
-				+ cost + ", cont_b=" + cont_b + ", cre_date_b=" + cre_date_b + ", mod_date_b=" + mod_date_b
-				+ ", viewcnt=" + viewcnt + ", likecnt=" + likecnt + ", reportcnt=" + reportcnt + ", stmt_b=" + stmt_b
-				+ ", stmt_sale=" + stmt_sale + ", stmt_buy=" + stmt_buy + ", pay_num=" + pay_num + "]";
-	}
+//	// Getter & Setter
+//
+//	public int getBno() {
+//		return bno;
+//	}
+//	public void setBno(int bno) {
+//		this.bno = bno;
+//	}
+//	public int getRno() {
+//		return rno;
+//	}
+//	public void setRno(int rno) {
+//		this.rno = rno;
+//	}
+//	public String getTitle() {
+//		return title;
+//	}
+//	public void setTitle(String title) {
+//		this.title = title;
+//	}
+//	public String getId_writer() {
+//		return id_writer;
+//	}
+//	public void setId_writer(String id_writer) {
+//		this.id_writer = id_writer;
+//	}
+//	public String getImg_r1() {
+//		return img_r1;
+//	}
+//	public void setImg_r1(String img_r1) {
+//		this.img_r1 = img_r1;
+//	}
+//	public String getImg_r2() {
+//		return img_r2;
+//	}
+//	public void setImg_r2(String img_r2) {
+//		this.img_r2 = img_r2;
+//	}
+//	public String getImg_r3() {
+//		return img_r3;
+//	}
+//	public void setImg_r3(String img_r3) {
+//		this.img_r3 = img_r3;
+//	}
+//	public String getImg_r4() {
+//		return img_r4;
+//	}
+//	public void setImg_r4(String img_r4) {
+//		this.img_r4 = img_r4;
+//	}
+//	public String getImg_r5() {
+//		return img_r5;
+//	}
+//	public void setImg_r5(String img_r5) {
+//		this.img_r5 = img_r5;
+//	}
+//
+//	public int getGender() {
+//		return gender;
+//	}
+//	public void setGender(int gender) {
+//		this.gender = gender;
+//	}
+//	public int getVac() {
+//		return vac;
+//	}
+//	public void setVac(int vac) {
+//		this.vac = vac;
+//	}
+//	public int getAge() {
+//		return age;
+//	}
+//	public void setAge(int age) {
+//		this.age = age;
+//	}
+//	public int getNeut() {
+//		return neut;
+//	}
+//	public void setNeut(int neut) {
+//		this.neut = neut;
+//	}
+//	public int getCost() {
+//		return cost;
+//	}
+//	public void setCost(int cost) {
+//		this.cost = cost;
+//	}
+//	public String getCont_b() {
+//		return cont_b;
+//	}
+//	public void setCont_b(String cont_b) {
+//		this.cont_b = cont_b;
+//	}
+//	public Date getCre_date_b() {
+//		return cre_date_b;
+//	}
+//	public void setCre_date_b(Date cre_date_b) {
+//		this.cre_date_b = cre_date_b;
+//	}
+//	public Date getMod_date_b() {
+//		return mod_date_b;
+//	}
+//	public void setMod_date_b(Date mod_date_b) {
+//		this.mod_date_b = mod_date_b;
+//	}
+//	public int getViewcnt() {
+//		return viewcnt;
+//	}
+//	public void setViewcnt(int viewcnt) {
+//		this.viewcnt = viewcnt;
+//	}
+//
+//	public int getLikecnt() {
+//		return likecnt;
+//	}
+//	public void setLikecnt(int likecnt) {
+//		this.likecnt = likecnt;
+//	}
+//
+//	public int getReportcnt() {
+//		return reportcnt;
+//	}
+//	public void setReportcnt(int reportcnt) {
+//		this.reportcnt = reportcnt;
+//	}
+//
+//	public int getStmt_b() {
+//		return stmt_b;
+//	}
+//	public void setStmt_b(int stmt_b) {
+//		this.stmt_b = stmt_b;
+//	}
+//	public int getMno() {
+//		return mno;
+//	}
+//	public void setMno(int mno) {
+//		this.mno = mno;
+//	}
+//
+//	public String getCateName() {
+//		return cateName;
+//	}
+//	public void setCateName(String cateName) {
+//		this.cateName = cateName;
+//	}
+//	public String getCateCode() {
+//		return cateCode;
+//	}
+//	public void setCateCode(String cateCode) {
+//		this.cateCode = cateCode;
+//	}
+//	
+//	
+//	public String getCateCodeRef() {
+//		return cateCodeRef;
+//	}
+//	public void setCateCodeRef(String cateCodeRef) {
+//		this.cateCodeRef = cateCodeRef;	
+//	}
+//	public int getStmt_sale() {
+//		return stmt_sale;
+//	}
+//	public void setStmt_sale(int stmt_sale) {
+//		this.stmt_sale = stmt_sale;
+//	}
+//	public int getStmt_buy() {
+//		return stmt_buy;
+//	}
+//	public void setStmt_buy(int stmt_buy) {
+//		this.stmt_buy = stmt_buy;
+//	}
+//	
+//	public int getPay_num() {
+//		return pay_num;
+//	}
+//	public void setPay_num(int pay_num) {
+//		this.pay_num = pay_num;
+//	}
+//	@Override
+//	public String toString() {
+//		return "RehomeAddDTO [cateName=" + cateName + ", bno=" + bno + ", rno=" + rno + ", mno=" + mno + ", title="
+//				+ title + ", id_writer=" + id_writer + ", img_r1=" + img_r1 + ", img_r2=" + img_r2 + ", img_r3="
+//				+ img_r3 + ", img_r4=" + img_r4 + ", img_r5=" + img_r5 + ", cateCode=" + cateCode + ", cateCodeRef="
+//				+ cateCodeRef + ", gender=" + gender + ", vac=" + vac + ", age=" + age + ", neut=" + neut + ", cost="
+//				+ cost + ", cont_b=" + cont_b + ", cre_date_b=" + cre_date_b + ", mod_date_b=" + mod_date_b
+//				+ ", viewcnt=" + viewcnt + ", likecnt=" + likecnt + ", reportcnt=" + reportcnt + ", stmt_b=" + stmt_b
+//				+ ", stmt_sale=" + stmt_sale + ", stmt_buy=" + stmt_buy + ", pay_num=" + pay_num + "]";
+//	}
 
 }

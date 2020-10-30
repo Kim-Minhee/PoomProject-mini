@@ -2,6 +2,12 @@ package com.hk.poom.dto;
 
 import java.util.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+@Setter
+@Getter
+@ToString
 public class CommunityListDTO {
 
 	//글 유형
@@ -33,98 +39,98 @@ public class CommunityListDTO {
 	//회원번호
 	int mno;
 	
-	public String getCateName() {
-		return cateName;
-	}
-	public void setCateName(String cateName) {
-		this.cateName = cateName;
-	}
-	public String getCateCode() {
-		return cateCode;
-	}
-	public void setCateCode(String cateCode) {
-		this.cateCode = cateCode;
-	}
-	public String getCateCodeRef() {
-		return cateCodeRef;
-	}
-	public void setCateCodeRef(String cateCodeRef) {
-		this.cateCodeRef = cateCodeRef;
-	}
-	public int getBno() {
-		return bno;
-	}
-	public void setBno(int bno) {
-		this.bno = bno;
-	}
-	public int getCno() {
-		return cno;
-	}
-	public void setCno(int cno) {
-		this.cno = cno;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getId_writer() {
-		return id_writer;
-	}
-	public void setId_writer(String id_writer) {
-		this.id_writer = id_writer;
-	}
-	public Date getMod_date_b() {
-		return mod_date_b;
-	}
-	public void setMod_date_b(Date mod_date_b) {
-		this.mod_date_b = mod_date_b;
-	}
-	public String getImg_c1() {
-		return img_c1;
-	}
-	public void setImg_c1(String img_c1) {
-		this.img_c1 = img_c1;
-	}
-	public boolean isImg_chk() {
-		return img_chk;
-	}
-	public void setImg_chk(boolean img_chk) {
-		this.img_chk = img_chk;
-	}
-	public int getReplyCnt() {
-		return replyCnt;
-	}
-	public void setReplyCnt(int replyCnt) {
-		this.replyCnt = replyCnt;
-	}
-	public int getViewCnt() {
-		return viewCnt;
-	}
-	public void setViewCnt(int viewCnt) {
-		this.viewCnt = viewCnt;
-	}
-	public int getLikeCnt() {
-		return likeCnt;
-	}
-	public void setLikeCnt(int likeCnt) {
-		this.likeCnt = likeCnt;
-	}
-	
-	public int getMno() {
-		return mno;
-	}
-	public void setMno(int mno) {
-		this.mno = mno;
-	}
-	@Override
-	public String toString() {
-		return "CommunityListDTO [cateName=" + cateName + ", cateCode=" + cateCode + ", cateCodeRef=" + cateCodeRef
-				+ ", bno=" + bno + ", cno=" + cno + ", title=" + title + ", id_writer=" + id_writer + ", mod_date_b="
-				+ mod_date_b + ", img_c1=" + img_c1 + ", img_chk=" + img_chk + ", replyCnt=" + replyCnt + ", viewCnt="
-				+ viewCnt + ", likeCnt=" + likeCnt + ", mno=" + mno + "]";
-	}
+//	public String getCateName() {
+//		return cateName;
+//	}
+//	public void setCateName(String cateName) {
+//		this.cateName = cateName;
+//	}
+//	public String getCateCode() {
+//		return cateCode;
+//	}
+//	public void setCateCode(String cateCode) {
+//		this.cateCode = cateCode;
+//	}
+//	public String getCateCodeRef() {
+//		return cateCodeRef;
+//	}
+//	public void setCateCodeRef(String cateCodeRef) {
+//		this.cateCodeRef = cateCodeRef;
+//	}
+//	public int getBno() {
+//		return bno;
+//	}
+//	public void setBno(int bno) {
+//		this.bno = bno;
+//	}
+//	public int getCno() {
+//		return cno;
+//	}
+//	public void setCno(int cno) {
+//		this.cno = cno;
+//	}
+//	public String getTitle() {
+//		return title;
+//	}
+//	public void setTitle(String title) {
+//		this.title = title;
+//	}
+//	public String getId_writer() {
+//		return id_writer;
+//	}
+//	public void setId_writer(String id_writer) {
+//		this.id_writer = id_writer;
+//	}
+//	public Date getMod_date_b() {
+//		return mod_date_b;
+//	}
+//	public void setMod_date_b(Date mod_date_b) {
+//		this.mod_date_b = mod_date_b;
+//	}
+//	public String getImg_c1() {
+//		return img_c1;
+//	}
+//	public void setImg_c1(String img_c1) {
+//		this.img_c1 = img_c1;
+//	}
+//	public boolean isImg_chk() {
+//		return img_chk;
+//	}
+//	public void setImg_chk(boolean img_chk) {
+//		this.img_chk = img_chk;
+//	}
+//	public int getReplyCnt() {
+//		return replyCnt;
+//	}
+//	public void setReplyCnt(int replyCnt) {
+//		this.replyCnt = replyCnt;
+//	}
+//	public int getViewCnt() {
+//		return viewCnt;
+//	}
+//	public void setViewCnt(int viewCnt) {
+//		this.viewCnt = viewCnt;
+//	}
+//	public int getLikeCnt() {
+//		return likeCnt;
+//	}
+//	public void setLikeCnt(int likeCnt) {
+//		this.likeCnt = likeCnt;
+//	}
+//	
+//	public int getMno() {
+//		return mno;
+//	}
+//	public void setMno(int mno) {
+//		this.mno = mno;
+//	}
+//	@Override
+//	public String toString() {
+//		return "CommunityListDTO [cateName=" + cateName + ", cateCode=" + cateCode + ", cateCodeRef=" + cateCodeRef
+//				+ ", bno=" + bno + ", cno=" + cno + ", title=" + title + ", id_writer=" + id_writer + ", mod_date_b="
+//				+ mod_date_b + ", img_c1=" + img_c1 + ", img_chk=" + img_chk + ", replyCnt=" + replyCnt + ", viewCnt="
+//				+ viewCnt + ", likeCnt=" + likeCnt + ", mno=" + mno + "]";
+//	}
 
 
 	

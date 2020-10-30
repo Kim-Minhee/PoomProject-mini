@@ -221,14 +221,21 @@
        	  <version>${org.springframework-version}</version>
        	</dependency>
      	<!-- 이메일 인증 end -->
-     	
-     	<!-- transaction -->
-     	<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.16</version>
+    <scope>provided</scope>
+</dependency>
 		
 
 	</dependencies>

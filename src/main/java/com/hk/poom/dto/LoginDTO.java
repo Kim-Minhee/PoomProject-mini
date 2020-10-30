@@ -1,5 +1,14 @@
 package com.hk.poom.dto;
 
+import java.util.Date;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@ToString
 public class LoginDTO {
 
 	//아이디
@@ -18,55 +27,55 @@ public class LoginDTO {
 	String dbSaveName;
 	
 	
-	// Getter & Setter
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public int getType_m() {
-		return type_m;
-	}
-	public void setType_m(int type_m) {
-		this.type_m = type_m;
-	}
-	public int getMno() {
-		return mno;
-	}
-	public void setMno(int mno) {
-		this.mno = mno;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDbSaveName() {
-		return dbSaveName;
-	}
-	public void setDbSaveName(String dbSaveName) {
-		this.dbSaveName = dbSaveName;
-	}
-	
-	// toString()
-	@Override
-	public String toString() {
-		return "LoginDTO [id=" + id + ", pwd=" + pwd + ", email=" + email + ", type_m=" + type_m + ", mno=" + mno
-				+ ", name=" + name + ", dbSaveName=" + dbSaveName + "]";
-	}
+//	// Getter & Setter
+//	public String getId() {
+//		return id;
+//	}
+//	public void setId(String id) {
+//		this.id = id;
+//	}
+//	public String getPwd() {
+//		return pwd;
+//	}
+//	public void setPwd(String pwd) {
+//		this.pwd = pwd;
+//	}
+//	public String getEmail() {
+//		return email;
+//	}
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
+//	public int getType_m() {
+//		return type_m;
+//	}
+//	public void setType_m(int type_m) {
+//		this.type_m = type_m;
+//	}
+//	public int getMno() {
+//		return mno;
+//	}
+//	public void setMno(int mno) {
+//		this.mno = mno;
+//	}
+//	public String getName() {
+//		return name;
+//	}
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//	public String getDbSaveName() {
+//		return dbSaveName;
+//	}
+//	public void setDbSaveName(String dbSaveName) {
+//		this.dbSaveName = dbSaveName;
+//	}
+//	
+//	// toString()
+//	@Override
+//	public String toString() {
+//		return "LoginDTO [id=" + id + ", pwd=" + pwd + ", email=" + email + ", type_m=" + type_m + ", mno=" + mno
+//				+ ", name=" + name + ", dbSaveName=" + dbSaveName + "]";
+//	}
 	
 }
