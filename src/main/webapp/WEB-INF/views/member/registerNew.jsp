@@ -7,14 +7,27 @@
 <title>신규 회원가입</title>
 <jsp:include page="../include/inHead.jsp"></jsp:include>
 
+<!-- 업로드 이미지 미리보기 -->
+<style type="text/css">
+	#prof_wrap {
+		width: 600px;
+	}
+	#prof_wrap img {
+		max-width: 200px;
+	}
+</style>
+
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <!-- 다음 주소찾기 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
-// 유효성 기능 활성화
+var sel_files = [];
 $().ready(function(){
 
+	// 업로드 이미지 미리보기
+	$('#prof').on('change', handleImgFilesSelect);
+
+	
 	// 아이디 유효성
 	$('#idDupChk').focus(function() {
 		regExId();
@@ -36,6 +49,34 @@ $().ready(function(){
 	});
 	
 });
+
+// 업로드 이미지 미리보기
+function handleImgFilesSelect(e) {
+
+	// 기존에 고른 사진 지우기
+	$('#prof_wrap').empty();
+	
+	var files = e.target.files;
+	var filesArr = Array.prototype.slice.call(files);
+
+	filesArr.forEach( function(f) {
+		
+		if (!f.type.match('image.*')) {
+			alret("이미지 파일만 업로드 가능합니다.");
+			return;
+		}
+
+		sel_files.push(f);
+
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			var img_html = "<img src='"+e.target.result + "' />";
+			$('#prof_wrap').append(img_html);
+		}
+
+		reader.readAsDataURL(f);
+	})
+}
 
 
 //----------------------[ 정규식 ]----------------------
@@ -452,6 +493,71 @@ function execDaumPostcode() {
 // 		});
 
 // 	});
+
+
+// // 업로드한 이미지 미리보기
+// // 이미지 객체 타입으로 이미지 확장자 밸리데이션
+// var validateType = function(img){
+//   return (['image/jpeg','image/jpg','image/png'].indexOf(img.type) > -1);
+// }
+// var validateName = function(fname){
+// 	  let extensions = ['jpeg','jpg','png'];
+// 	  let fparts = fname.split('.');
+// 	  let fext = '';
+
+// 	  if(fparts.length > 1){
+// 	      fext = fparts[fparts.length-1];
+// 	  }
+
+// 	  let validated = false;
+	  
+// 	  if(fext != ''){
+// 	      extensions.forEach(function(ext){
+// 	          if(ext == fext){
+// 	              validated = true;
+// 	          }
+// 	      });
+// 	  }
+
+// 	  return validated;
+// 	}
+	
+// var prof = $('#prof'); //파일 선택 필드 요소 얻기
+
+// if(validateType(prof.files[0])){ // 파일 확장자 체크해서 이미지 파일이면
+//   let preview = document.querySelector('#thumb'); // 미리보기 썸네일 <img> 엘리먼트 얻기
+//   preview.src = URL.createObjectURL(elem.files[0]); //파일 객체에서 이미지 데이터 가져옴.
+//   document.querySelector('#dellink').style.display = 'block'; // 이미지 삭제 링크 표시
+//   //이미지 로딩 후 객체를 메모리에서 해제
+//   preview.onload = function() {
+//     URL.revokeObjectURL(preview.src);
+//   }
+// }else{
+//   alert('이미지 파일이 아닙니다.');
+// }
+
+// //파일 선택 필드에 이벤트 리스너 등록
+// $('#prof').addEventListener('change', function(e){
+//   let elem = e.target;
+//   if(validateType(elem.files[0])){
+//       let preview = document.querySelector('#thumb');
+//       preview.src = URL.createObjectURL(elem.files[0]); //파일 객체에서 이미지 데이터 가져옴.
+//       document.querySelector('#dellink').style.display = 'block'; // 이미지 삭제 링크 표시
+//       preview.onload = function() {
+//           URL.revokeObjectURL(preview.src); //URL 객체 해제
+//       }
+//   }else{
+//     console.log('이미지 파일이 아닙니다.');
+//   }
+// });
+
+// document.querySelector('#dellink').addEventListener('click', function(e){
+// 	  let dellink = e.target;
+// 	  let preview = dellink.previousElementSibling;
+// 	  preview.src = ''; // 썸네일 이미지 src 데이터 해제
+// 	  document.querySelector('#dellink').style.display = 'none';
+// 	});
+
 </script>
 
 </head>
@@ -489,7 +595,8 @@ function execDaumPostcode() {
             		<input type="text" id="extraAddress" placeholder="참고항목" name="extraAddr" required><br />
             		<input type="text" id="detailAddress" placeholder="상세주소" name="secondAddr"></div>
 				<div><label><b>프로필 사진 : </b></label>
-					<input type="file" name="prof" value=""></div>
+					<input type="file" name="prof" value="" id="prof" />
+					<div id="prof_wrap"></div></div>
 				<div><label><b>한 줄 소개 : </b></label>
 					<textarea rows="3" cols="100" name="ment"  placeholder="한 줄 소개"></textarea></div>
 				<div><label><b>관심 동물 : </b></label>

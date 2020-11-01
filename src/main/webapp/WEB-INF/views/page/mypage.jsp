@@ -10,6 +10,20 @@
 <title>마이 페이지</title>
 <jsp:include page="../include/inHead.jsp"></jsp:include>
 
+<!-- 업로드 이미지 미리보기 -->
+<style type="text/css">
+	#prof_wrap,
+	#brn_img_wrap {
+		width: 300px;
+	}
+	#prof_wrap img {
+		max-width: 200px;
+	}
+	#brn_img_wrap img {
+		width: 500px;
+	}
+</style>
+
 <style type="text/css">
 /*-- POPUP common style S ======================================================================================================================== --*/
 #mask {
@@ -97,6 +111,8 @@
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
 <script>
+var sel_files = [];
+var sel_filesB = [];
    function wrapWindowByMask() {
       //화면의 높이와 너비를 구한다.
       var maskHeight = $(document).height();
@@ -154,6 +170,11 @@
 <script>
 
 	$().ready(function(){
+
+		// 업로드 이미지 미리보기
+		$('#prof').on('change', handleImgFilesSelect);
+		$('#brn_img').on('change', handleImgFilesSelectB);
+		
 
 		// selected된 관심 동물로 세팅
 		$("#fav").val(${myInfo.fav}).prop("selected", true);
@@ -229,6 +250,62 @@
 		
 	});
 
+	
+	//업로드 이미지 미리보기
+	function handleImgFilesSelect(e) {
+
+		// 기존에 고른 사진 지우기
+		$('#prof_wrap').empty();
+		
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+
+		filesArr.forEach( function(f) {
+			
+			if (!f.type.match('image.*')) {
+				alret("이미지 파일만 업로드 가능합니다.");
+				return;
+			}
+
+			sel_files.push(f);
+
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				var img_html = "<img src='"+e.target.result + "' />";
+				$('#prof_wrap').append(img_html);
+			}
+
+			reader.readAsDataURL(f);
+		})
+	}
+
+	function handleImgFilesSelectB(e) {
+
+		// 기존에 고른 사진 지우기
+		$('#brn_img_wrap').empty();
+		
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+
+		filesArr.forEach( function(f) {
+			
+			if (!f.type.match('image.*')) {
+				alret("이미지 파일만 업로드 가능합니다.");
+				return;
+			}
+
+			sel_filesB.push(f);
+
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				var img_html = "<img src='"+e.target.result + "' />";
+				$('#brn_img_wrap').append(img_html);
+			}
+
+			reader.readAsDataURL(f);
+		})
+	}
+	
 
 	//----------------------[ 정규식 ]----------------------
 
@@ -622,7 +699,8 @@
             		<input type="text" id="detailAddress" value="${myInfo.seconAddr}" name="seconAddr" placeholder="상세주소"></div>
 				<div><label><b>프로필 사진 : </b></label>
 					<img style="border-radius:20px" onerror="this.src='/resources/img/testImg.jpg'" src="${uploadeddFile.dbSaveName}" width="100px" height="100px"></div>
-					<input type="file" name="prof" value="사진 바꾸기"></div>
+					<input type="file" name="prof" value="사진 바꾸기" id="prof" />
+					<div id="prof_wrap"></div></div>
 				<div><label><b>한 줄 소개 : </b></label>
 					<textarea rows="3" cols="100" name="ment" placeholder="한 줄 소개">${myInfo.ment}</textarea></div>
 				
@@ -658,7 +736,8 @@
 		<!-- 				<input type="file" name="brn_img" value="재등록"></div> -->
 						<div><label><b>사업자등록증 : </b></label>
 							<img onerror="this.src='/resources/img/testImg.jpg'" src="${uploadeddFile.brnName}" width="630px" height="900px">
-							<input type="file" name="brn_img" value="재등록"></div>
+							<input type="file" name="brn_img" value="재등록" id="brn_img" />
+							<div id="brn_img_wrap"></div></div>
 					</c:when>
 				</c:choose>
 					<input type='reset' value='초기화'>

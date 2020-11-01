@@ -7,13 +7,29 @@
 <title>신규 회원가입</title>
 <jsp:include page="../include/inHead.jsp"></jsp:include>
 
+<!-- 업로드 이미지 미리보기 -->
+<style type="text/css">
+	#prof_wrap {
+		width: 600px;
+	}
+	#prof_wrap img {
+		max-width: 200px;
+	}
+</style>
+
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <!-- 카카오 로그인 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <!-- 다음 주소찾기 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
+var sel_files = [];
 $().ready(function() {
+
+	// 업로드 이미지 미리보기
+	$('#prof').on('change', handleImgFilesSelect);
+	
+	
 	// SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
 	Kakao.init('ef974df3af8acda7ed3f3983cb387a81');
 	// SDK 초기화 여부를 판단합니다.
@@ -300,6 +316,34 @@ function execDaumPostcode() {
 	
 }
 
+//-------------------- 업로드 이미지 미리보기 ------------------------
+function handleImgFilesSelect(e) {
+
+	// 기존에 고른 사진 지우기
+	$('#prof_wrap').empty();
+	
+	var files = e.target.files;
+	var filesArr = Array.prototype.slice.call(files);
+
+	filesArr.forEach( function(f) {
+		
+		if (!f.type.match('image.*')) {
+			alret("이미지 파일만 업로드 가능합니다.");
+			return;
+		}
+
+		sel_files.push(f);
+
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			var img_html = "<img src='"+e.target.result + "' />";
+			$('#prof_wrap').append(img_html);
+		}
+
+		reader.readAsDataURL(f);
+	})
+}
+
 </script>
 </head>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -328,7 +372,8 @@ function execDaumPostcode() {
             		<input type="text" id="detailAddress" placeholder="상세주소" name="secondAddr"></div>
 				<div><label><b>프로필 사진 : </b></label><br />
 					<img id="kakao_profile" style="border-radius:20px" src="" width="100px" height="100px"><br />
-					<input type="file" name="prof"></div>
+					<input type="file" name="prof" value="" id="prof" />
+					<div id="prof_wrap"></div></div>
 				<div><label><b>한 줄 소개 : </b></label>
 					<textarea rows="3" cols="100" name="ment"  placeholder="한 줄 소개"></textarea></div>
 				<div><label><b>관심 동물 : </b></label>

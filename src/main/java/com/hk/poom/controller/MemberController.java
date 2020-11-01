@@ -212,7 +212,7 @@ public class MemberController {
 //		}
 		if ( loginMember!= null ) {
 			//logger.info("로그인 성공");
-				
+			
 			session.setAttribute("loginMember", loginMember);
 			logger.info("loginMember 정보 : " + loginMember);
 //			// 로그인한 사람의 prof (db에 저장된 파일명을 가져옴)
@@ -220,6 +220,12 @@ public class MemberController {
 			
 			//로그인 성공시 보고있던 페이지로
 			String referer = (String) session.getAttribute("referer");
+//			//String firstUrl = (String) session.getAttribute("firstUrl"); -> buffer는 string으로 타입변환 안된대..
+//			if ( session.getAttribute("firstUrl")==null ) {	// 메인 페이지에서 바로 로그인으로 들어갔을 때... 메인 페이지로 리턴
+//				return "redirect:/poom";
+//			} else {
+//				return "redirect:"+session.getAttribute("firstUrl"); -> get방식으로 ?로 준 값을 못 불러와서 들어가지 못 해...
+//			}
 			return "redirect:"+referer;
 		} else {
 			//logger.info("로그인 실패");
