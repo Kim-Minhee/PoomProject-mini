@@ -288,7 +288,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/poom/find/pwd")
-	public String findPwd(Model model, FindPwdDTO findPwdDTO ) {
+	public String findPwdPost(Model model, FindPwdDTO findPwdDTO ) {
 		
 		int randomPwd = new Random().nextInt(100000)+10000;
 		String joinPwd = String.valueOf(randomPwd);

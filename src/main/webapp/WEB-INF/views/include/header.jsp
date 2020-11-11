@@ -17,7 +17,7 @@
 		    <!-- Preloader Start -->
 		    <header>
 		        <!-- Header Start -->
-		        <div class="header-area">
+		        <div class="header-area" style="background-color:#F6F6F6;">
 		            <div class="main-header ">
 		                <div class="header-bottom  header-sticky">
 		                    <div class="container-fluid">
@@ -25,7 +25,7 @@
 		                            <!-- Logo -->
 		                            <div class="col-xl-2 col-lg-2">
 		                                <div class="logo">
-		                                    <a href="/poom"><img src="/resources/img/poom_logo5.png" alt="" style="width:140px; height:auto; border-radius:30px"></a>
+		                                    <a href="/poom"><img src="/resources/img/poom_logo6.png" alt="" style="width:200px; height:auto; border-radius:30px"></a>
 		                                </div>
 		                            </div>
 		                            <div class="col-xl-10 col-lg-10">
@@ -34,7 +34,7 @@
 		                                    <div class="main-menu d-none d-lg-block">
 		                                        <nav>
 		                                            <ul id="navigation">                                                                                          
-		                                                <li><a href="/poom/rehome/list">분양</a>
+		                                                <li><strong><a href="/poom/rehome/list">분양</a></strong>
 		                                                   <ul class="submenu">
 		                                                        <li><a href="/poom/rehome/list">강아지</a></li>
 		                                                        <li><a href="/poom/rehome/list">고양이</a></li>
@@ -43,7 +43,7 @@
 		                                                        <li><a href="/poom/rehome/list">기타</a></li>
 		                                                    </ul>
 		                                                </li>
-		                                                <li><a href="/poom/community/list">소통</a>
+		                                                <li><strong><a href="/poom/community/list">소통</a></strong>
 		                                                	<ul class="submenu">
 		                                                        <li><a href="/poom/community/list">용품 나눔</a></li>
 		                                                        <li><a href="/poom/community/list">동네 친구 찾기</a></li>
@@ -55,7 +55,7 @@
 		                                                        <li><a href="/poom/community/list">분양 후기</a></li>
 		                                                    </ul>
 		                                                </li>
-		                                                <li><a href="/poom/notice/list">공지</a>
+		                                                <li><strong><a href="/poom/notice/list">공지</a></strong>
 		                                                	<ul class="submenu">
 		                                                        <li><a href="/poom/notice/list">안내</a></li>
 		                                                        <li><a href="/poom/notice/list">유의사항</a></li>
@@ -65,7 +65,7 @@
 				                       <c:choose>
 											<c:when test="${empty loginMember}">
 											
-														<li><a href="/poom/register/new">회원가입</a>
+														<li><strong><a href="/poom/register/new">회원가입</a></strong>
 		                                                	<ul class="submenu">
 		                                                        <li><a href="/poom/register/new">개인</a></li>
 		                                                        <li><a href="/poom/register/per">카카오 연동</a></li>

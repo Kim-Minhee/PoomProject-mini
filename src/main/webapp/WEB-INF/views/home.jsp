@@ -38,30 +38,31 @@
                     <div class="col-lg-4 col-md-6 col-sm-11">
                         <div class="single-cat text-center mb-30">
                             <div class="cat-icon">
-                                <img src="https://technext.github.io/environmentalorganization/assets/img/gallery/services1.png" alt="">
+                                <img src="/resources/img/dog.jpg" alt="" width="370px" height="357">
                             </div>
                             <div class="cat-cap">
-                                <h5><a href="#">Clean Water</a></h5>
+                                <h5><a href="#">강아지 분양</a></h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-11">
-                        <div class="single-cat active text-center mb-30">
+                        <div class="single-cat text-center mb-30">
+<!--                         <div class="single-cat active text-center mb-30"> -->
                             <div class="cat-icon">
-                                <img src="https://technext.github.io/environmentalorganization/assets/img/gallery/services2.png" alt="">
+                                <img src="/resources/img/cat.jpg" alt="" width="370px" height="357">
                             </div>
                             <div class="cat-cap">
-                                <h5><a href="#">Renewable energy</a></h5>
+                                <h5><a href="#">고양이 분양</a></h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-11">
                         <div class="single-cat text-center mb-30">
                             <div class="cat-icon">
-                                <img src="https://technext.github.io/environmentalorganization/assets/img/gallery/services3.png" alt="">
+                                <img src="/resources/img/fish.jpg" alt="" width="370px" height="357">
                             </div>
                             <div class="cat-cap">
-                                <h5><a href="#">Protect animals</a></h5>
+                                <h5><a href="#">물고기 분양</a></h5>
                             </div>
                         </div>
                     </div>

@@ -2638,7 +2638,8 @@ hr {
 	font-weight: 400;
 	padding: 27px 19px;
 	display: block;
-	font-size: 16px;
+	font-size: 20px;
+	font-weight: 800;
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
 	-o-transition: .3s;

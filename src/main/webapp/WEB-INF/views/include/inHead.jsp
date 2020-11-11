@@ -10,7 +10,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://technext.github.io/environmentalorganization/assets/img/favicon.ico">
   	
     <!-- CSS here -->
-    <link rel="stylesheet" href="https://technext.github.io/environmentalorganization/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://technext.github.io/environmentalorganization/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="https://technext.github.io/environmentalorganization/assets/css/slicknav.css">
     <link rel="stylesheet" href="https://technext.github.io/environmentalorganization/assets/css/flaticon.css">
